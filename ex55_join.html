@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** Form 와 Table Test Join : 회원가입 작성</title>
+</head>
+<body>
+<h2 align = center>** Form 와 Table Test Join : 회원가입 작성</h2>
+<h1 align = center>회원가입</h1>
+<form action="#" method="get">
+<table border = 2 title="회원가입" cellpadding = "3" cellspacing = "3">
+	<tr><th bgcolor = Aqua align = "center" colspan="2"> 모든 항목을 입력해야 합니다.</th></tr>
+	<tr><th bgcolor = Aqua align ="center" width="40"><label for = name> 이름 </label></th>
+		<td bgcolor = skyblue><input type = text name = name id = name size = 20 placeholder="이름입력"></td></tr>
+	<tr><th bgcolor = Aqua align ="center" width="80" height="20"><label for = password> 비밀번호 </label></th>
+		<td bgcolor = skyblue><input type = password name = passward id = password size = 20 maxlength="8">* 영문 4~8자리 미만 입력 *</td></tr>
+	<tr><th bgcolor = Aqua align ="center" height="20"> 성별 </th>
+		<td bgcolor = skyblue><input type = checkbox name = man id = man size = 20><label for = man>남성</label>
+		<input type = checkbox name = girl id = girl size = 20><label for = girl>여성</label></td></tr>
+	<tr><th bgcolor = Aqua align ="center" height="20">취미</th>
+		<td bgcolor = skyblue><input type = "radio" name = hobby1 id = hobby1 size = 20><label for = hobby1>영화</label>
+		<input type = "radio" name = hobby2 id = hobby2 size = 20><label for = hobby2>등산</label>
+		<input type = "radio" name = hobby3 id = hobby3 size = 20><label for = hobby3>음악</label>
+		<input type = "radio" name = hobby4 id = hobby4 size = 20><label for = hobby4>운동</label></td></tr>
+	<tr><th bgcolor = Aqua align ="center" height="20">직업</th>
+		<td bgcolor = skyblue><select name = grade multiple="multiple" size =1 >
+   		<option value = A>Java 개발자
+   		<option value = B>Devops 개발자
+   		<option value = C>DB 개발자
+   		<option value = D>Framework 개발자
+   </select>원하는 직업을 선택하세요 (복수 선택 가능)</td></tr>
+	<tr><th bgcolor = Aqua align ="center" width="40"> 자기소개 </th>
+		<td bgcolor = skyblue><textarea rows="10" cols="90" name = memo> 100자 이내로 입력하세요
+   </textarea></td></tr>
+	<tr>
+	<td colspan = 2 bgcolor = aqua align = right>
+		<input type ="submit" value= "전송">
+		<input type = reset  value = "초기화">
+		<a href = "ex03_group.html" target="_blank"> <input type = "button" value = "도움말"></a><br>
+	</tr>
+</table>
+</form>
+</body>
+</html>
