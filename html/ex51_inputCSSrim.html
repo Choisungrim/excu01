@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang = "Ko">
+<head>
+<meta charset="UTF-8">
+<title>**회원가입**</title>
+<style>
+/* 초기화 */
+	* {margin: 0; padding:0; border:0; font-family:Monaco}
+/* body부분 배경색과 전체크기 중앙정렬 지정 */
+	body {background-color: aliceblue; 
+			width: 900px; height: 900px; margin: 0 auto;}
+/* 제목부분(상단)부분 위치와 글자크기 색 조정 */
+	h2 {text-align: center; margin-top: 30px;
+		font-size:60px; color: green;}
+/* 전체를 포함한 div 위치를 조정 */
+	#container{width:500px; margin: 0 auto; display: flex; padding:10px;}	
+	
+/* input 태그 박스에 대해 크기 지정, 선 굵기 스타일 색 지정	 */
+	input {width: 500px; height: 50px; 
+			border:2px solid black; margin-bottom: 20px; }
+	select{border:2px solid black;}
+	textarea{border: 2px solid black;}
+	input:focus { outline-color: green; border-color : green; }
+	select:focus { outline-color: green; border-color : green;}
+	textarea:focus { outline-color: green; border-color : green;}
+	section{width: 100% ;}
+	
+	#year{width: 164px; height: 50px;}
+	
+	.birth{width: 168px; height: 54px;}
+	
+	.input_btn {width: 150px; height: 50px; display: inline; justify-content:space-around;}
+	
+	.gender {width: 15px; height: 15px; justify-content: center;}
+	
+	#grade { width: 150px;}
+	
+	input[type="submit"]{cursor:pointer;}
+	
+</style>
+<!-- <script lang = "javascript"> -->
+<!-- // function onlyNumber() -->
+<!-- // { -->
+<!-- //   if((event.keyCode < 48)||(event.keyCode > 57)) -->
+<!-- //   { -->
+<!-- // 	 Document.alert = "숫자만 입력하세요."; -->
+<!-- //      event.returnValue=false; -->
+     
+<!-- //   } -->
+<!-- //   event.return; -->
+<!-- // } -->
+
+<!-- // function onClickone() -->
+<!-- // { -->
+<!-- // 	if(event.onclick) -->
+<!-- // 		{ -->
+<!-- // 			event.returnValue=true;	 -->
+<!-- // 			onselect.returnValue=true; -->
+<!-- // 		} -->
+<!-- // } -->
+<!-- </script> -->
+</head>
+<body>
+<header><h2> Join Us</h2></header>
+<nav></nav>
+<section>
+<div id=container>
+<form action="#" method="get">
+<div><b>아이디</b><br><input type="text" id = id name = id size = 40 placeholder="13글자 이내로 작성하세요." maxlength="13"><br></div>
+<div><b>비밀번호</b><br><input type="password" id = password name = password size = 40 placeholder="13글자 이내로 대문자를 혼합하여 작성하세요." maxlength="13"><br></div>
+<div><b>비밀번호 확인</b><br><input type="password" id = passwordre name = passwordre size = 40 placeholder="13글자 이내로 대문자를 혼합하여 작성하세요." maxlength="13"><br></div>
+<div><b>이름</b><br><input type="text" id = name name = name size = 40></div>
+
+<!-- class = "birth"를 주어 한 단락에 인라인으로 표시 -->
+<div><b>생년월일 </b><br><span><input type = "text" id=year class=birth maxlength="4" placeholder="년(4자)" ></span>
+																					<!-- onkeypress="onlyNumber()" style="ime-mode:disabled" alt="4자 이내로 입력하세요" -->
+<span>
+<select id = month name = month size = 1 class=birth>
+		<option value = 1> 1월
+		<option value = 2> 2월
+		<option value = 3> 3월
+		<option value = 4> 4월
+		<option value = 5> 5월
+		<option value = 6> 6월
+		<option value = 7> 7월
+		<option value = 8> 8월
+		<option value = 9> 9월
+		<option value = 10> 10월
+		<option value = 11> 11월
+		<option value = 12> 12월
+		</option></select></span>
+<span>
+<select id = day name = day size = 1 class=birth>
+		<option value = 1> 1일
+		<option value = 2> 2일
+		<option value = 3> 3일
+		<option value = 4> 4일
+		<option value = 5> 5일
+		<option value = 6> 6일
+		<option value = 7> 7일
+		<option value = 8> 8일
+		<option value = 9> 9일
+		<option value = 10> 10일
+		<option value = 11> 11일
+		<option value = 12> 12일
+		<option value = 13> 13일
+		<option value = 14> 14일
+		<option value = 15> 15일
+		<option value = 16> 16일
+		<option value = 17> 17일
+		<option value = 18> 18일
+		<option value = 19> 19일
+		<option value = 20> 20일
+		<option value = 21> 21일
+		<option value = 22> 22일
+		<option value = 23> 23일
+		<option value = 24> 24일
+		<option value = 25> 25일
+		<option value = 26> 26일
+		<option value = 27> 27일
+		<option value = 28> 28일
+		<option value = 29> 29일
+		<option value = 30> 30일
+		<option value = 31> 31일
+</select>
+</span>
+</div>
+<!--  성별 선택 -->
+<div><b>성별 </b><br>
+			<input type="radio" class = gender name=gender id=genderM checked="checked"><label for = genderM>남성</label>
+	 		<input type="radio" class = gender name=gender id=genderG ><label for = genderG>여성</label></div>
+ 
+<!-- 이메일 입력 -->
+<div><b>본인확인 이메일(선택입력) </b><br> <input type="text" id = email name = email size = 40 placeholder="선택입력"></div>
+
+<!-- Jobs (select multiple) 복수선택 옵션부여. -->
+<div><b>직업을 선택하세요(복수선택가능) </b><br> 
+<!-- onclick="onClickone()" -->
+		<select name = grade multiple="multiple" size = 6>
+		<option value = A>Java 개발자
+   		<option value = B>Devops 개발자
+   		<option value = C>DB 개발자
+   		<option value = D>Framework 개발자
+   		<option value = E>HTML 개발자
+   		<option value = F>Jquery 개발자
+   		<option value = G>Fintech 개발자
+		</select></div>
+		
+<!-- 		TextArea -->
+<div><b>자기소개 </b><br> 
+<textarea rows="10" cols="70" name = memo placeholder="100자 이내로 입력하세요">
+</textarea></div>
+   
+   <input class = input_btn type ="submit" value= "전송" id=submit name=submit>
+   <input class = input_btn type = reset  value = "초기화" id=reset name=reset>
+
+</form>
+</div>
+</section>
+<footer></footer>
+</body>
+</html>
