@@ -1,7 +1,5 @@
 package javaTest;
 
-import java.util.Arrays;
-
 public class Ex90_StudentTest {
 
 	public static void main(String[] args) {
@@ -20,7 +18,5 @@ public class Ex90_StudentTest {
 			student[i].infoPrint(); // 성적순 출력
 			System.out.println("");
 		}
-		System.out.println(Arrays.toString(student.clone()));
 	}
-
 }
