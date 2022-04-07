@@ -38,7 +38,8 @@ public class MVC2_Login extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("Login_id",request.getParameter("id"));
 				session.setAttribute("Login_Name", vo.getName());
-				url = "servletTestForm/form05_LoginSuccess.jsp"; 
+				request.setAttrubure("message",vo.getName()+"님이 접속하셨습니다");
+				url = "index.jsp"; 
 			}else {
 				// password 오류 발생 -> 로그인 폼
 				request.setAttribute("message", "password 오류입니다.");
