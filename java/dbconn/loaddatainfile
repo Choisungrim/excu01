@@ -1,0 +1,14 @@
+show databases;
+use inflow;
+show tables;
+desc inflow_ex;
+show global variables like "secure_file_priv";
+show global variables like "local_infile";
+
+
+load data local infile 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\Untitled spreadsheet - 220407.csv' 
+into table inflow_ex
+FIELDS TERMINATED BY","
+Lines terminated by"\n" 
+Ignore 1 Lines (name,nick_name,youtube_addr,Insta_addr,Fancafe_addr,job);
+select num,job,name,nick_name,youtube_addr,Insta_addr,Fancafe_addr from inflow_Ex;
