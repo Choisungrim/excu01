@@ -7,26 +7,26 @@
       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
       http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">   
 	<!-- ** Mybatis 설정  ** 
-   => DBConnection  
+   => DBConnection (MySql) 
+      - allowPublicKeyRetrieval=true : local DB open 하지 않아s도 connection 허용
    => SqlSessionFactory 
       - MyBatis 와 연동시 DB 연결과 SQL 실행의 핵심 클래스
       - SqlSessionFactoryBean 에 의해 생성됨  
-      => base-package 등록 : DAO 필요 없이 interface ~Mapper.java 사용을 위한 경로 맞춰주는 설정 	
-   -->
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+   => base-package 등록 : DAO 필요 없이 interface ~Mapper.java 사용을 위한 경로 맞춰주는 설정    
+   &amp;allowPublicKeyRetrieval=true-->
+   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
       <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-      <property name="url" value="jdbc:mysql://localhost:3306/mydb?useSSL=false&amp;serverTimezone=UTC" />
+      <property name="url" value="jdbc:mysql://localhost:3306/mydb?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true" />
       <property name="username" value="root" />
       <property name="password" value="mysql" />
    </bean>
-   
-   <bean id="sqlSessionFactory"
-      class="org.mybatis.spring.SqlSessionFactoryBean">
+   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
       <property name="dataSource" ref="dataSource"></property>
-<!--       <property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml" /> -->
-      <!-- interface를 적용하면 해당부분은 존재하지않아도됨 -->
+      <!-- 
+      <property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml" />
+      interface 방식으로 적용하면 필요없음 -->
    </bean>
-	<mybatis-spring:scan base-package="mapperInterface"/>
+   <mybatis-spring:scan base-package="mapperInterface"/>
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		<!-- JUnit Spring Test -->
