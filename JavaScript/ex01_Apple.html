@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Start</title>
+<script type="text/javascript">
+	function imageChange(){
+		//현재 src의 값이 apple 이면 banana로
+		//현재 img 태그의 src값을 전달받아야함.
+		// id의 속성값은 == 연산자로 비교가불가하기 때문에 Match 함수 사용
+		/*var i = document.getElementById("image");
+		if(i.src==='../image/apple.png')
+			i.src = '../image/banana.png';
+		else
+			i.src = '../image/apple.png';*/
+		var i = document.getElementById("image");
+		if(i.src.match('../image/apple.png'))
+			i.src = '../image/banana.png';
+		else
+			i.src = '../image/apple.png';
+	}
+</script>
+</head>
+<body>
+<h3><pre>
+**JavaScript Start **
+=> 이벤트 리스너 속성에 자바스크립트 코드 작성하기 (InLine 코딩)
+
+1) Apple Click 하기
+<img src = "../image/apple.png" onclick="this.src='../image/banana.png'">
+
+2) Apple Mouseover and out
+<img src = "../image/apple.png" onmouseover="this.src='../image/banana.png'"
+width="100" height="130" onmouseout="this.src='../image/apple.png'">
+
+3) Toggle 방식 : Funtion 적용
+<img src = "../image/apple.png" onclick="imageChange()" id="image">
+
+4) ex01_output으로 이동
+<a href="ex01_output.html">ex01_output</a>
+</pre></h3>
+</body>
+</html>
