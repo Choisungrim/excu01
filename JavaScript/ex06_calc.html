@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>** 내장함수 eval 을 이용한 계산기 **</title>
+<style>
+button{
+    width: 50px;
+}
+</style>
+
+</head>
+<body>
+    <h3>** 내장함수 eval 을 이용한 계산기 **</h3>
+=> eval : 문자열(3+5*2)을 수식으로 바꾸어서 계산을 해줌<br>
+=> eval (3+5*2) -> 연산결과 13 제공<br>
+
+<hr>
+* display : <br>
+<input id = "display" value = "" size ="25">
+<br>
+<button onclick="input('7')">7</button>
+<button onclick="input('8')">8</button>
+<button onclick="input('9')">9</button>
+<button onclick="input('/')">/</button>
+<br>
+<button onclick="input('4')">4</button>
+<button onclick="input('5')">5</button>
+<button onclick="input('6')">6</button>
+<button onclick="input('*')">*</button>
+<br>
+<button onclick="input('1')">1</button>
+<button onclick="input('2')">2</button>
+<button onclick="input('3')">3</button>
+<button onclick="input('-')">-</button>
+<br>
+<button onclick="input('0')">0</button>
+<button onclick="input('+')">+</button>
+<button onclick="input('(')">(</button>
+<button onclick="input(')')">)</button>
+<br>
+<button onclick="clearExpression()">clear</button>
+<button onclick="compute('+')">Enter</button>
+<button onclick="back()" style="width: 105px;">BackSpace</button>
+</body>
+<script>
+    let s = document.getElementById("display");
+    let ex = '';
+    let result = 0;
+function input(a){
+    // ** JS 에서 숫자인지 확인하기 
+    // => Number.isNan(n) 
+    //    n 이 숫자가 아니면 true, 숫자면 false 
+    // => Number.isInteger(n) 
+    //    n 이 정수이면 true, 숫자면 false 
+    // 결과 출력후 이어서 연산자가 입력되면 계속 연산하는 경우이고,
+    // 결과 출력후 이어서 숫자가 입력되면 새로운 연산으로 취급  -> 변수 클리어 필요
+    // 주의 : n 은 "7" (String)
+    if(ex === result && Number.isInteger(parseInt(a))){
+        clearExpression();
+        ex = '';
+        result = 0;
+    }
+    ex += a;
+    s.value = ex;
+}
+
+function clearExpression(){
+    result = 0; ex='';
+    s.value = null;
+}
+
+function compute(){
+    result=eval(s.value);
+    s.value = result;
+    ex = result; // 결과를 출력했음을 표시.
+}
+
+function back(){
+    result = s.value.substring(0,s.value.length-1);
+    s.value = result;
+}
+</script>
+</html>

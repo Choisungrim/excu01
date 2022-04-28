@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** getID & function</title>
+<script>
+// 1. Tag 전달 :getElementById
+function changeColor(){
+    var t = document.getElementById("test1");
+    // 삼항식
+    // ((t.style.color =='blue') ? t.style.color = 'red' : t.style.color = 'blue');
+    
+    // if
+    if(t.style.color == 'black')
+        t.style.color = 'violet';
+    else   
+        t.style.color = 'black';
+} // changeColor()
+// 2. input Tag 의 value 전달
+function Calculator(){
+    var num1 = document.getElementById("num1").value;
+    var num2 = document.getElementById("num2").value;
+    document.getElementById("result").value = parseInt(num1)+parseInt(num2);
+}
+
+// 3. Image Change
+function imageChange(){
+    // 3. Image의 src 속성 값 변경하기
+    // => src 속성의 값을 비교하는 match 를 이용해야함
+    if(document.getElementById("img1").src.match('../image/image/xxx.gif'))
+        document.getElementById("img1").src = '../image/image/yyy.gif';
+    else
+        document.getElementById("img1").src = '../image/image/xxx.gif';
+}
+
+// 4.1 html Tag 에 Contents 출력하기
+function exchange(){
+    var b = document.getElementById('btn').innerHTML; // button 의 컨텐츠 보관
+    // button의 컨텐츠에 span의 컨텐츠를 전달
+    document.getElementById('btn').innerHTML = document.getElementById('clock').innerHTML;
+    // span의 컨텐츠에 보관해둔 button 컨텐츠를 전달
+    document.getElementById('clock').innerHTML = b;
+}
+
+// 4.2 
+function setClock(){
+    var now = new Date();
+    var t = "NOW : "+now.getFullYear()+'년'+(now.getMonth()+1)+'월'+now.getDate()+'일'
+                    +now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();
+    document.getElementById("clock").innerHTML = t;
+    // ** 시계처럼 표시하려면 1초 단위로 재호출
+    // => setTimeout('함수명', 실행주기) // 1/1000초
+    setTimeout('setClock()' , 1000); 
+    
+    // ** Date : javascript 내장객체 *********************
+    // => Date 객체는 날짜와 시간(년,월,일,시,분,초, 밀리초(천분의 1초(millisecond, ms)))을 위한
+    //        메소드를 제공하는 빌트인 객체이면서 생성자 함수이다.
+    // => Date 생성자 함수로 생성한 Date 객체는 내부적으로 숫자값을 갖는다. 
+    //        이 값은 1970년 1월 1일 00:00(UTC)을 기점으로 현재 시간까지의 밀리초를 나타낸다.
+    // => UTC(협정 세계시: Coordinated Universal Time)는 
+    //        GMT(그리니치 평균시: Greenwich Mean Time)로 불리기도 하는데 
+    //        UTC와 GMT는 초의 소숫점 단위에서만 차이가 나기 때문에 일상에서는 혼용되어 사용된다. 
+    //        기술적인 표기에서는 UTC가 사용된다.
+    // => KST(Korea Standard Time)는 UTC/GMT에 9시간을 더한 시간이다. 
+    //        즉, KST는 UTC/GMT보다 9시간이 빠르다. 
+    //        예를 들어, UTC 00:00 AM은 KST 09:00 AM이다.
+
+    // => 현재의 날짜와 시간은 자바스크립트 코드가 동작한 시스템의 시계에 의해 결정된다. 
+    //        시스템 시계의 설정(timezone, 시간)에 따라 서로 다른 값을 가질 수 있다.
+
+    // ** Date 객체를 만드는 방법
+    // => https://blog.naver.com/lyh_1031/222224126235
+    // => new Date() : 현재 날짜 시간을 저장한 객체가 만들어집니다.
+    // => new Date('날짜 문자열') : 해당 특정 날짜와 시간을 가리키는 객체가 만들어집니다.
+    // => new Date("밀리초") : 1970년 1월 1일 0시~ 해당 밀리초만큼 지난 날짜 객체가 만들어 집니다.
+    // => new Date(년,월,일,시,분,초,밀리초) : 해당 특정 날짜 시간을 가리키는 객체가 만들어집니다.
+
+
+}
+</script>
+</head>
+<body onload="setClock()"> 
+    <!-- body 내에 로드한다.
+    문서의 모든 콘텐츠(images, script, css, etc)가 
+    로드된 후 발생하는 이벤트이다(load 이벤트라고들 한다). -->
+    <pre><h3>
+        ** getID & function **
+        
+        1. Tag 전달 : getElementById
+        <span id = "test1">getElementById Test</span>
+        <span id = "test1">getElementById Test</span>
+        => 오류없이 실행은 되지만, 첫번째 id 만 인식됨.
+        <button onclick="changeColor()">Change Color</button>
+        2. input Tag 의 value 전달
+        <b>
+            ** Adder Cal Test **
+            number 1 : <input type="number" id = "num1" value="123">
+            number 2 : <input type="number" id = "num2" value="100">
+            result : <input type="number" id = "result">
+            <button onclick="Calculator()">계산하기</button>
+        </b>
+        3. Image의 src 속성 값 변경하기
+        <img src="../image/image/xxx.gif" id="img1" width="200" height="150" onclick="imageChange()">
+
+        4. html Tag에 Contents 출력하기 
+           4.1) button 과 span 의 contents 교환 하기
+            <button onclick="exchange()" id="btn">Contents 교환</button>
+            <span id="clock" style="color:brown">Now</span>
+           4.2) 현재 시간 표시하기 (시계처럼)
+
+              => 내장함수 setTimeout()
+              => setClock() function 작성
+              => 문서 실행과 동시에 자동실행 되도록 ...
+                ( body 의 onload 이벤트를 이용) 
+     </h3></pre>
+</body>
+</html>

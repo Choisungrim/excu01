@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** Message Dialog</title>
+    <script>
+        function confirmTest(){
+        if(confirm("정말 삭제하십니까 ? (Yes:확인 / No: 취소)"))
+            alert("삭제 되었습니다.");
+        else
+            alert ("삭제가 취소되었습니다.");
+        
+    }
+        function promptTest(){
+            var s = prompt("~~저녁메뉴는 ? ~~");
+            if(s=='') alert("입력 값 이 없습니다!!!!");
+            else if(s==null) alert("취소 또는 바로 dialog 를 닫음.");
+            else alert("오늘의 메뉴는 "+s+"입니다.");
+
+            var age = prompt("나이를 입력하세요. ",10);
+            if(age < 20)
+                alert("미성년자는 이용이 불가능 합니다.");
+            else if(age = null) 
+                alert("취소되었습니다.");
+            else 
+                alert("성인은 이용가능합니다.");
+        }
+
+    </script>
+</head>
+<body>
+    <h3> ** Message Dialog</h3>
+    <br>
+    <button onclick="alert('** alert : Message Dialog test1')">alert Test</button>
+    <br>
+    <button onclick="confirmTest()">confirm Test</button>
+    <br>
+    <button onclick="promptTest()">prompt Test</button>
+</body>
+</html>
