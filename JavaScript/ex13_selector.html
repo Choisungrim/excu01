@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>**  Selector: id, tag, tag all  **</title>
+    <script>
+        // window 생략가능.
+        window.onload = function(){
+            // 1. id
+        var h = document.getElementById("header");
+        h.style.color = "green";
+        h.style.backgroundColor = "yellow";
+
+            // 2. Tag
+        var t = document.querySelector('h2:nth-child(4)');
+            // body 기준 
+            // querySelector => 첫번째 Tag 1개만 인식.
+        t.style.color = "red";
+        t.style.backgroundColor = `silver`;
+        
+            // 3. tag All
+            // 모두 선택해서 배열로 리턴
+        var a = document.querySelectorAll('h4');
+        for(var i = 0; i < a.length; i++){
+            a[i].style.color = "blue";
+            a[i].style.backgroundColor = "lavender";
+            
+            // -> 단, i = 0은 이탤릭체로 출력
+            // -> ColorChange 성공, i = 0;
+                
+            a[i].innerHTML = "ColorChange 성공 <i>i ="+i+"</i>";
+            // innerHTML => 컨텐츠에 HTML Tag 가 적용됨. <pre>
+
+            //비교 => innerText : 컨텐츠에 HTML Tag가 적용안됨 == <xmp>
+            a[i].innerText = "ColorChange 실패 <i>i ="+i+"</i>";
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <pre><h3>
+        ** Selector: id, tag, tag all **
+        1. id
+        => document.getElementById('')
+        <span id="header">getElementById Test</span>
+        
+        2. tag
+        => document.querySelector
+        => 첫번째 Tag 1개만 인식
+        
+        3. tag all
+        => document.querySelectorAll
+        => 모두 선택해서 배열로 리턴
+        </h3></pre>
+           <h2>tag 선택자 1 : child 2</h2>
+           <h2>tag 선택자 2 : child 3</h2>
+           <h2>tag 선택자 3 : child 4</h2>
+           <h4>tagAll 선택자 1 : child 5</h4>
+           <h4>tagAll 선택자 2 : child 6</h4>
+           <h4>tagAll 선택자 3 : child 7, Last Child</h4>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+document.write(`before name => ${name}<br>`); // 0 undefined
+//document.write(`before address => ${address}<br>`); // x 오류로 멈춤(not defind)
+document.write(`before first => ${first}<br>`);
+//document.write(`before first => ${first(5)}<br>`); // 0 -> 25
+document.write(`before noName => ${noName}<br>`);
+// document.write(`before noName => ${noName(5)}<br>`); // 0 Error
+                                // noName is not a function(분석단계에서 이름만 등록되어있기때문.)
+        // 1. 선언적함수와 변수
+//=> 파싱 단계에서는 선언적함수 와 명시적 전역변수명이 정의됨
+//=> 이때 변수의 값은 할당되지않고, 익명함수와 객체는 undefined 값을 가짐
+var name = "홍길동";
+address = "경기도 성남시";
+
+first= (x) => {
+return x*x;
+} //선언
+var noName = (x) =>{
+    return x+x
+} // 익명
+var first = 123; // Tes 2
+
+// -> after
+document.write(`after name => ${name}<br>`);
+document.write(`after address => ${address}<br>`);
+// document.write(`after first => ${first(5)}<br>`);
+document.write(`after noName => ${noName(5)}<br>`);
+
+// 2. 객체의 속성과 메서드
+// => 파싱단계에서 객체는 이름만 정의되고, undefined 값을 가짐.
+// => Before
+document.write(`* Before student => ${student}<br>`);
+// document.write(`* Before student.first => ${student.name}<br>`);
+// document.write(`* Before student.eat => ${student.eat('도시락')}<br>`);
+var student={
+    name : '홍길동',
+    score : 100,
+    eat : (menu) =>{
+        document.write(`${this.name}학생은 점심으로 ${menu}를 맛있게 먹습니다. <br>`);
+    },
+    first : (x)=>{
+        return x*100
+    }
+}   // => After
+   // => 객체명만 사용했을때 Type 을 return -> [object Object]
+   // => document.write 내부에서 document.write 구문이 있는 함수 (eat) 호출
+   //    해당 메서드를 먼저 실행하고 ( 이때 출력문이 있으면 출력 ) ,
+   //    student.eat("피자") 가 return 값이 없으므로 undefined 가 출력됨.
+document.write(`* After student => ${student}<br>`);
+document.write(`* After student.first => ${student.first(5)}<br>`);
+document.write(`* After student.eat => ${student.eat('도시락')}<br>`);
+
+// return 값이 없는 함수 호출 Test
+var i = 123;
+var j =300;
+test = () =>{
+    i+=j;
+}
+document.write(`return 값이 없는 함수 호출 Test => ${test()}<br>`);
+document.write(`return 값이 없는 함수 호출 Test => ${i}<br>`);
+
+</Script>
+</head>
+<body>
+    <hr>
+<pre><h3>
+** DOM3_JS 단계별 실행절차 **
+
+1. 파싱단계 : 구문분석 단계
+   => 선언적함수들과, 명시적(var, let, const) 전역변수들을 정의 
+   => 함수먼저, 다시 변수 정의 
+   => 변수(객체형, 익명함수형 포함)들은 이름만 정의하고 값은 실행시에 할당 
+   => 그러므로 파싱 단계에서 변수는 값이 없고, 익명함수와 객체는 undefined 값을 가짐. 
+
+2. 실행단계
+   => 순차적으로 실행 (함수의 정의는 건너뜀)
+</h3></pre>
+</body>
+</html>

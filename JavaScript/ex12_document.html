@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>document 객체의 주요 프로퍼티</title>
+    <script>
+        var text = '** 로딩중 document.readyState => '+document.readyState+"\n";
+        // readyState 문서 로딩중 일 때에 
+        // 문서가 완전히 로드(출력)되었을 때, 현재 document의 프로퍼티 출력
+        function printProperties(){
+            document.getElementById("input").focus();
+            text += "1. location = "+document.location+"\n";
+            text += "2. URL = "+document.URL+"\n";
+            text += "3. title = "+document.title+"\n";
+            text += "4. Head.ID = "+document.head.id+"\n";
+            text += "5. domain = "+document.domain+"\n";
+            text += "6. lastModified = "+document.lastModified+"\n";
+            text += "7. defaultView = "+document.defaultView+"\n";
+            // readyState 로딩 완료 후 
+            text += "8. 로딩완료 readyState = "+document.readyState+"\n";
+
+            text += "9. body.style.color = "+document.body.style.color+"\n";
+            text += "10. referrer 이전페이지 = "+document.referrer+"\n";
+            text += "11. activeElement.value = "+document.activeElement.value+"\n";
+            text += "12. documentElement.tagName(요소에 호출된 Tag명) = "+document.documentElement.tagName+"\n";
+            alert(text);
+        }
+    </script>
+</head>
+<body onload = "printProperties()" 
+      style="background-color: aquamarine; color: yellow;">
+    <h3>document 객체의 주요 프로퍼티</h3>
+    <Hr>
+        <a href = "https://www.naver.com">Naver</a>
+        <div class = "a1">여기는 Div 입니다.</div>
+        <div class = "a1">여기는 Div 입니다.</div>
+        <div class = "a1">여기는 Div 입니다.</div>
+        <div class = "a1">여기는 Div 입니다.</div>
+        <div class = "a1">여기는 Div 입니다.</div>
+        <input type="text" id = "input" placeholder = "여기에 포커스가 있습니다.">
+
+
+</body>
+</html>

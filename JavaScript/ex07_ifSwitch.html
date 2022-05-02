@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** 조건문: if else, switch case **</title>
+    <script>
+        // 1. 기본구문 if, else
+        if(1000>100) alert ("*** True!!! ***");
+        else alert ("*** False ****");
+        
+        // 2. if, elseif...
+        var now = new Date();
+        var hh = now.getHours();
+        if(hh<6) alert (" 주무시는 시간 입니다. ");
+        else if(hh<9) alert(" 학원 갈 시간 입니다.");
+        else if(hh<13) alert(" 1. 오전 수업 중 입니다.");
+        else if(hh<14) alert(" 점심시간 입니다.");
+        else if(hh<18) alert(" 오후 수업 입니다. ");
+        else alert (" 퇴근할 시간 입니다. ");
+
+        // 3. 중첩 구문 : 위 2번을 변경
+        if(hh<6) alert (" 주무시는 시간 입니다. ")
+            else{
+                if(hh<9) alert(" 학원 갈 시간 입니다.");
+                else{
+                    if(hh<13) alert("2. 오전 수업 중 입니다.");
+                    else{
+                        if(hh<14) alert(" 점심시간 입니다.");
+                        else{
+                            if(hh<18) alert(" 오후 수업 입니다. ");
+                            else{
+                                alert (" 퇴근할 시간 입니다. ");
+                            }
+                        }
+                    }
+
+                }
+            }
+        //4. 복합구문
+        //=> if else / switch case
+        //=> Date 에서 윌을 가져와서  alert 로 계절 출력하기
+        //=> 봄:3,4,5  여름:6,7,8  가을:9,10,11  겨울:12,1,2
+        //=> 집합연산자 : &&, ||, ! 
+        var mm = now.getMonth()+1;
+        // 달의 경우에는 +1 을 해야 정확한 달이 됨.
+        // 4.1 if else
+        if(mm > 2 && mm < 6) alert("3. 봄봄봄");
+        else if(mm > 5 && mm < 9) alert("여름여름여름");
+        else if(mm > 8 && mm < 12) alert("가을가을가을");
+        else alert("겨울겨울겨울");
+
+        if(mm == 3 || mm == 4 || mm == 5) alert ("4. 봄봄봄");
+        else if(mm == 6 || mm == 7 || mm == 8) alert ("여름여름여름");
+        else if(mm == 9 || mm == 10|| mm == 11) alert("가을가을가을");
+        else alert("겨울겨울겨울");
+        // 4.2 switch case
+        // => prompt로 mm 을 입력 받은 후 TEst
+        // 입력 받기 전 mm(int) 0< switch(mm) :실행 가능
+        var mm = prompt("이번달을 입력하세요,",4);
+        // mm-> 문자형
+        // => switch case 구문의 조건 비교는 Type을 비교함.
+        switch(parseInt(mm)){
+            case 3: case 4: case 5: alert ("5. 봄봄봄"); break;
+            case 6: case 7: case 8: alert ("여름여름여름"); break;
+            case 9: case 10: case 11: alert ("가을가을가을"); break;
+            case 12: case 1: case 2: alert ("겨울겨울겨울"); break;
+            default : alert ("에러에러에러");
+        }
+        
+    </script>
+</head>
+<body>
+    <pre><h3>
+        ==================================
+        ** 조건문: if else, switch case **
+        
+        1. 기본구문
+        => if else, switch case
+        
+        2. if else if...
+        
+        3. 중첩구문
+        
+        4. 복합구문
+        => if else / switch case
+    </h3></pre>
+</body>
+</html>
