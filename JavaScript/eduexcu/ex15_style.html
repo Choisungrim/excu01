@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** JS Style 적용 **</title>
+    <script>
+        // ** Color Gradtion
+        window.onload =() =>{
+            var output = '';
+            for(var i = 0; i < 256; i++ ){
+                output+='<div></div>';
+            }
+            document.body.innerHTML = output;
+            
+            var divs = document.querySelectorAll('div');
+            for(var i=0; i<256; i++){
+                divs[i].style.height = '2px';
+                divs[i].style.backgroundColor = `rgb(${50},${i},${i})`;
+                //rgb(0,0,0) -> black;
+                //rgb(255,255,255) -> white;
+                //rgb(255,0,0) -> red;
+                //rgb(0,255,0) -> green;
+                //rgb(0,0,255) -> blue
+            }
+        }
+    </script>
+</head>
+<body>
+    <pre><h3>
+        ** JS Style 적용 **
+        => Style 적용시 주의 사항  
+           스타일의 속성명 그대로 사용할 수 없음 (-사용할수없기 때문)   
+           -으로 연결되는 뒷부분의 첫글자를 대문자로 변경해서 사용하면 됨
+           Ex) background-image => backgroundImage
+        </h3></pre>
+</body>
+</html>

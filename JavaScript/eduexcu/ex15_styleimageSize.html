@@ -1,0 +1,101 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>*** Image Size 조정하기 ***</title>
+    <script>
+        var i = 0; // up
+        var j = 0; // down
+        window.onload = () =>{
+            var img = document.getElementById("img");
+            var btn1 = document.getElementById("sizeup");
+
+            // 2. onclick 이벤트핸들러 생성
+            btn1.onclick=(eTest) =>{
+                var text =""+eTest.type+"\n";
+                text += ""+eTest.target+"\n";
+                text += ""+eTest.currentTarget+"\n";
+                text += ""+eTest.defaultPrevented+"\n";
+                alert (text);
+                j = 0;
+                img.width += 10;
+                img.height += 10;
+                i++;
+                if(i > 10){
+                    alert("10회 이상 클릭 할 수 없습니다.");
+                    i=0;
+                }
+                if(i == 0){
+                    img.width = 150
+                    img.height = 180;
+                }
+            }
+
+            // 3. onclick 이벤트리스너 생성
+            /* btn2.addEventListener("click",()=>{
+                i=0;
+                j++
+                img.width -= 10;
+                img.height -= 10;
+                if(j>10){
+                    alert("10회 초과 클릭 할 수 없습니다.");
+                    j=0;
+                }
+                if(j==0){
+                    img.width = 150;
+                    img.height = 180;
+                }
+            }) */
+        }
+
+        // 1. 일반적인 함수 접근(onclick)
+        imageSizeDown = () =>{
+                i=0;
+                j++;
+                img.width -= 10;
+                img.height -= 10;
+                console.log(j);
+                if(j > 10){
+                    alert("10회 이상 클릭 할 수 없습니다.");
+                    j=0;
+                }
+                if(img.width < 40 && img.height <70){
+                   imageSizeDown = (e) => {
+                       e.preventDefault();
+                    }
+                    alert ("50보다 작게 만들 수 없습니다.")
+                }
+            }
+        
+            /* function imageSizeUp(){
+                img.width += 10;
+                img.height += 10;
+                i++;
+                console.log(i);
+                if(i > 10){
+                    console.log(i);
+                    alert("10회 이상 클릭 할 수 없습니다.");
+                    i=0;
+                    return 0;
+                }
+            } */
+    </script>
+</head>
+<body>
+    <hr>
+    <img src = "../image/image/aaa.gif" width=150 height=180 id ="img"><br>
+    <button id = "sizeup">점점 크게</button>
+    <button id = "sizedown" onclick = "imageSizeDown()">점점 작게</button>
+
+    <h3><pre>
+        ** 실습과제
+         : Image Size 조정하기    
+        => 버튼1 : 이미지의 현재 크기를 10씩 커지는 버튼 
+                  10번 이상 연속해서 클릭하면 alert 으로 경고 메시지 출력하기
+                  ('~~ 연속 10회 이상은 클릭할 수 없습니다 ~~')  
+        => 버튼2 : 이미지의 현재 크기를 10씩 10번 작아지는 버튼 
+                10번 이상 연속해서 클릭하면 alert 으로 경고 메시지 출력하기 
+                음수 이면 경고 메시지 (~~ 최소 크기 입니다 ~~) 
+        </pre></h3>
+</body>
+</html>
