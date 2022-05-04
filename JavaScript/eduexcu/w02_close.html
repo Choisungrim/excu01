@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** Window Close Test **</title>
+    <script>
+        var newWindow = null;
+
+        function Load(url){
+            newWindow = window.open(url,'myWin','left=500, top = 50, width=500, height=500');
+        }
+
+        function unload() {
+            // newWindow가 null이거나 newWindow가 닫힌 상태인지 확인.
+            if (newWindow == null || newWindow.closed) {return;}
+            else newWindow.close();
+            // newWindow의 생성없이 unload 했을 떄
+            // 에러발생 w02_close.html:14 Uncaught TypeError: Cannot read properties of null (reading 'close')
+        }
+    </script>
+</head>
+<body>
+    <h3>** Window Close Test **</h3>
+=>윈도우를 스스로 닫는 경우와 자신이 생성한 윈도우를 닫는 사례<br>
+<hr>
+<a href="javascript:Load('w02_closechild.html')">New_Window Open [예제]</a><br>
+<a href="javascript:unload()">New_Window Close</a><br>
+<a href="javascript:window.close()">This_Window Close</a><br>
+</body>
+</html>

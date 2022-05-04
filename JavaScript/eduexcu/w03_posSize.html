@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** Window Size, Position Test **</title>
+    <script>
+        var testWin = null;
+        load = () => {
+            testWin=window.open('w05_location.html','myWin','left=500, top = 50, width=500, height=500')
+            // window event Test :snowVillage.html 대신 w05_location.html 사용
+        }
+        unload = () => {
+            testWin.close();
+        }
+    </script>
+</head>
+<body>
+    <h3>** Window Size, Position Test **</h3>
+
+    => Test 1. This Window Position <br>
+    => 적용안됨 : 자신을 이동시키지는 못함.<br>
+<br>    
+<button onclick="self.moveBy(-10,0)">Left</button>
+<button onclick="self.moveBy(10,0)">Right</button>
+<br><hr><br>
+=> Test 2. New_Window Test<br>
+<button onclick = "load()">TestWindow Open</button>
+<button onclick = "unload()">TestWindow Close</button>
+<br>
+<button onclick="testWin.moveBy(-10,0)">Left</button>
+<button onclick="testWin.moveBy(10,0)">Right</button>
+<button onclick="testWin.moveBy(0,10)">Down</button>
+<button onclick="testWin.moveBy(0,-10)">Up</button>
+<button onclick="testWin.resizeBy(10,10)">Size Up[+]</button>
+<button onclick="testWin.resizeBy(-10,-10)">Size Down[-]</button>
+</body>
+</html>
