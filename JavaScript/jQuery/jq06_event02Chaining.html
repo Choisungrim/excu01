@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** Event Test 02 : Method Chaining **</title>
+    <script src="../jquery-3.2.1.min.js"></script>
+    <script>
+        // *** Method Chaining 적용
+        // => 하나의 태그에 스타일 변경 및 여러 이벤트, 즉 여러 메서드를 적용해야 하는경우 ....   
+        //    jQuery 의 메서드는 호출 이후 자기 자신을 반환하는 특징이 있으므로
+        //     $...태그를 반복적으로 사용할 필요 없이 
+        //     메서드를 연속 사용할 수 있음 => Method Chaining
+        // => $('#box1').css({..}).click({...}).attr({....}).hover(f1,f2).html()....
+        $(function(){
+          /* $('#box1').css({
+              width:100,
+              height:100,
+              color:'purple',
+              backgroundColor:'aliceblue',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              // textAlign:'center',
+              // lineHeight:'100px'
+          }); */
+
+          /* $('#box1').click(()=>{
+              if($('#box1').css('backgroundColor') == 'rgb(240, 248, 255)'){
+                  $('#box1').css({
+                     backgroundColor:'rgb(255,0,0)',
+                    });
+            }else if($('#box1').css('backgroundColor') == 'rgb(128,0,128)'){
+                $('#box1').css({
+                    backgroundColor:c
+                });
+            };
+          }) */
+          //1.1) 직접 연결
+          $('#box1').css({
+              width:300,
+              height:100,
+              color:'purple',
+              backgroundColor:'aliceblue',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              // textAlign:'center',
+              // lineHeight:'100px'
+          }).click(function(){
+            $(this).css('backgroundColor','ivory')
+          }).html('method Chaining Test1');
+
+          //1.2) 하나의 on메소드 활용 => 이벤트 핸들러 작성시 유용.
+          $('#box2')
+          .css({
+              width:300,
+              height:100,
+              color:'navy',
+              backgroundColor:'lavender',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              // textAlign:'center',
+              // lineHeight:'100px'
+          })
+          .html('Method Chaining Test2')
+          .on({
+              click:function(){ $(this).css('backgroundColor','Ivory') },
+              mouseenter:function(){ $(this).css('backgroundColor','Lime') },
+              mouseleave:function(){ $(this).css('backgroundColor','beige') }
+          })
+          
+          // 1.3) on메소드를 개별적으로 사용
+          $('#box3')
+          .css({
+              width:300,
+              height:100,
+              color:'red',
+              backgroundColor:'aliceblue',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              // textAlign:'center',
+              // lineHeight:'100px'
+          })
+          .html('Method Chaining Test2')
+          .on('click',function(){ $(this).css('backgroundColor','Ivory') })
+          .on('mouseenter',function(){ $(this).css('backgroundColor','Lime') })
+          .on('mouseleave',function(){ $(this).css('backgroundColor','beige') });
+
+
+            // 2. 기본 이벤트 제거 
+            // => a 태그 또는 submit 에 내장된 기본 이벤트를 무효화 할때 이용
+            //    주로 오류로 인하여 전송되면 안되는 경우 이용됨.
+            
+            // 이벤트 핸들러(click)의 매개변수로 작성된 익명함수(이벤트 핸들러)
+            // 첫번째 매개변수 (e) 는 발생된 이벤트객체를 전달함
+            // 이 이벤트객체의 메서드 중 preventDefault() 는
+            // 현재 발생된 이벤트를 제거(무시)
+
+            $('a').click((e)=>{
+                alert('이동할 수 없습니다.');
+                e.preventDefault();
+            })
+        });
+    </script>
+</head>
+<body>
+    <h3>** Event Test 02 : Method Chaining **</h3>
+    <h3>1. Method Chaining</h3>
+    <h3>=> 하나의 Tag 가 여러 메서드를 사용할때</h3>
+    <h3>=> 마치 체인처럼 계속 연결해서 구현하는것.</h3>
+
+    <div id="box1">Test 1</div>
+    <div id="box2">Test 2</div>
+    <div id="box3">Test 3</div>
+
+    <h3>2. 기본 이벤트 제거</h3>
+    <a href="http://www.naver.com">기본이벤트 제거_Click 해도 실행 안됨</a>
+</body>
+</html>

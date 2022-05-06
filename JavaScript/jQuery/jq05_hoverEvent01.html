@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** Id, Class, Hover_Event01 **</title>
+<script src ="../jquery-3.2.1.min.js"></script>
+<script>
+    // * jQuery Hover() : mouse hover 이벤트 처리메서드
+    // => hover(f1,f2) : f1 = mouse_hover, f2 = mouse_out
+    // addClass(..), removeClass(..)
+
+    // 1) id에 addClass
+    // => 동일한 속성이 동시에 적용되었을 때, 자신에게 직접 적용된 속성을 우선
+    //    #box에 없는 ho 속성만 적용됨
+    // => style 에 #box.ho 추가 전.후 비교
+    //    (추가 후에는 #box.ho 적용)
+    $(function(){
+        $('#box').hover(()=>{
+                    $('#box').addClass('ho');
+                },()=>{
+                    $('#box').removeClass('ho');
+                }) // hover
+
+        // 2) class에 addClass
+        // => 모두 새로운 값이 적용됨
+
+        $('.ho').hover(()=>{
+                    $('.ho').addClass('ho2');
+                },()=>{
+                    $('.ho').removeClass('ho2');
+                }) // hover
+    });
+</script>
+
+</head>
+<style>
+    #box{
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+    }
+    .ho{
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        border-radius: 50px ;
+    }
+    .ho2{
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+        border-radius: 100px ;
+    }
+
+    #box.ho{
+        background-color: blue;
+        border-radius: 50px;
+    }
+</style>
+<body>
+    <h3>** Id, Class, Hover_Event01 **</h3>
+    <div id="box"></div>
+    <div id="box" class="ho"></div> 
+    <!-- class로 지정된 값이 먼저 적용되고 id의 값이 적용됨. -->
+    <div class="ho"></div>
+</body>
+</html>

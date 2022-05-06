@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>>** Event Test 01 **</title>
+<script src="../jquery-3.2.1.min.js" ></script>
+<script>
+$(function(){  
+	// 1) Click
+	$('#cc').click(function() {
+		alert(' ~~ jQuery Click Event Test !!! ~~ ');
+		$('.hh').animate({
+			width:300,
+			height:200,
+			backgroundColor:'aliceblue'
+		})
+	}); //cc_click
+	
+	// 2) Hover, this
+	// => hover(f1_mouseHover, f2_mouseOut)
+	// => $(this) : this 도 선택자로서 현재 select된 객체 자신
+	// ** 과제
+	// => class hh 에 다음을 적용하세요.
+	// => hover
+	//    color: Gray, backgroundColor: Aqua, width:300px
+	// => out
+	//    초기값으로 돌아가기
+	var c; // 본래의 color 보관용
+	$('.hh').hover(function(){
+				//c=$(this).attr('style');
+				c=$(this).css('color');
+				console.log("** this.color, c => "+c);
+				$(this).css({
+					color:'Gray',
+					backgroundColor: 'Aqua',
+					width:'300px'
+				});	
+			}, function() {
+				$(this).css({
+					color:c,
+					backgroundColor: '',
+					width:''
+				});
+			}); //hh_hover
+	
+	// ** 비교
+	$('.ss').hover(function(){
+				c=$(this).attr('style');
+				$(this).css({
+					color:'Gray',
+					backgroundColor: 'Aqua',
+					width:'500px',
+					fontSize: "1.5em"
+				});
+			}, function(){
+				$(this).attr('style', c);
+			}); //ss_hover
+	
+});//ready
+
+</script>
+</head>
+<body>
+<h3>** Event Test 01 **</h3>
+<h3 id="cc" >=> Click</h3>
+<h3 class="hh" style="color:Red;">=> Hover01, this, css</h3>
+<h3 class="hh" style="color:Green;">=> Hover02, this, css</h3>
+<h3 class="hh" style="color:Blue;">=> Hover03, this, css</h3>
+<h3 class="ss" style="color:Red; background-color:gray; font-style:italic;">=> Hover01, this, attr_style</h3>
+<h3 class="ss" style="color:Green; background-color:Yellow; font-style:italic;">=> Hover02, this, attr_style</h3>
+<h3 class="ss" style="color:Blue; background-color:pink; font-style:italic;">=> Hover03, this, attr_style</h3>
+</body>
+</html>

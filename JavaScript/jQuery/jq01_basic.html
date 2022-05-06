@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** JQuery Start **</title>
+    <script src = ../jquery-3.2.1.min.js>
+    </script>
+    <script>
+    //1) JQuery 호출
+    //-> JS 의 내장함수의 하나 (즉, window 객체에 정의된 메서드)
+    //   : eval(), parseInt()..-> window 가 생략됨
+    //-> window.jQuery(선택자)  
+    //  : 선택자에 의해 선택된 노드가 return 됨
+    //  : jQuery가 인식하고 처리가능한 Type
+    //  : JS 의 getElementById 가 인식한 Node 와는 다른 Type 
+    //  : 만약 선택자에 의해 선택된 요소가 없어도 예외발생없이 빈객체를 return.
+    //-> 태그명, #id명 , .class명 등의 css표기는 W3C 지정 표준표기법.   
+
+    //-> window.jQuery(선택자).메서드() -> 각 노드별 메서드를 호출 적용 
+    //-> 간편화 : window 는 생략, jQuery는 $ 로 기호화 
+    //       $(선택자).메서드(매개변수);
+    //-> 매개변수 : 1개, 2개, 여러개{....}, 익명함수
+    //-> 메서드 : ready 외 각종 이벤트리스너 메서드들(매개변수로 익명함수:이벤트핸들러),
+    //       text(), html(), val(), attr(), css()....
+
+    //-> ready 이벤트
+    //      문서객체 준비 완료됨을 의미하는 기본 이벤트
+    //      window.jQuery(document).ready(function{........});
+    //      - $(document).ready(function{........});
+    //      - 생략형 : $(function{........});
+    //-> JS 와 비교
+    //      window.onload=function() {.........};
+    
+
+    // ** 실습1
+    // => id="js1" 에 컨텐츠 출력하기
+    // 1.1) JS
+        /* window.onload=function(){
+            document.getElementById('js1').innerHTML = "Hello World in Js";;
+        } */
+    // 1.2) jQuery
+        $(function (){
+            $('#js1').html('Hello World in jQuery');
+    // 2) 선택자 Test
+    // => css 의 선택자와 동일, 문자형
+            $('span').css('color','Blue');
+            $('.ddd').html('Hello JQ');
+    // => jQuery의 메서드의 매개변수 갯수
+    //  - 0 : 현재 객체
+    //  - 1(속성명) : 현재객체의 해당 속성의 값 return
+    //  - 2(속성명, 속성의값) : 해당속성에 값 할당
+    //  - 여러개 { ..... }  : 여러 속성을 한번에 지정
+    // => 0개
+        /* alert('*** iii_html() => '+$('#iii').html()); // 적용안됨(HTML Tag)
+        alert('*** iii_text() => '+$('#iii').text()); */
+    // => 1개
+        //alert(`*** 매개변수 1개_(속성명) iii => ${$('#iii').css('color')}`);
+
+    // => 2개
+        $('.ccc').css('color','Green');
+        $('.ccc').css('background','pink');
+
+        $('#js1').css('color','red');
+        $('#js2').css('color','green');
+        $('#js3').css('color','blue');
+        
+    
+        // alert(`*** 매개변수 1개_(속성명) span => ${$('span').css('color')}`); // 첫번째로 인식한 span에 대한 color 값을 반환
+        // alert(`*** 매개변수 1개_(속성명) span => ${$('.ddd').css('color')}`); // 선택대상이 복수 인 경우 -> 첫번쨰로 선택된 span의 값을 return
+
+    // => 여러개
+        $('#iii').css({
+            color:'blue',
+            background:'aliceblue',
+            fontSize: '20pt'
+        });
+
+    //3) Tag의 값(컨텐츠) 인식 & 출력 
+    // => text(), html()
+    // => 매개변수 있는경우(매개변수 내용 출력)
+        $('.ccc').text('<b> ggg </b>'); // Tag가 컨텐츠의 일부로 취급
+        $('.ddd').html('<b> aaa </b>'); // Tag가 적용
+
+    // => 없는경우(현재 컨텐츠를 return)
+    //    -> text(): 모든 span 의 내용 return   , only text만 지원 
+    //      -> html(): 첫번째 span 만 인식, html Tag 인식 & 포함
+        /* alert('span_text() => '+$('span').text());
+        alert('span_html() => '+$('span').html());
+
+        alert('span_text() => '+$('span').text);
+        alert('span_html() => '+$('span').html); */
+
+        //=> JS
+        document.getElementById('js1').innerHTML = 'innerHTML: <b> ggg </b>'
+        document.getElementById('js2').innerText = 'innerText: <b> aaa </b>'
+        document.getElementById('js3').textContent = 'textContent: <b> aaa </b>'
+        //4) 다양한 선택자(Selector)  상속관계 Test    
+    // ** 과제 : 주의_selector 에서 child 순서는 모든 child를 기준으로 함
+    // => 첫번째 child에 해당하는 span : color Red, background Black 
+    // => 짝수번째 child에 해당하는 span 들 : color Aqua, background pink
+    // => 짝수번째 child에 해당하는 span 들 : 컨텐츠 '선택자(Selector) 상속 Test' 변경하기
+    // => 마지막 child에 해당하는 span : a Tag 로 네이버로 이동할 수 있도록 컨텐츠 변경하기
+
+    // => JQuery 는 메소드 체인이 가능하다
+    // => jQuery 메소드는 실행 후 선택된 엘리멘트를 return 함.
+    $('span:first-child').css({
+        color:'red',
+        background:'black'
+    });
+    $('span:nth-child(2n)').css({
+        color : 'aqua',
+        background : 'pink'
+    }).html('선택자(Selector) 상속 Test').
+    mouseover(function(){
+        $(this).css('color','red')
+    }).
+    mouseleave(function (){
+        $(this).css('color','aqua');
+    })
+    $('span:last-child').html('<a href = https://www.naver.com>네이버</a>');
+})
+    
+        
+    </script>
+</head>
+<body>
+    <pre><h3>
+        ** JQuery Start **
+        1. JQuery 라이브러리연결 과 출력
+        2. 선택자(Selector) Test
+           => css 의 선택자와 동일, 문자형
+        3. Tag의 값(컨텐츠) 인식하기
+    <span class="ccc"><i>4. Tag 에 Text 출력하기</i></span>
+    <span class="ccc"><i>5. 다양한 선택자 (Selector)</i></span>
+    <span id="iii"><i>   => id, class, 상속관계 ...</i></span>
+    <span class="ccc"><i>6. 다양한 선택자(Selector) 상속관계 Test</i></span>
+</h3>
+    <span class = 'ddd' id = 'js1'></span>
+    <span class = 'ddd' id = 'js2'></span>
+    <p>비교 테스트</p>
+    <span class = 'ddd' id = 'js3'></span>
+
+</pre>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** Frame Animation01 **</title>
+    <script src = "../jquery-3.2.1.min.js"></script>
+    <script>
+        //** Node 객체 인식 방법의 차이
+        //=> 1) JS: var img = document.getElementById('img') 
+        //        -> DOM 트리의 Node 를 인식 ( Tag 의 속성에 직접 접근 가능 )  
+
+        //=> 2) JQ: var img = $('#img') -> jQuery 의 메서드의 적용대상으로 인식
+        //       만약, document.getElementById('img') 와 $('#img') 의 return 값이 같다면,
+        //       $(#'test').text('<b>gkgkgk</b>') 처럼 
+        //       document.getElementById("img").text("<b>하하하</b>") 이 성립되어야 함.
+        //       즉, 같은 동작을 위해서는 JS, JQ 의 사용 메서드가 동일해도 된다는 의미 
+        //       그러나 그렇지 않고 서로 다른 메서드 또는 프로퍼티로 실행됨
+
+        //=> 3) JQ를 사용하면서 JS 처럼 Node로 인식
+        //      - 변수명 앞에 $ 
+        //      -> $img = $('#img')
+        //      -> img =$("#img")[0]  
+        //=> https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/Introduction
+
+        $(function(){
+            var frames=[
+            '0.png','1.png','2.png','3.png',
+            '4.png','5.png','6.png','7.png',
+            '8.png','9.png','10.png','11.png',
+            '12.png','13.png','14.png'];
+            // ** Frame Animation 구현
+            // => img Tag의 src 속성의 값에 위 배열의 원소들이 차례대로 계속 바뀌면서 적용되도록 함.
+            // 1) img Tag 가져오기
+            // 1.1) js의 node 객체로 인식
+            var img = document.getElementById('img');
+
+            // 1.2) jquery node 객체 인식
+           
+            var img = $('#img')[0];
+            
+            // 2) 주기적으로 src 값이 변경되도록 해줌.
+            var i = 0 ;
+            setInterval(() => {
+                img.src=frames[i++%frames.length];      
+                if(i==frames.length) i = 0;
+            }, 55); // 주기 (interval) :1 / 1000초
+            // index 값은 0~14 구간에서 순차적으로 반복되어야함.
+            
+            
+
+        })
+    </script>
+</head>
+<body>
+    <h2>** Frame Animation01 **</h2>
+<h3>=> window 객체의 setInterval 내장함수를 이용</h3>
+<h3>=> setInterval('실행함수 또는 코드',반복주기);
+<hr>
+<img id="img"><br>
+<hr>
+<pre><h3>
+** 이해를 돕는 단어 **
+=> 속성 
+  * attribute : Tag 의 속성
+   -> 1. 속성(屬性), 특질
+   -> 2. 부수물, 딸린 물건, 붙어 다니는 것
+   -> 3. 속성·성질을 나타내는 말
+   => node 를 통해 Tag의 attribute에 접근 가능 (~~.width, ~.height ..)
+   
+  * property : 객체에 정의된 속성 (style 의 속성 등)
+   -> 1. 재산, 소유물
+   -> 2. 부동산
+   -> 3. 건물, 건물 구내 (부속건물 등)   
+
+=> DOM 객체를 지칭   : node (속성: property) 
+  * node 
+     -> 1. (나무줄기의) 마디
+   -> 2. (뿌리·가지의) 옹이
+   -> 3. (연결망의) 교점
+   
+=> Tag 를 지칭 : element (속성: attribute) 
+  * element
+    -> 1. 요소, 성분
+    -> 2. 약간의 놀라움, 위험, 진실 등
+    -> 3. (집단·사회 내의 특정) 부류 
+</h3></pre>
+</body>
+</html>

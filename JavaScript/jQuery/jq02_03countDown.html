@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** CountDown 과 화면전환 **</title>
+    <Style>
+        body{
+            margin: 30px;
+        }
+        #container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </Style>
+    <script src = "../jquery-3.2.1.min.js"></script>
+    <script>
+        //** 시간관련 자동실행 함수
+        //=> 일정시간간격으로 자동반복실행, 일정시간후 자동실행 
+        //=> setInterval("실행할 함수 또는 코드" ,반복주기_시간) ;
+        //=> setTimeout("이동명령문",시간) ;
+        //=> 시간 단위 : 1/1000 초
+
+        //** 과제
+        // => 10초 동안 1초단위로 CountDown(출력) 후, 이동 
+        // => 방법1
+        //      -> 10초 후 이동 : setTimeout()
+        //      -> 10초 동안 1초단위로 CountDown(출력) : setInterval()
+        $(function(){
+        var i = 9;
+        setInterval(() => {
+            $('#cd').html(i--);
+            if(i == 0) window.open('https://www.naver.com');
+        }, 1000);
+
+        /* setTimeout(()=>{
+            location = 'http://www.naver.com';
+        }, 1000 * 10); */
+    })
+    </script>
+</head>
+<body>
+    <div id = 'container'>
+        <h3>** CountDown 과 화면전환 **</h3>
+        => 10초 후 이동합니다.<br>
+        => 아래쪽에 10,9,8,7,...0 숫자가 출력 되도록 하세요<br>
+     <span id="cd" style="font-size:12em;">10</span><br>   
+     <pre><h3>
+     ** 자동 화면전환 **
+     1) HTML : meta Tag
+        -> http-equiv="refresh" content="5;url=http://www.naver.com"
+           5초후 Naver 로 이동   
+     
+     2) JS : location 객체 (window.location...) 
+        -> href_속성 : 화면전환 (히스토리에 기록 -> 이전페이지로 이동가능)
+        -> replace('...') : 화면전환 (히스토리에 기록안됨 -> 이전페이지로 이동불가능)
+        -> reload() : 새로고침 (f5)   
+     </h3></pre>
+  
+    </div>
+</body>
+
+</html>

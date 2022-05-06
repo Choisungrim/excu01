@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** Frame animation02 Start & Stop **</title>
+    <script src = "../jquery-3.2.1.min.js"></script>
+    <script>
+        //** Window 객체의  주기 관련 내장 함수 
+        //=> setTimeout("실행할 자바코드",코드실행대기시간) : 화면전환에 이용
+        //    setTimeout("location.href='login_form.jsp'", 1000*10);
+        //    setTimeout("location.href='login_form.jsp?id=banana'", 1000*10);
+
+        //=> setInterval("실행할 자바코드",반복주기)
+        //=> cleartInterval : setInterval 의 지정을 취소해줌
+        //=> clearInterval(clear대상) : setInterval(..) 을 인식가능 하도록 변수에 할당 
+        //    var a=setInterval("실행할 자바코드",반복주기);
+        //    cleartInterval(a) : setInterval 멈춤
+        $(function(){
+            var frames=[
+            '0.png','1.png','2.png','3.png',
+            '4.png','5.png','6.png','7.png',
+            '8.png','9.png','10.png','11.png',
+            '12.png','13.png','14.png'];
+            
+            var img = $('#img')[0];
+            var i = 0 ;
+            var b = 1 ;
+
+            $('#start').click(() => {
+               a = setInterval(() => {
+                   if(b==1){
+                        img.src=frames[i++%frames.length];      
+                        if(i==frames.length) i = 0;
+                    }
+               },55); // 주기 (interval) :1 / 1000초
+            })
+
+            $('#stop').click(() => {
+                clearInterval(a);
+                b=1;
+                });
+
+            $('#speeddown').click(()=>{
+                var i = 100;
+                a = setInterval(() => {
+                    img.src=frames[i++%frames.length];      
+                    if(i==frames.length) i = 0;
+                }, i+=100);
+            })
+        });
+
+
+        // *** Start&Stop
+        // Function 을 용도별로 작성
+        // => running(), start(), stop()
+
+    </script>
+</head>
+<body>
+    <h2>** Frame animation02 Start & Stop *</h2>
+<h3>=> window 객체의 setInterval 내장함수를 이용</h3>
+<hr>
+<img id="img"><br>
+<hr>
+&nbsp; 
+<button id="start">start</button> &nbsp;&nbsp;&nbsp;
+<button id="stop">stop</button> &nbsp;&nbsp;&nbsp;
+<button id="speeddown">speeddown</button>
+</body>
+</html>

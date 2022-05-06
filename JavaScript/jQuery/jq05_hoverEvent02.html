@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** Id, Class, Hover_Event02 **</title>
+<script src ="../jquery-3.2.1.min.js"></script>
+<script>
+    // * jQuery Hover() : mouse hover 이벤트 처리메서드
+    // => hover(f1,f2) : f1 = mouse_hover, f2 = mouse_out
+    // addClass(..), removeClass(..)
+    
+    // 1) id에 Css 직접 적용
+    $(function(){
+        $('#box').hover(()=>{
+                    $('#box').animate({
+                        opacity:'1',
+                        width:'200px',
+                        height:'200px',
+                        borderRadius: '50px'
+                    });
+                },()=>{
+                    $('#box').animate({
+                        opacity:'0.1',
+                        width: '100px',
+                        height: '100px',
+                        backgroundColor: 'aquamarine',
+                        borderRadius: '0px'
+                    });
+                }) // hover
+
+        // 2) class에 적용하기
+        // => 모두 새로운 값이 적용됨
+
+        $('.ho').hover(()=>{
+                    $('.ho').animate({
+                        opacity:'1',
+                        width: '200px',
+                        height: '200px',
+                        borderRadius: '50px'
+                    });
+                },()=>{
+                    $('.ho').animate({
+                        width:100,
+                        height:100,
+                        borderRadius: 0
+                    });
+                }) // hover
+    });
+</script>
+
+</head>
+<style>
+    #box{
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+    }
+    .ho{
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        border-radius: 50px ;
+    }
+    #box.ho{
+        background-color: blue;
+        border-radius: 50px;
+    }
+</style>
+<body>
+    <h3>** Id, Class, Hover_Event01 **</h3>
+    <div id="box"></div>
+    <div id="box" class="ho"></div> 
+    <!-- class로 지정된 값이 먼저 적용되고 id의 값이 적용됨. -->
+    <div class="ho"></div>
+</body>
+</html>

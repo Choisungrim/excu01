@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** Tag 속성(Attribute) 처리 메서드 attr & prop **</title>
+    <script src = "../jquery-3.2.1.min.js"></script>
+    <script>
+        $(function () {
+            /* // 1. 속성 값 가져오기.
+                alert('** 1)script Tag의 src 속성 => '+$('script').attr('src'))
+                alert('** 2)img Tag의 id'+$('img').attr('id'))      //첫번째 img의 id 값
+                alert('** 3)img Tag의 class'+$('img').attr('class'))//첫번째 img의 class 값
+                alert('** 4)class im5의 class'+$('.im5').attr('class'))//img5의 class 값
+                
+                // 값을 할당하는 경우 (매개변수 2개)
+                // => 모든 Tag에 적용이된다.
+                $('img').attr('src','../image/image/ccc.gif'); */
+
+                // 2. 속성 값 지정
+                // 2.1) 하나씩 지정(매개변수 2개 사용)
+                $('#im1').attr('src','../image/image/aaa.gif');
+                $('#im1').attr('width',100);
+                $('#im1').attr('height',150);
+
+                // 2.2) 한번에 여러개 속성 지정
+                $('#im2').attr({
+                    src:'../image/image/bbb.gif',
+                    width : '100',
+                    height : '150'
+                });
+
+                //   2.3) 속성의 값으로 익명함수 사용
+                // => 익명함수 function(i){ .... } 
+                // => 매개변수
+                //      - 필요없으면 사용하지 않아도 됨
+                //      - 필요시에 적용해서 사용가능
+                //      - 매개변수명은 임의의 알파벳 사용가능 (i,j,k,l....)
+                //      - 매개변수의 값은 호출시마다 0 부터 1씩 증가하면서 순차적으로 적용
+                // => 익명함수의 return 값이 속성의 값으로 전달됨
+
+                // 단수 적용 (im3)
+                $('#im3').attr({
+                    src:(i) => {
+                        var size = (i+2)*100;
+                        return 'https://via.placeholder.com/'+size+'x100';
+                        // https://via.placeholder.com/100x200
+                    } // src func
+                })//(im3_attr)
+
+                // 복수적용
+                $('.im5').attr({
+                    src:function(i){
+                        var size = (i+2)*100;
+                        return 'https://via.placeholder.com/'+size+'x100';
+                        // https://via.placeholder.com/100x200
+                        // https://place-hold.it/200x100
+                    } // src func
+                })//(im5_attr)
+
+                $('.im5').attr({
+                    src:'../image/image/eee.gif',
+                    width: (w) =>{
+                        var size = (w+1);
+                        return size*50;
+                    },
+                    height: ()=>{
+                        return 100;
+                    } 
+                })//(im5_attr)
+
+                //** 매개변수가 없는 경우
+                $('#im4').attr({
+                    src : '../image/image/ccc.gif',
+                    width:()=>{
+                        var size = 3 ;
+                        return size * 50;
+                    },
+                    height:100
+                }); //im4_attr
+
+                // *** attr() & prop() 비교 Test
+                alert(`** attr1 =>  ${$('#ptest1').attr('href')} \n prop1 => ${$('#ptest1').prop('href')}`);
+                alert("** attr2 => "+$('#ptest2').attr('href') + "\n prop2 => "+$('#ptest2').prop('href'));
+          });//ready
+    </script>
+</head>
+<body>
+    <h3>** Tag 속성(Attribute) 처리 메서드 attr & prop **</h3>
+    <pre>
+    1. attr() 메서드
+    => Tag의 속성(Attribute) 조작 : Tag의 속성에 반영
+    => html의 속성에 입력된 값을 제어하는데 이용됨.
+
+    2. prop() 메서드
+    => Dom객체의 Node, JS의 객체에 정의된 속성(Property)
+    html의 속성의 값이 가지고 있는 본연의 형태를 가져옮
+    ( 해당 Dom을 브라우저에서 동작시키기 위해서는 Object로 할당 하는데,
+        이때 Object 의 Property 값. )   
+    -> 속성의 역할 제어
+    -> Object 의 속성값을 다룰때 주로 이용됨.
+
+    3. jQuery 메서드의 매개변수 갯수
+    => 0 : 현재객체의 컨텐츠를 return
+    => 1 (속성명) : 현재객체의 해당 속성의 값 return
+    => 2 (속성명, 속성의값) : 해당속성에 값 할당
+    => 여러개 { ..... }  : 여러 속성을 한번에 지정
+</pre>
+<hr>
+<a id ="ptest1" href ="#">propTest1</a>&nbsp;&nbsp;
+<a id ="ptest2" href ="javascript:;">propTest2</a>
+<hr>
+<img id = "im1"><img id = "im2">
+<img id = "im3"><img id = "im4"><br>
+<img class="im5"><br>
+<img class="im5"><br>
+<img class="im5"><br>
+
+</body>
+</html>
