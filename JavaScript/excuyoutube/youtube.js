@@ -6,7 +6,7 @@
 import {dataItem} from './data.js';
 
 // my api key
-const apiKey = 'AIzaSyCCIbxqL3nbVFaqlwDplxzS5HFqH_K8jXw';
+const apiKey = 'MyAPi Key';
 
 const channelEndPoint = `https://www.googleapis.com/youtube/v3/channels?key=${apiKey}&id=${[...dataItem]}&part=snippet,contentDetails,statistics`;
 
