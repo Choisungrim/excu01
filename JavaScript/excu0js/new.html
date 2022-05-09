@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>newhtml</title>
+    <script>
+    window.onload = function() {
+        const Mainbox = document.querySelector(".container");
+        const a = document.querySelector('#rect')
+        
+        a.addEventListener('click',()=>{
+            alert('aa')
+        })
+        
+        const box = document.querySelector('#subcontainer');
+        const bar = box.querySelector('#sidebar');
+
+        const {width:boxWidth, height:boxHeight}
+        = box.getBoundingClientRect();
+
+        const {width:barWidth, height:barHeight}= bar.getBoundingClientRect();
+        let isDragging = null;
+        let originTop = null;
+        let originY = null;
+
+        bar.addEventListener('mousedown',(e)=>{
+            console.dir(e)
+
+            isDragging = true;
+            originY = e.clientY;
+            originTop = bar.offsetTop;
+            MainTop = Mainbox.clientHeight;
+            console.log(MainTop)
+        })
+        document.addEventListener('mouseup',(e)=>{
+            console.dir(e)
+            console.log(box.style.top);
+            isDragging = false
+        })
+        document.addEventListener('mousemove',(e)=>{
+            if(isDragging){
+                diffY = e.clientY - originY;
+                endOFYpoint = boxHeight - barHeight;
+                box.style.top = `${Math.min(Math.max(0,originTop+diffY),endOFYpoint)}px`;
+            }
+        })
+        /* bar.onmousedown = function(event){
+            bar.style.position = 'absolute';
+            bar.style.zIndex = 1000;
+            document.body.append(bar);
+
+            function moveat(pageX, pageY){
+                bar.style.top= pageX - bar.offsetHeight / 2 + 'px';
+            }
+            moveat(event.pageX, event.pageY);
+        
+            function mousemovebar(event){
+                moveat(event.pageX, event.pageY);
+            }
+            bar.addEventListener('mousemove',mousemovebar);
+
+            bar.onmouseup = function(){
+                document.removeEventListener('mousemove', mousemovebar);
+                bar.onmouseup = null;
+            }
+            bar.ondragstart = function(){
+                return false;
+            }
+        } */
+    }
+    </script>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width:100%;
+            height:7%;
+        }
+        .item{
+            display: flex;
+        }
+        svg{
+            height: 100%;
+        }
+        .subcontainer{ 
+            width: 100%;
+            height: 93%;
+            position: relative;
+            display:flex;
+            flex-direction: column;
+        }
+        #sidebar{
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="rect" class = "item">
+            <svg width="100"
+            viewBox="0 0 200 200"
+            preserveAspectRatio="xMinYMin meet"
+            >
+                <rect x="0" y="0" width="200" height="200" stroke="black" fill="none" stroke-width="1"/>
+                <rect x="50" y="50" width="100" height="100" stroke="black" fill="none" stroke-width="3"/>  
+            </svg>
+    </div>
+    <div id="circle" class = "item">
+        <svg width="100"
+        viewBox="0 0 200 200"
+        preserveAspectRatio="xMinYMin meet">
+        <rect x="0" y="0" width="200" height="200" stroke="black" fill="none" stroke-width="1"/>
+        <circle cx="100" cy="100" r="50" fill="none" stroke = "black" stroke-width="3"/>
+    </svg>
+    </div>
+    <div id="diamond" class = "item">
+        <svg width="100"
+        viewBox="0 0 200 200"
+        preserveAspectRatio="xMinYMin meet">
+        <rect x="0" y="0" width="200" height="200" stroke="black" fill="none" stroke-width="1"/>
+            <path d ="M 96 146 L 146 96 L 96 48 L 48 96 Z"stroke="black" 
+            fill="none" stroke="black" stroke-width="3" />
+        </svg>
+    </div>
+    <div id="triangle" class = "item">
+        <svg width="100"
+        viewBox="0 0 200 200"
+        preserveAspectRatio="xMinYMin meet">
+        <rect x="0" y="0" width="200" height="200" stroke="black" fill="none" stroke-width="1"/>
+            <path d ="M 63 131 L 131 131 L 95 63 Z "stroke="black" 
+            fill="none" stroke="black" stroke-width="3" />
+        </svg>
+    </div>
+    <div id="attack" class = "item">
+        <svg width="100"
+        viewBox="0 0 200 200"
+        preserveAspectRatio="xMinYMin meet">
+        <rect x="0" y="0" width="200" height="200" stroke="black" fill="none" stroke-width="1"/>
+            <path d ="M 40 102 L 134 102 L 110 78 L 134 102 L 110 122 L 134 102 Z "stroke="black" 
+            fill="none" stroke="black" stroke-width="3" />
+        </svg>
+    </div>
+</div>
+<div class = 'subcontainer' id = "subcontainer">
+        <br>
+        <span id = 'sidebar'>a
+        </span>
+    </div>
+</div>
+</body>
+</html>
