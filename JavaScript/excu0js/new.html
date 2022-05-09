@@ -41,8 +41,7 @@
             if(isDragging){
                 diffY = e.clientY - originY;
                 endOFYpoint = boxHeight - barHeight;
-                box.style.top = `${Math.min(Math.max(0,originTop+diffY),endOFYpoint)}px`;
-                MainTop +=1;
+                box.style.top = `${Math.min(Math.max(0,originTop+diffY),endOFYpoint)}px`;         
             }
         })
         /* bar.onmousedown = function(event){
