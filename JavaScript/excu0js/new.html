@@ -42,6 +42,7 @@
                 diffY = e.clientY - originY;
                 endOFYpoint = boxHeight - barHeight;
                 box.style.top = `${Math.min(Math.max(0,originTop+diffY),endOFYpoint)}px`;
+                MainTop +=1;
             }
         })
         /* bar.onmousedown = function(event){
