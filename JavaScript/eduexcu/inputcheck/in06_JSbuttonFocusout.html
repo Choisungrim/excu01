@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** inCheck06: button & focusout JoinForm **</title>
+<script src="../jquery-3.2.1.min.js"></script>
+<script>
+//	1) 전역변수 선언
+//	  => 개별적 오류 확인을 위한 Switch 변수
+	let iCheck = false;
+	let pCheck = false;
+	let ppCheck = false;
+	let nCheck = false;
+	let bCheck = false;
+	let poCheck = false;
+	let wCheck = false;
+
+//	2) 개별적인 Focus out 이벤트 핸들러 작성 : JQuery
+	$(function(){
+		$('#id').focus();
+		$('#id').keydown((e)=>{
+			if(e.which == 13){
+				// => form에 submit이 없으므로 필요하지않음.
+				// preventDefault();
+				$('#password').focus();
+			}
+		}).focusout(()=>{
+			var id = $('#id').val()
+				if(id.length<4){
+					$('#iMessage').html('ID의 길이가 4 이상입니다.');
+					$('#id').focus();
+					iCheck=false;
+				}else if(id.replace(/[a-z.0-9]/gi,'').length>0){
+					$('#iMessage').html('ID는 영문자, 숫자로만 입력하세요.!!')
+					$('#id').focus();
+					iCheck=false;
+				}else {
+					$('#iMessage').html('ID 가 정상적으로 입력 되었습니다.').css('color','green');
+					iCheck=true;
+				}
+			});//id
+		$('#password').keydown((e)=>{
+			if(e.which == 13){
+				$('#ppassword').focus();
+			}
+		}).focusout(()=>{
+			var password= $('#password').val();
+			if(password.length < 4){
+                $('#pMessage').html('비밀번호의 길이는 4이상 이여야 합니다.');
+                $('#password').focus();
+				pCheck=false;
+            }else if (password.replace(/[~!@#$%^&*()_+|<>?:{}\.]/gi,'').length >= password.length){ 
+                $('#pMessage').html('비밀번호에는 특수문자가 들어가야 합니다.');
+                $('#password').focus();
+				pCheck=false;
+
+            }else if ( password.replace(/[a-z.0-9.~!@#$%^&*()_+|<>?:{}\..]/gi,'').length > 0){
+                $('#pMessage').html('비밀번호에는 영문자,숫자,특수문자로만 작성해주세요.');
+                $('#password').focus();
+				pCheck=false;
+            }else {
+				$('#pMessage').html('비밀번호가 정상적으로 입력 되었습니다.').css('color','green');
+				pCheck=true;
+			}
+		}) //password
+		$('#ppassword').keydown((e)=>{
+			if(e.which == 13){
+				$('#name').focus();
+			}
+		}).focusout(()=>{
+			var password = $('#password').val();
+			var ppassword = $('#ppassword').val();
+			if(password != ppassword ){
+                $('#ppMessage').html('입력한 비밀번호가 다릅니다.');
+                $('#password').focus();
+                ppCheck = false;
+            }else{
+				$('#ppMessage').html('입력한 비밀번호가 같습니다.').css('color','green');
+				ppCheck = true;
+			}
+		}) //ppassword
+		$('#name').keydown((e)=>{
+			if(e.which == 13){
+				$('#birthday').focus();
+			}
+		}).focusout(()=>{
+			var name = $('#name').val();
+            if(name.length<2){
+                $('#nMessage').html('이름의 길이는 2 이상 이여야 합니다.');
+				$('#name').focus();		
+                nCheck=false;
+            }else if(name.replace(/[a-z.ㄱ-ㅎ.가-힣]/gi,'').length > 0){
+                $('#nMessage').html('이름은 영문 또는 한글로만 입력해주세요.');
+				$('#name').focus();
+                nCheck=false;
+            }else{
+				$('#nMessage').html('정상적인 이름이 입력되었습니다.').css('color','green');
+				nCheck=true;
+			}
+		}) //name
+		$('#birthd').keydown((e)=>{
+			if(e.which == 13){
+				$('#point').focus();
+			}
+		}).focusout(()=>{
+			var birthday = $('#birthd').val()
+            if(birthday.length != 10 || birthday == ''){
+                $('#bMessage').html('길이는 10 이거나 NULL이 아니여야 합니다.');
+				$('#birthd').focus();
+                bCheck=false;
+            }else{
+				$('#bMessage').html('생일이 정상적으로 입력되었습니다.').css('color','green');
+				bCheck=true;
+			}
+		}) //birthday
+		$('#point').keydown((e)=>{
+			if(e.which == 13){
+				$('#weight').focus();
+			}
+		}).focusout(()=>{
+			var point = $('#point').val();
+            if( $.isNumeric(point)==false ||
+			 point.replace(/[.]/g,'').length < point.length ){
+                $('#poMessage').html('점수는 정수만 입력하세요!!');
+				$('#point').focus();
+                poCheck = false;
+            }else {
+				$('#poMessage').html('정수가 정상적으로 입력되었습니다.').css('color','green');
+				poCheck = true;
+			}
+
+		}) //point
+		$('#weight').keydown((e)=>{
+			if(e.which == 13){
+				$('#submit').focus();
+			}
+		}).focusout(()=>{
+			var weight = $('#weight').val();
+			if($.isNumeric(weight)==false 
+			|| weight.replace(/[\.]/gi,'').length>=weight.length){
+                $('#wMessage').html('몸무게는 실수로만 입력하세요 !').css('color','red');
+				$('#weight').focus();
+				wCheck = false;
+            }else if (parseFloat(weight)<20 || parseFloat(weight)>200){
+				$('#wMessage').html('몸무게의 범위를 벗어납니다. (20~200)');
+				$('#weight').focus();
+				wCheck=false;
+			}else{
+				$('#wMessage').html('정상적으로 입력되었습니다.').css('color','green');
+				wCheck=true;
+			}
+		}) //weight
+	})// ready
+//	3) Submit 판단 및 실행 : JavaScript button
+//	=> 오류 없으면 submit 진행 : form 의 submit 호출
+//	=> 오류가 있다면 func 중지 : return;
+function incheck() {
+	 // 모든 항목에 오류 없음을 확인 : switch 변수
+	if(iCheck == false){$('#iMessage').html('아이디 확인하세요');}
+	if(pCheck == false){$('#pMessage').html('비밀번호 확인하세요');}
+	if(ppCheck == false){$('#ppMessage').html('비밀번호 확인하세요');}
+	if(nCheck == false){$('#nMessage').html('이름 확인하세요');}
+	if(bCheck == false){$('#bMessage').html('생일 확인하세요');}
+	if(poCheck == false){$('#poMessage').html('점수 확인하세요');}
+	if(wCheck == false){$('#wMessage').html('몸무게 확인하세요');}
+	if(iCheck && pCheck && ppCheck && nCheck && bCheck && poCheck && wCheck){
+		// => submit 확인
+		if ( confirm("~~ 정말 가입 하십니까 ? (Yes:확인 / No:취소)")==false ) {
+			 alert('~~ 가입이 취소 되었습니다 ~~');
+			 return; 
+		}else  // submit 진행 -> 404
+			$('#myForm').submit();
+			// JS : document.getElementById('myForm').submit(); 
+	};
+}
+
+function reset(){
+	if(iCheck == false){$('#iMessage').html('');}
+	if(pCheck == false){$('#pMessage').html('');}
+	if(ppCheck == false){$('#ppMessage').html('');}
+	if(nCheck == false){$('#nMessage').html('');}
+	if(bCheck == false){$('#bMessage').html('');}
+	if(poCheck == false){$('#poMessage').html('');}
+	if(wCheck == false){$('#wMessage').html('');}
+}
+</script>
+<style>
+	.eMessage{
+		color: red;
+		font-size: small;
+		font-style: oblique;
+	}
+	.td1{
+		background-color: #85F4FF;
+	}
+</style>
+</head>
+<body>
+<h3>** inCheck06: button & focusout JoinForm **</h3>
+<form action="join" method="get" id="myForm">
+<table>
+<tr height=40>
+	<td class = "td1"><label for=id>I D</label></td>
+ 	<td><input type="text" name=id id=id size="20"><br>
+		<span id = "iMessage" class = "eMessage"></span></td>
+	
+</tr>
+<tr height=40>
+	<td class = "td1"><label for=password>Password</label></td>
+	<td><input type="password" name=password id=password size="20">
+		<br>
+		<span id = "pMessage" class = "eMessage"></span></td>
+</tr>
+<tr height=40>
+	<td class = "td1"><label for=ppassword>PW  확인</label></td>
+	<td><input type="password" name=ppassword id=ppassword size="20">
+		<br>
+		<span id = "ppMessage" class = "eMessage"></span></td>
+</tr>
+<tr height=40>
+	<td class = "td1"><label for=name>Name</label></td>
+	<td><input type="text" name=name id=name size="20">
+		<br>
+		<span id = "nMessage" class = "eMessage"></span></td>
+</tr>
+<tr height=40>
+	<td class = "td1"><label for=birthd>Birthday</label></td>
+	<td><input type="date" name=birthd id=birthd>
+		<br>
+		<span id = "bMessage" class = "eMessage"></span></td>
+</tr>
+<tr height=40>
+	<td class = "td1"><label for=point>Point</label></td>
+	<td><input type="text" name=point id=point size="20">
+		<br>
+		<span id = "poMessage" class = "eMessage"></span></td>
+</tr>
+<tr height=40>
+	<td class = "td1"><label for=weight>Weight</label></td>
+	<td><input type="text" name=weight id=weight size="20">
+		<br>
+		<span id = "wMessage" class = "eMessage"></span></td>
+</tr>
+<tr><td></td>	
+	<td><br>
+	<input type="button" value=가입 id="submit" onclick="return incheck()">&nbsp;&nbsp;
+	<input type="reset" value="취소" id = "reset" onclick =" return reset()">&nbsp;&nbsp;
+	</td>
+</tr>	
+</table>
+</form>
+</body>
+</html>

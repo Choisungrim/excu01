@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** inCheck03: JQ submit JoinForm **</title>
+<script src="../jquery-3.2.1.min.js"></script>
+<script>
+//** JQueruy 방식으로 type submit 활용 
+//=> submit을 클릭하면 submit 이벤트가 발생되고,
+//   이 발생된 이벤트를 이용해서 무결성 점검 가능
+//=> 오류 있으면 : Message 출력 후, submit 이벤트를 무효화 시켜야 함.
+//              JQ 의 이벤트 무효화 -> e.preventDefault() 
+//       없으면 : submit 이벤트 진행.
+//=> 이벤트 핸들러의 첫번째 매개변수는 현재 발생된 이벤트객체를 전달
+
+//=> 처리순서 : val()전달 -> 무결성 Check 
+
+$(function(){
+	
+	$('#myForm').submit(function(e) {
+		
+		// ** ID : 길이4 이상, 영문자,숫자 로만 구성
+		var id = $('#id').val();
+		if ( id.length<4 ) {
+			alert(' ID 길이는 4 이상 입니다. !! ');
+			e.preventDefault();
+			$('#id').focus();
+			return;
+			// submit 이벤트 무효화시키고, function은 종료 
+		}else if ( id.replace(/[a-z.0-9]/gi,'').length > 0 ) {
+			alert(' ID는 영문자,숫자 로만 입력하세요. !! ');
+			e.preventDefault();
+			$('#id').focus();
+			return;
+		}; //id
+		
+		// ** password : 길이4이상, 영문, 숫자와 특수문자는 반드시 1개 이상 포함할것
+		var password=$('#password').val();
+		if ( password.length<4 ) {
+			alert(' Password 길이는 4 이상 입니다. !! ');
+			e.preventDefault();
+			$('#password').focus();
+			return;
+		}else if ( password.replace(/[!-*.@]/gi ,'').length >= password.length ) {
+			// 비교 : replace(/[!.@.#.$.%.^.&.*]/gi ,'')
+			alert(' Password 에는 특수문자가 반드시 포함 되어야 합니다. !!'  );
+			e.preventDefault();
+			$('#password').focus();
+			return;
+		}else if ( password.replace(/[a-z.0-9.!-*.@]/gi,'').length > 0 ) {
+			alert(' Password 는 영문자, 숫자, 특수문자 로만 입력하세요. !!'  );
+			e.preventDefault();
+			$('#password').focus();
+			return;
+		} //password
+			
+		// ** pw 재입력 확인 : password 와 동일성 확인
+		var password2=$('#password2').val();
+		if ( password!=password2 ) {
+			alert(' Password 가 다릅니다. !!'  );
+			e.preventDefault();
+			$('#password').focus();
+			return;
+		}
+
+		// ** Name: 길이 2이상, 영문 또는 한글로 만 입력	
+		var name = $('#name').val();
+		if ( name.length < 2) {
+			alert(' Name 길이는 2 이상 입니다. !! ');
+			e.preventDefault();
+			$('#name').focus();
+			return;
+		}else if (name.replace(/[a-z.가-힣]/gi,'').length > 0) {
+			alert('  Name은 영문, 한글만 입력 가능 합니다. !!'  );
+			e.preventDefault();
+			$('#name').focus();
+			return;
+		} //name
+
+		// ** Birthday: 길이 10 인지 
+		var birthd = $('#birthd').val();
+		if ( birthd.length != 10 ) {
+			alert(' 생년월일을 정확하게 입력 하세요 (yyyy-mm-dd) !! ');
+			e.preventDefault();
+			$('#birthd').focus();
+			return;
+		} //birthd	
+
+		// ** Point: 정수
+		var point = $('#point').val();
+		// => 숫자값이 아닌지 확인 : $.isNumeric() 으로
+		// => 실수인지 정수 인지 확인
+		if ( $.isNumeric(point)==false ||
+			 point.replace(/[.]/g,'').length < point.length ) {
+			alert(' 정수값을  정확하게 입력 하세요. !! ');
+			e.preventDefault();
+			$('#point').focus();
+			return;
+		} //point
+
+		// ** Weight: 실수	
+		// => 실수, 범위확인하기 20~200 
+		var weight = $('#weight').val();
+		if ( $.isNumeric(weight)==false ) {
+			alert(' weight 값을 숫자로 정확하게 입력 하세요. (20~200) !! ');
+			e.preventDefault();
+			$('#weight').focus();
+			return;
+		}else if ( parseFloat(weight) < 20 || parseFloat(weight) > 200 ) {
+			alert(' weight 의 범위를 벗어납니다. (20~200) !! ');
+			e.preventDefault();
+			$('#weight').focus();
+			return;
+		}
+		
+		// ** 무결성 Check 완료
+		if ( confirm("~~ 정말 가입 하십니까 ? (Yes:확인 / No:취소)")==false ) {
+			 alert('~~ 가입이 취소 되었습니다 ~~');
+			 e.preventDefault();
+			 return; 
+		};
+		// submit 진행 -> 404
+		
+	});//submit
+}); //ready
+</script>
+</head>
+<body>
+<h2>** inCheck03: JQ submit JoinForm **</h2>
+<form action="join" method="get" id="myForm">
+<table>
+<tr height=40>
+	<td bgcolor="AliceBlue"><label for=id>I D</label></td>
+ 	<td><input type="text" name=id id=id size="20"></td>
+</tr>
+<tr height=40>
+	<td bgcolor="AliceBlue"><label for=password>Password</label></td>
+	<td><input type="password" name=password id=password size="20"></td>
+</tr>
+<tr height=40>
+	<td bgcolor="AliceBlue"><label for=password>PW  확인</label></td>
+	<td><input type="password" name=password2 id=password2 size="20"></td>
+</tr>
+<tr height=40>
+	<td bgcolor="AliceBlue"><label for=name>Name</label></td>
+	<td><input type="text" name=name id=name size="20"></td>
+</tr>
+<tr height=40>
+	<td bgcolor="AliceBlue"><label for=birthd>Birthday</label></td>
+	<td><input type="date" name=birthd id=birthd></td>
+</tr>
+<tr height=40>
+	<td bgcolor="AliceBlue"><label for=point>Point</label></td>
+	<td><input type="text" name=point id=point size="20"></td>
+</tr>
+<tr height=40>
+	<td bgcolor="AliceBlue"><label for=weight>Weight</label></td>
+	<td><input type="text" name=weight id=weight size="20"></td>
+</tr>
+<tr><td></td>	
+	<td><br>
+	<input type="submit" value=가입>&nbsp;&nbsp;
+	<input type="reset" value="취소">&nbsp;&nbsp;
+	</td>
+</tr>	
+</table>
+</form>
+<hr>
+<pre><h3>** input Tag 의 입력값 무결성 점검_JQ, submit **</h3>
+=> submit : 클릭시에 submit 이 바로 진행되며, form 에는 submit이벤트 발생
+=> 그러므로 발생된 form의 submit이벤트를 이용함 (이벤트핸들러를 작성)
+</pre>
+<hr>
+
+
+
+
+</body>
+</html>
