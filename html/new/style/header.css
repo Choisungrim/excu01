@@ -1,0 +1,194 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+header>#header_top {
+    display: flex;
+    justify-content: flex-end;
+    width: 130rem;
+    margin: 0 auto;
+}
+
+header>#header_top>dl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 44.8rem;
+    height: 4.6rem;
+    font-size: 1.5rem;
+}
+
+header>#header_top>dl>dd {}
+
+header>#header_top>dl>dd:nth-of-type(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 10rem;
+}
+
+header>#header_top>dl>dd:nth-of-type(1)>span {
+    font-weight: 500;
+}
+
+header>#header_top>dl>dd:nth-of-type(1)>ul {
+    display: flex;
+}
+
+header>#header_top>dl>dd:nth-of-type(1)>ul>li {}
+
+header>#header_top>dl>dd:nth-of-type(1)>ul>li button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+
+    width: 1.9rem;
+    height: 1.9rem;
+    border: 1px solid #d3d3d3;
+    background: #fff;
+
+    cursor: pointer;
+}
+
+header>#header_top>dl a {
+    color: #747474;
+}
+
+header>#header_top>dl>dd:last-child {
+    width: 16.5rem;
+}
+
+header>#header_top>dl>dd:last-child>ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+header>#header_top>dl>dd:last-child>ul>li {
+    width: 2.8rem;
+    height: 2.9rem;
+}
+
+header>#header_top>dl>dd:last-child>ul>li>a {
+    display: block;
+    height: 2.9rem;
+}
+
+header>#header_top>dl>dd:last-child>ul>li:nth-child(1)>a {
+    background: url(https://www.mpva.go.kr/site/mpva/images/common/common_icons.png) no-repeat -439px -1px;
+}
+
+header>#header_top>dl>dd:last-child>ul>li:nth-child(2)>a {
+    background: url(https://www.mpva.go.kr/site/mpva/images/common/common_icons.png) no-repeat -472px -1px;
+}
+
+header>#header_top>dl>dd:last-child>ul>li:nth-child(3)>a {
+    background: url(https://www.mpva.go.kr/site/mpva/images/common/common_icons.png) no-repeat -505px -1px;
+}
+
+header>#header_top>dl>dd:last-child>ul>li:nth-child(4)>a {
+    background: url(https://www.mpva.go.kr/site/mpva/images/common/common_icons.png) no-repeat -538px -1px;
+}
+
+header>#header_top>dl>dd:last-child>ul>li:nth-child(5)>a {
+    background: url(https://www.mpva.go.kr/site/mpva/images/common/common_icons.png) no-repeat -572px -1px;
+}
+
+
+/*header_middle*/
+#header_middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 130rem;
+    margin: 0 auto;
+}
+
+
+#header_middle>form {
+    position: relative;
+    margin-top: 1.5rem;
+    margin-left: 8rem;
+    width: 36rem;
+    height: 7.1rem;
+}
+
+#header_middle>form:after {
+     /* absolute는 작동이 될 기준점이 필요하다. -> 조상요소 중에서 static이 아닌 요소중 가장 가까운 요소를 기준으로 삼는다.*/
+            /* position으로 안정해진 요소 -> static */
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    content: "";
+    border-radius: 0.5rem;
+    width: 36rem;
+    height: 0.7rem;
+    background: #e8e8e8;
+}
+
+#header_middle>form>input[type $="h"] {
+    border: 0 none;
+    width: 32rem;
+    height: 5.1rem;
+}
+
+#header_middle>form>input[type $="h"]::placeholder {
+    font: 400 2.4rem 'Noto Sans KR', sans-serif;
+    color: #555;
+}
+
+#header_middle>form>input[type $="t"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+
+    border: 0 none;
+    width: 3.2rem;
+    height: 3.2rem;
+    background: url(https://www.mpva.go.kr/site/mpva/images/common/common_icons.png) no-repeat -34.2rem 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+#header_middle>dl {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 23.7rem;
+    height: 3.2rem;
+}
+
+#header_middle>dl>dd {}
+
+#header_middle>dl>dd:nth-of-type(1) {
+    width: 9.2rem;
+    height: 3.1rem;
+    background: url(https://www.mpva.go.kr/site/mpva/images/common/common_icons.png) no-repeat -18.5rem 0rem;
+}
+
+#header_middle>dl>dd:nth-of-type(2) {
+    width: 7.5rem;
+    height: 2.3rem;
+}
+
+#header_middle>dl>dd:nth-of-type(2)>span {
+    display: inline-block;
+    width: 2.1rem;
+    height: 1.9rem;
+    background: url(https://www.mpva.go.kr/site/mpva/images/common/common_icons.png) no-repeat -30.2rem 0rem;
+}
+
+#header_middle>dl>dd:nth-of-type(3) {
+
+    width: 5.2rem;
+    height: 2.3rem;
+    background: url(https://www.mpva.go.kr/site/mpva/images/common/common_icons.png) no-repeat -11.8rem 0rem;
+}
