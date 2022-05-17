@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/footer.css">
+</head>
+<body>
+    <ul>
+        <li>aaaaaaaaaaaaaaaaaa</li>
+        <li>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</li>
+        <li>ccccccccc</li>
+    </ul>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            display: flex;
+            flex-direction: row;
+            
+            list-style: none;
+            margin: 0 auto;
+            width: 1000px;
+            height: 300px;
+            border: 1px solid red;
+        }
+        li{
+            flex: 1 1 auto;
+            /* 부모의 크기가 자식요소에 나눠준 크기보다 더 작으면 grow 를 확인
+            반대로 크기가 자식요소에 나눠준 크기보다 더 크면 shrink를 확인 */
+            border: 2px solid green;
+        }
+    </style>
+</body>
+</html>

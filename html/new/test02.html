@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Style>
+        .hidden{
+            overflow: hidden;
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            font-size: 0;
+            line-height: 0;
+            width: 0;
+            height: 0;
+        }
+    </Style>
+</head>
+<body>
+<header>
+    <div>
+        <dl>
+            <dt>유틸메뉴</dt>
+            <dd>화면크기
+                <ul>
+                    <li><span class = "hidden">화면 확대</span><button>+</button></li>
+                    <li><span class = "hidden">화면 축소</span><button>-</button></li>
+                </ul>
+            </dd>
+            <dd><a href = "#">나만의 예우</a></dd>
+            <dd><a href = "#">English</a></dd>
+            <dd>sns
+                <ul>
+                    <li><a href="#"><span class = "hidden">블로그</span></a></li>
+                    <li><a href="#"><span class = "hidden">유튜브</span></a></li>
+                    <li><a href="#"><span class = "hidden">인스타그램</span></a></li>
+                    <li><a href="#"><span class = "hidden">트위터</span></a></li>
+                    <li><a href="#"><span class = "hidden">페이스북</span></a></li>
+                </ul>
+
+            </dd>
+        </dl>
+    </div>
+    <!--상단 바-->
+    <div>
+        <span>
+            <h1>국가보훈처</h1>
+            <form action="search.jsp">
+                <label for="srch">검색창</label><!-- 단락을 이용하여 공간 무효화처리 ( 주석은 렌더링이 안되는것을 이용 )
+                 --><input type="search" id ="srch" name ="srch" placeholder="검색어를 입력하세요."><!-- 
+                 --><input type="submit" value="검색">
+            </form>
+            <dl>
+                <dt>나라사랑사이트</dt>
+                <dd><a href = "#"><span class = "hidden">대한민국</span></a></dd>
+                <dd><a href = "#">국가상징</a></dd>
+                <dd><a href = "#">정부</a></dd>
+            </dl>
+        </span>
+    </div>
+    <!-- 메인검색 바 
+    ul>li*9>a+h3+ul*4>li*3>a
+    -->
+    <div>
+        <nav>
+            <h2>메뉴</h2>
+            <div>
+                <ul>정보공개
+                    <li>
+                        <ul>정보공개
+                            <li>사전정보공개</li>
+                            <li>정책실명제</li> 
+                            <li>정보공개청구</li>
+                            <li>공공데이터개방</li>    
+                        </ul>
+                    </li>  
+                </ul>
+            </div>
+            <div>
+                <ul>민원 * 참여
+                    <li>
+                        <ul>민원 * 참여
+                            <li>전자민원 신청</li>
+                            <li>대부원리금</li>
+                            <li>맑은행정</li>
+                        </ul>
+                        <ul>
+                            <li>민원사무서식</li>
+                        </ul>
+                        <ul>
+                            <li>나만의 예우</li>
+                        </ul>
+                        <ul>
+                            <li>신체검사 제도안내</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>적극행정
+                    <li>
+                        <ul>적극행정
+                            <li>제도소개</li>
+                        </ul>
+                        <ul>
+                            <li>국민참여</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- 하단메뉴 바 -->
+</header>
+<main>
+    <div>
+        <section>
+            <img src="https://www.mpva.go.kr/site/mpva/images/main/visual_text.png">
+            <div>
+                <nav>
+                    <h3>비대면서비스</h3>
+                    <div>
+                        <span>
+                            <img src = "">2022 업무보고 
+                            <img src = "">위탁병원 명단
+                            <img src = "">기념식 참가신청
+                            <img src = "">설정하기
+                            <a href="#"> > 전체보기</a>
+                            <br>
+                            <a href="#"><</a>
+                            <a href="#">></a>
+                        </span>
+                    </div>
+                </nav>
+            </div>
+            <div>
+                <nav>
+                    <h4>기능 서비스</h4>
+                    <div>
+                        <ul>
+                            <li>보도자료</li>
+                            <li>공지사항</li>
+                            <li>보훈행사</li>
+                            <li>사실은 이렇습니다.</li>
+                            <a href="#">> 전체보기</a>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div>
+                <article>
+                    <h4>보도자료</h4>
+                    <div>
+                        <span>
+                            <div>
+                                <header>
+                                    <p><time pubdate = "2022-05-13">2022.05.13</time></p>
+                                </header>
+                                <p>5.18민주화운동 공법단체 설립 완료</p>
+                                <address>보훈단체협력담당관실</address>
+                            </div>
+                            <div>
+                                <header>
+                                    <p><time pubdate = "2022-05-10">2022.05.10</time></p>
+                                </header>
+                                <p>손가락 상실, 시력장애 등 상이등급</p>
+                                <address>등록관리과</address>
+                            </div>
+                        </span>
+                    </div>
+                </article>
+            </div>
+            <div>
+                <nav>
+                    <h5>국가보훈처의 새로운 소식을 만나보세요.</h5>
+                    <ul>
+                        <li>보훈사진관</li>
+                        <li>보훈영상관</li>
+                        <a href="#">> 전체보기</a>
+                    </ul>
+                    <br>
+                    <a href = "#"><</a>
+                    <a href = "#">></a>
+                </nav>
+            </div>
+            <div>
+                <article>
+                    <h5>보훈사진관</h5>
+                    <img src="" alt="">
+                    <p>제 32대 박민식 신임 국가보훈처장 취임식</p>
+                    <p><time pubdate = "2022-05-13">2022.05.13</time></p>
+                    <a href="#">> 전체보기</a>
+                </article>
+            </div>
+            <div>
+                <div>
+                    <nav>
+                        <h6>신문</h6>
+                        <ul>
+                            <li>나라사랑신문</li>
+                            <li>국가보훈처 소식지</li>
+                            <li>다시웃는 제대군인</li>
+                        </ul>
+                    </nav>
+                </div>
+                <dl>
+                    <dt>열린처장실</dt>
+                </dl>
+            </div>
+            <div>
+                <div>
+                    <article>
+                        <h6>나라사랑신문</h6>
+                        <p>
+                            보훈가족 여러분과 함께 만드는 신문,
+                            보훈가족이 주인인 신문이 되겠습니다.
+                        </p>
+                        <address>
+                            <time pubdate = "2022.05">
+                            2022.05월호 보기
+                            </time>
+                        </address>
+                    </article>
+                </div>
+                <div>
+                    <article>
+                        <h6>열린처장실</h6>
+                        <p>안녕하십니까?</p>
+                        <p>국가보훈처장...</p>
+                        <ul>
+                            <li>처장소개</li>
+                            <li>처장과의 대화</li>
+                            <li>연설문</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <nav>
+                        <div>
+                            <dl>
+                                <dt>티브이(TV)나라사랑, 영상으로 소개합니다</dt>
+                                <a href="#">전체보기</a>
+                            </dl>
+                        </div>
+                        <div>
+                            <dl>
+                                <dt>알림창</dt>
+                            </dl>
+                        </div>
+                    </nav>
+                </div>
+                <div>
+                    <div>
+                        <span>
+                            <img src="" alt="">보훈은 대한민국의 과거 현재 ...
+                            <img src="" alt="">#국가보훈처 ...
+                        </span>
+                    </div>
+                    <div>
+                        <img src="" alt="">
+                        <br>
+                        <a href="#"><</a>
+                        <a href="#">||</a>
+                        <a href="#">></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<footer></footer>
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" list="fruit">
+        <datalist id="fruit">
+            <option>apple</option>
+            <option>banana</option>
+            <option>peach</option>
+            <option>grape</option>
+        </datalist>
+        <input type="password" pattern="^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}$">
+    </form>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden {
+            overflow: hidden;
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            font-size: 0;
+            line-height: 0;
+            font-size: 0;
+            width: 0;
+            height: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <dl>
+        <dt>유틸메뉴</dt>
+        <dd>화면크기
+            <ul>
+                <li> <span class="hidden"> 화면 확대</span> <button>+</button></li>
+                <li> <span class="hidden"> 화면 축소</span> <button>-</button></li>
+            </ul>
+        </dd>
+        <dd> <a href="#">나만의예우</a></dd>
+        <dd> <a href="#"> ENGLISH</a> </dd>
+        <dd> sns
+            <ul>
+                <li><a href="#"><span class="hidden">블로그</span></a></li>
+                <li><a href="#"><span class="hidden">유튜브</span></a></li>
+                <li><a href="#"><span class="hidden">인스타그램</span></a></li>
+                <li><a href="#"><span class="hidden">트위터</span></a></li>
+                <li><a href="#"><span class="hidden">페이스북</span></a></li>
+            </ul>
+        </dd>
+    </dl>
+    <h1>국가보훈처</h1>
+    <form action="srch.jsp">
+        <label for="srch">검색:</label><input type="search" name="srch" id="srch" placeholder="검색어를 입력하세요"><input
+            type="submit" value="검색">
+    </form>
+    <dl>
+        <dt>나라사랑 관련 사이트</dt>
+        <dd><a href="#">
+                <span class="hidden">국민의나라 정의로운 대한민국</span></a>
+        </dd>
+        <dd><a href="#">국가상징</a></dd>
+        <dd><a href="#">보다나은 정부</a></dd>
+    </dl>
+    <nav>
+        <h2>국가보훈처 주요 서비스</h2>
+        <p><a href="#"> <span class="hidden">누리집 지도</span></a></p>
+        <ul>
+            <li>
+                <a href="#">정보공개</a>
+                <h3>정보공개</h3>
+                <p>국민통합에 기여하는<br>
+                    책임보훈</p>
+                <ul>
+                    <li><a href="#">사전정보공개</a></li>
+                    <li><a href="#">정책실명제</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">정보공개청구</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">공공데이터개방</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">국가보훈처 OPEN API</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">민원참여</a>
+                <h3>민원참여</h3>
+                <p>국민통합에 기여하는<br>
+                    책임보훈</p>
+                <ul>
+                    <li><a href="#">전자민원신청안내</a></li>
+                    <li><a href="#">대부원리금</a></li>
+                    <li><a href="#">맑은 행정</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">민원사무서식</a></li>
+                    <li><a href="#">지로납부 민원</a></li>
+                    <li><a href="#">우수 위탁병원 인증제</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">나만의예우</a></li>
+                    <li><a href="#">보훈상담센터</a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">신체검사 제도안내</a></li>
+                    <li><a href="#">나만의 보훈심사</a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">적극행정</a>
+                <h3>적극행정</h3>
+                <p>국민통합에 기여하는<br>
+                    책임보훈</p>
+                <ul>
+                    <li><a href="#">제도소개</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">국민참여</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">적극행정자료실</a></li>
+
+                </ul>
+
+            </li>
+            <li>
+                <a href="#">알림소식</a>
+
+            </li>
+            <li>
+                <a href="#">예우보상</a>
+
+            </li>
+            <li>
+                <a href="#">자료공간</a>
+
+            </li>
+            <li>
+                <a href="#">보훈기념행사</a>
+
+            </li>
+            <li>
+                <a href="#">보훈인물</a>
+
+            </li>
+            <li>
+                <a href="#">국가보훈처 소개</a>
+
+            </li>
+        </ul>
+    </nav>
+    <aside>
+        <article>
+            <h1>슬기로운 보훈생활</h1>
+            <ul>
+                <li><a href="#">독립유공자</a></li>
+                <li><a href="#">찾아가는 보훈</a></li>
+                <li><a href="#">지방청 국립</a></li>
+                <li><a href="#">현충시설</a></li>
+                <li><a href="#">국립묘지</a></li>
+            </ul>
+            <p><span class="hidden">슬기로운 보훈생활 닫기</span></p>
+        </article>
+        <h1>메인 배너</h1>
+    </aside>
+    <main>
+        <h2>본문</h2>
+        <h3>내가 만드는 비대면 서비스, 바로 설정해보세요.</h3>
+        <ul>
+            <li><a href="#"><img src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon01_off.png" alt="이미지2"><span>위탁병원명단</span></a></li>
+            <li><a href="#"><img src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon02_off.png" alt="이미지1"><span>2022 업무보고</span></a></li>
+            <li><a href="#"><img src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon03_off.png" alt="이미지3"><span>기념식참가신청</span></a></li>
+            <li><a href="#"><img src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon04_off.png" alt="이미지4"><span>해외송금 </span></a></li>
+            <li><a href="#"><img src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon05_off.png" alt="이미지5"><span>국내외사적지탐방</span></a></li>
+            <li><a href="#"><img src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon06_off.png" alt="이미지6"><span>규제개혁신문고</span></a></li>
+            <li><a href="#"><img src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon07_off.png" alt="이미지7"><span>입법행정정보</span></a></li>
+            <li><a href="#"><img src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon08_off.png" alt="이미지8"><span>적극행정</span></a></li>
+            <li><a href="#"><img src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon09_off.png" alt="이미지9"><span>나만의예우</span></a></li>
+            <li><a href="#"><img src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon10_off.png" alt="이미지10"><span>제대군인 누리집자</span></a></li>
+        </ul>
+        <div>
+            <dl>
+                </dt>설정<dt>
+                <dd><a href=""><span class="img"></span><span class="txt">위탁병원명단</span><em class="on"></em></a></dd>
+                <dd><a href=""><span class="img"></span><span class="txt">2022 업무보고</span><em class="on"></em></a></dd>
+                <dd><a href=""><span class="img"></span><span class="txt">기념식참가신청</span><em class="on"></em></a></dd>
+                <dd><a href=""><span class="img"></span><span class="txt">해외송금</span><em class="on"></em></a></dd>
+                <dd><a href=""><span class="img"></span><span class="txt">국내외사적지탐방</span><em class="on"></em></a></dd>
+                <dd><a href=""><span class="img"></span><span class="txt">규제개혁신문고</span><em class="on"></em></a></dd>
+                <dd><a href=""><span class="img"></span><span class="txt">입법행정정보</span><em class="on"></em></a></dd>
+                <dd><a href=""><span class="img"></span><span class="txt">적극행정</span><em class="on"></em></a></dd>
+                <dd><a href=""><span class="img"></span><span class="txt">나만의예우</span><em class="on"></em></a></dd>
+                <dd><a href=""><span class="img"></span><span class="txt">제대군인 누리집자</span><em class="on"></em></a></dd>
+            </dl>
+            <p><div>
+                <button></button>
+                <button></button>
+            </div></p>
+        </div>
+        <h3>알림 및 소식</h3>
+        <ul>
+            <li><a href="#">보도자료</a></li>
+            <li><a href="#">공지사항</a></li>
+            <li><a href="#">보훈행사</a></li>
+            <li><a href="#">사실은이렇습니다</a></li>
+            <li><a href="#">입법·예고</a></li>
+        </ul>
+        <h4>보도자료</h4>
+        <div>
+            <div>
+                <p>
+                    <time datetime="2022-05-16">2022-05-16</time>
+                    <span class="txt">제 42주년 5.18</span>
+                </p>
+                <p class="author">기념사업괴</p>
+            </div>
+            <div>
+                <p>
+                    <time datetime="2022-05-03">2022-05-03</time>
+                    <span class="txt">제 5.18</span>
+                </p>
+                <p class="author">보훈단체협력</p>
+            </div>
+            <div>
+                <p>
+                    <time datetime="2022-05-01">2022-05-01</time>
+                    <span class="txt">제 운동 기념식 5.18</span>
+                </p>
+                <p class="author">보훈</p>
+            </div>
+            <div>
+                <p>
+                    <time datetime="2022-04-28">2022-04-28</time>
+                    <span class="txt">운동 </span>
+                </p>
+                <p class="author">보국</p>
+            </div>
+        </div>
+        <h4>공지사항</h4>
+        <div>
+            <div>
+                <p>
+                    <time datetime="2022-05-15">2022-05-15</time>
+                    <span class="txt">제 42주년 5.21</span>
+                </p>
+                <p class="author">기념사업괴</p>
+            </div>
+            <div>
+                <p>
+                    <time datetime="2022-05-13">2022-05-13</time>
+                    <span class="txt">제 5.13</span>
+                </p>
+                <p class="author">보훈단체협력</p>
+            </div>
+            <div>
+                <p>
+                    <time datetime="2022-05-12">2022-05-12</time>
+                    <span class="txt">제 운동 기념식 5.12</span>
+                </p>
+                <p class="author">보훈</p>
+            </div>
+            <div>
+                <p>
+                    <time datetime="2022-04-28">2022-04-28</time>
+                    <span class="txt">운동 </span>
+                </p>
+                <p class="author">보국</p>
+            </div>
+        </div>
+
+        <h3>국가보훈처의 새로운 소식을 만나보세요.</h3>
+        <ul>
+            <li><a href="#">보훈사진관</a></li>
+            <li><a href="#">보훈영상관</a></li>
+        </ul>
+        <h4>보훈사진관</h4>
+        <div>
+
+        </div>
+        <h3>보훈 홍보관</h3>
+        <ul>
+            <li><a href="#">나라사랑신문</a></li>
+            <li><a href="#">국가보훈처 소식지</a></li>
+            <li><a href="#">다시 웃는 제대군인</a></li>
+        </ul>
+        <h4>나라사랑신문</h4>
+        <div>
+
+        </div>
+
+        <h3>열린처장실</h3>
+        <h3>티브이(TV)나라사랑, 영상으로 소개합니다</h3>
+        <h3>알림창</h3>
+    </main>
+    <footer>
+        <h2>마무리</h2>
+        <h3>현수막(배너) 모음</h3>
+    </footer>
+</body>
+
+</html>
