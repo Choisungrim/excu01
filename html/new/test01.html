@@ -1,0 +1,334 @@
+<!-- 
+        웹 > 검색 > 정보 공유 > 도서관 or ... > 제목,목차 
+        HTML => CSS(scss) => JS       => DB 연동 => Docker => 
+        구조    색칠   Ecmascript(TypeScript -> Vue , React )     
+        회사에 지원할 때에는 전반부 or 후반부를 선택해라 (front , backend)
+        구조 태그 : section, article, nav, aside (제목 포함)
+        header와 footer는 구조태그가 아니다!
+        구조 태그 내에서 h1을 사용시 h1태그로 선언되었지만 h2로 작동한다.
+        구조태그는 서로 속할수 있다.
+        주제와 내용들이 전부 연관되어있는 부분 Section
+        주제와 연관되어지지않아도 독립적으로 적힐 수 있는 공간 Article
+        (전반의 내용이나 이후의 내용이 없어도 해당공간만으로 사용될수있는부분.)
+        각 페이지를 연결시켜주기 위한 공간 Nav (목차 O // 링크 같은것은 Nav이긴하지만 GNI가 아님.)
+        한 페이지 내에 존재하는 메뉴들, GNI
+
+        Daum 예제의 가장 큰 제목 (Daum, 뉴스, 토픽(사회), 마스크 .... )
+        가장 크게 보이는 제목부분들을 확인하고 해당문서에대한 정보를 address 태그를 이용하여 나타낸다.
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>'실외 마스크 의무 해제' 국민 생각은?..'위험' 34% vs '이득' 22%</title>
+    <style>
+        *{
+            margin-top: 15px;
+        }
+        body{
+            width : 120vw;
+            height: 250vh;
+        }
+        .container{
+            width: 80%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+        }
+        #content{
+            width: 667px;
+        }
+        .menubox{
+            display:none;
+        }
+        #Menubar:hover{
+            width: 80px;
+            height: 150px;
+        }
+        .imageside{
+            font-size: 13px;
+            line-height: 18px;
+            color: #919191;
+        }
+        li{
+            list-style: none;
+        }
+        div{
+            border-bottom: 1px solid #919191;
+        }
+        .sidebar{
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <header>
+            <a href = "https://daum.net"><img src="11.JPG">
+            </a>
+            <span>
+                <button id = "login" class="sidebar">로그인</button>
+                <button id = "Mail" class="sidebar"></button>
+                <button id = "Menubar" class="sidebar">
+                    <div class = "menucontainer">
+                        <div class = "menubox">
+                            <span>
+                                <img src="">
+                                <img src="">
+                                <img src="">
+                                <img src="">
+                            </span>
+                            <br>
+                            <span>
+                                <ul>
+                                    <li>블로그</li>
+                                    <li>티스토리</li>
+                                    <li>브런치</li>
+                                    <li>카카오TV</li>
+                                    <li>게임</li>
+                                </ul>
+                                <ul>
+                                    <li>스포츠</li>
+                                    <li>연예</li>
+                                    <li>영화</li>
+                                    <li>웹툰</li>
+                                    <li>멜론</li>
+                                </ul>
+                                <ul>
+                                    <li>어학사전</li>
+                                    <li>번역</li>
+                                    <li>단어장</li>
+                                    <li>맞춤법검사</li>
+                                    <li>백과사전</li>
+                                </ul>
+                                <ul>
+                                    <li>금융</li>
+                                    <li>부동산</li>
+                                    <li>자동차</li>
+                                    <li>메이커스</li>
+                                    <li>같이가치</li>
+                                </ul>
+                            </span>
+                        </div>
+                    </div>
+                </button>
+            </span>
+        </header>
+    </div>
+    <div>
+        <nav>
+            <a href = "https://daum.net">뉴스</a>
+            <a href = "https://daum.net">연예</a>
+            <a href = "https://daum.net">스포츠</a>
+            <input type="text" placeholder="검색">
+        </nav>
+    </div>
+    <div>
+        <nav> 
+            <a href = "https://daum.net">홈</a>
+            <a href = "https://daum.net">사회</a>
+            <a href = "https://daum.net">정치</a>
+            <a href = "https://daum.net">경제</a>
+            <a href = "https://daum.net">국제</a>
+        </nav>
+    </div>
+    <div class = "container">
+    <form action="#" method="get">
+            <section>
+        <h1>'실외 마스크 의무 해제' 국민 생각은?..'위험' 34% vs '이득' 22%</h1>
+        <p class = "imageside">강승지 기자 입력 2022. 05. 16. 10:37
+        <a>댓글  </a>
+        </p>
+        <div id = "content">
+            <span>
+                <span style="border: 1px;">
+
+                </span>
+                <ul>
+                    <li>유명순 서울대학교 교수팀, 이달 6~8일 국민 인식조사 진행</li>
+                    <li>코로나19 감염 결과 '심각' 39.8%..2020년 1월 이래 최저치</li>
+                    <img src="22.jpeg"><br>
+                    <p class = "imageside">실외 마스크 착용 의무가 해제된 2일 서울 성북동 만해공원에서 성북구청 직원이 만해 한용운 선생 동상에 씌여진 마스크를 벗겨주고 있다. 
+                    (성북구청 제공) 2022.5.2/뉴스1</p>
+                </ul>
+            </span>
+                <p>(서울=뉴스1) 강승지 기자 = 신종 코로나바이러스 감염증(코로나19)관련 방역 정책과 유행 상황에 대한 국민 인식조사 결과 코로나19 유행이 개인과 사회에 위협이 된다는 인식은 크게 약해졌지만 실외 마스크 착용 의무화 해제는 위험하다는 의견이 우세한 것으로 나타났다.</p>
+
+                <p>유명순 서울대학교 보건대학원 교수팀은 이달 6일부터 8일까지 전국 성인남녀 1018명을 대상으로 실시한 코로나19 인식 조사 결과를 16일 공개했다. 이때의 표본오차는 95% 신뢰수준에서 ±3.07%p(포인트)다.</p>
+
+                <p>코로나19에 감염될 경우 건강 영향이나 피해 등은 얼마나 심각하다고 생각하는지를 5점 척도로 묻는 말에 '심각하다'고 답한 응답자의 비율은 39.8%로 2020년 1월 조사를 시작한 이래 최저치를 찍었다. '보통이다'는 응답은 42.5%, '심각하지 않다'가 17.7%로 집계됐다.
+                코로나19 확진 경험 여부에 따라 위험 인식 수준이 달랐다.</p>
+
+                <p>확진 경험이 있는 경우 코로나19에 감염될 가능성이 '높다'는 응답(36.8%)과 감염되면 결과가 '심각하다'는 응답(33.8%)에 큰 차이가 없었다.</p>
+
+                <p>반대로 확진 경험이 없는 경우 자신의 감염 가능성이 '높다'는 응답(14.8%)은 낮았는데 감염될 경우 그 결과가 '심각하다'는 응답(42%)의 비율은 상당히 높았다.</p>
+
+                <p>코로나19를 개인과 우리 사회의 위협으로 보는 인식은 줄어들고 있었다.</p>
+
+                <p>코로나19가 내 건강과 안녕에 큰 위협이라는 인식은 지난 2020년 8월 87.8%에 달했다. 그러나 이번 조사에서는 39.8%까지 하락했다. 아울러 같은 기간을 기준으로 사회의 건강과 안녕에 큰 위협이라는 인식 역시 85.8%에서 49.9%로 떨어졌다.</p>
+
+                <p>이에 유명순 교수는 "문항의 응답 변화를 통해 이제는 코로나19가 우리 국민에 이전과 같은 중대한 위협을 의미하지 않게 됐음을 알 수 있다"고 말했다.</p>
+
+                <p>실외 마스크 착용 의무화 해제로 예상되는 이득과 위험(%) (유명순 서울대학교 교수팀 제공) © 뉴스1</p>
+
+                <p>이달 2일부로 실외 마스크 착용 의무화를 해제한 조치에 대해 국민 의견은 '위험과 이득이 비슷하거나 같다'(40.3%), '위험이 이득보다 크다'(34%), '이득이 위험보다 크다'(21.7%) 순이었다. '모르겠다'(3.9%)는 응답도 있었다.</p>
+
+                <img src="33.jpeg"><br>
+                <p class = "imageside">이득이 크다는 응답자는 야외 활동 증가, 체육 활동을 할 때 호흡이 용이해지는 등 일상생활이 긍정적으로 변할 수 있다는 데 대해 의미를 부여했다.</p>
+            </section>
+        </div>
+    </form>
+</div>
+</body>
+</html> 
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div>
+            <div class = "centerBox">
+                <h1>다음</h1>
+                <dl>
+                    <dt>유틸메뉴</dt>
+                    <dd><a href="#">로그인</a></dd>
+                    <dd><a href="#">메일</a></dd>
+                    <dd>히든메뉴(Site Map = Link 연결)
+                        <ul>
+                            <li>카페</li>
+                            <li>뉴스</li>
+                            <li>지도</li>
+                            <li>쇼핑</li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">블로그</a></li>
+                            <li><a href="#">티스토리</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">스포츠</a></li>
+                            <li><a href="#">연예</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">어학사전</a></li>
+                            <li><a href="#">번역</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">금융</a></li>
+                            <li><a href="#">부동산</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!-- 상단 바 -->
+        <div>
+            <nav>
+                <div class = "centerBox"></div>
+                    <h1>다음 서비스</h1>
+                    <ul>
+                        <li><a href = "#">뉴스</a></li>
+                        <li><a href = "#">연예</a></li>
+                        <li><a href = "#">스포츠</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="centerBox">
+                <form action="srch.jsp">
+                    <label for="srch">검색창</label>
+                    <input type="search" id = "srch" name="srch">
+                    <input type="submit" value = "검색">        
+                </form>
+            </div>
+        </div> 
+        <!-- 상단메뉴-->
+        <div>
+            <div class = "centerBox">
+                <h3>뉴스</h3>
+                <nav>
+                    <h1>뉴스 서비스</h1>
+                    <ul>
+                        <li><a href="#">홈</a></li>
+                        <li><a href="#">사회</a></li>
+                        <li><a href="#">정치</a></li>
+                        <li><a href="#">경제</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="centerBox">
+                <dl>
+                    <dt>오늘의 날씨</dt>
+                    <dd>서울</dd>
+                    <dd>경기</dd>
+                    <dd>인천</dd>
+                </dl>
+            </div>  
+        </div>
+        <!-- 하단메뉴-->
+    </header>
+    <main>
+        <div class="centerBox">
+            <section>
+                <h5>사회</h5>
+                <article>
+                    <header>
+                        <p>news1</p>
+                        <h6>실외마스크</h6>
+                        <address>
+                            <p>강승지 기자 입력 <time pubdate="2022-05-16T18:37">2022. 05. 16. 6:37</time> 댓글 123개</p>
+                            <!-- 
+                                pubdate -> 1번만 사용가능하며 데이터가 올라온 날짜를 정하는데이터이기 때문에 중요하다.
+                                ex) 인스타에 게시글을 올리는 시간 을 저장 => pubdate 
+                            -->
+                        </address>
+                        <dl>
+                            <dt>기사 유틸메뉴</dt>
+                            <dd>필터</dd>
+                            <dd>음성
+                                <ul>
+                                    <li><input type ="radio" name="g" id = "m"><label for="m">남성</label></li>
+                                    <li><input type ="radio" name="g" id = "w"><label for="w">여성</label></li>
+                                </ul>
+                            </dd>
+                            <dd>번역
+                                <ul>
+                                    <li><a href = "#">일본어</a></li>
+                                    <li><a href = "#">중국어</a></li>
+                                    <li><a href = "#">영어</a></li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </header>
+                    <p>
+                        유명순 서울대학교 교수팀, 이달 6~8일 국민 인식조사 진행
+                        코로나19 감염 결과 '심각' 39.8%..2020년 1월 이래 최저치
+                    </p>
+                    <img src="https://img4.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202205/16/NEWS1/20220516103704192jmke.jpg" alt="동상 및 여성">
+                    <p>실외 마스크 착용 의무가 해제된 2일 서울 성북동 만해공원에서 성북구청 직원이 만해 한용운 선생 동상에 씌여진 마스크를 벗겨주고 있다. (성북구청 제공) 2022.5.2/뉴스1</p>
+                    <p>(서울=뉴스1) 강승지 기자 = 신종 코로나바이러스 감염증(코로나19)관련 방역 정책과 유행 상황에 대한 국민 인식조사 결과 코로나19 유행이 개인과 사회에 위협이 된다는 인식은 크게 약해졌지만 실외 마스크 착용 의무화 해제는 위험하다는 의견이 우세한 것으로 나타났다.</p>
+                    <p>유명순 서울대학교 보건대학원 교수팀은 이달 6일부터 8일까지 전국 성인남녀 1018명을 대상으로 실시한 코로나19 인식 조사 결과를 16일 공개했다. 이때의 표본오차는 95% 신뢰수준에서 ±3.07%p(포인트)다.</p>
+                    <p>코로나19에 감염될 경우 건강 영향이나 피해 등은 얼마나 심각하다고 생각하는지를 5점 척도로 묻는 말에 '심각하다'고 답한 응답자의 비율은 39.8%로 2020년 1월 조사를 시작한 이래 최저치를 찍었다. '보통이다'는 응답은 42.5%, '심각하지 않다'가 17.7%로 집계됐다.</p>
+                    <dl>
+                        <dt>이 기사에 대해 어떻게 생각하시나요?</dt>
+                        <dd>추천해요</dd>
+                        <dd>좋아요</dd>
+                        <dd>감동이에요</dd>
+                        <dd>화나요</dd>
+                        <dd>슬퍼요</dd>
+                    </dl>
+                </article>
+            </section>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>
