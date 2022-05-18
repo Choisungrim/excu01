@@ -10,26 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/reset.css">
     <link rel="stylesheet" href="style/header.css">
-    <!-- <% include url(header_top.jsp)%> -->
-    <!-- <% include url(header_bottom.jsp)%> -->
     <style>
-        /*네비게이터*/
-        nav {}
 
-        nav>p {}
-
-        nav>ul {}
-
-        nav>ul>li {}
-
-        nav>ul>li>a {}
-
-        nav>ul>li>div.outer {}
-        nav>ul>li>div.outer>div.inner {}
-        nav>ul>li>div.outer>div.inner>div.tit {}
-        nav>ul>li>div.outer>div.inner>ul {}
     </style>
+
 </head>
+
 <body>
     <header>
         <div id="header_top">
@@ -192,6 +178,26 @@
             <p><span class="hidden">슬기로운 보훈생활 닫기</span></p>
         </article>
         <h1>메인 배너</h1>
+        <!-- Slider main container -->
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                ...
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div>
+        </div>
     </aside>
     <main>
         <h2>본문</h2>
