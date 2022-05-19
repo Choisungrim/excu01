@@ -1,0 +1,81 @@
+main {
+    margin: 0 auto;
+    width: 130rem;
+}
+
+main h3 {
+    font-size: 2.8rem;
+    line-height: 2.8rem;
+    letter-spacing: -0.0025em;
+}
+
+.swiper2 {
+    margin: 2rem 0 0 0;
+    padding-bottom: 7.2rem;
+    width: 115.5rem;
+    height: 11.4rem;
+}
+
+/* 비대면 서비스 아이콘 */
+.swiper2 .swiper-wrapper .swiper-slide>a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 16.5rem;
+    height: 11.4rem;
+    letter-spacing: -0.1rem;
+    font-size: 1.8rem;
+    color: #000;
+}
+
+.swiper.swiper2 .swiper-button {
+    border: 0.1rem solid #e3e3e3;
+    width: 4.3rem;
+    height: 4.3rem;
+    background: none;
+}
+
+.swiper2 .sbn2 {
+    left: 4.5rem;
+    top: calc(100% - 2.5rem);
+}
+
+.swiper2 .sbp2 {
+    left: 0;
+    top: calc(100% - 2.5rem);
+}
+
+.swiper2 .sbn2:before {
+    position: absolute;
+    left: calc(50% - 0.35rem);
+    top: calc(50% - 0.55rem);
+    width: 0.7rem;
+    height: 1.1rem;
+    content: "";
+    background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat -19rem -22rem;
+
+}
+
+.swiper2 .sbn2:after {
+    font-size: 0;
+    line-height: 0;
+}
+
+.swiper2 .sbp2:before {
+    position: absolute;
+    left: calc(50% - 0.35rem);
+    top: calc(50% - 0.55rem);
+    width: 0.7rem;
+    height: 1.1rem;
+    content: "";
+    background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat -17.3rem -22rem;
+    font-size: 0;
+    line-height: 0;
+}
+
+.swiper2 .sbp2:after {
+    font-size: 0;   
+    line-height: 0;
+}

@@ -1,0 +1,303 @@
+.swiper-slide {
+    position: relative;
+}
+
+.swiper-slide>img:nth-child(2) {
+    position: absolute;
+    left: 20rem;
+    top: calc(50% - 10rem);
+}
+
+.swiper-button-prev.sbp1,
+.swiper-button-next.sbn1 {
+    top: calc(50% - 6.2rem);
+    width: 8.4rem;
+    height: 12.4rem;
+
+}
+
+.swiper-button-prev.sbp1:after,
+.swiper-button-next.sbn1:after {
+    display: block;
+    width: 8.4rem;
+    height: 12.4rem;
+    font-size: 0;
+    line-height: 0;
+    color: #fff;
+    background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat 0 0;
+}
+
+
+.swiper-button-next.sbp1:after {
+    background-position: -8.4rem 0;
+}
+
+.swiper-pagination.sp1 {
+    position: relative;
+    bottom: 20rem;
+    left: calc(100% - 20rem);
+    border-radius: 2rem;
+    width: 11.6rem;
+    height: 4rem;
+    background: #fff;
+    font: 400 2rem/4rem 'Noto Sans KR', sans-serif;
+    text-align: left;
+    text-indent: 3rem;
+}
+
+.swiper-pagination:after {
+    position: absolute;
+    right: 2rem;
+    top: calc(50% - 0.55rem);
+    width: 1.1rem;
+    height: 1.1rem;
+    content: "재생 또는 멈춤";
+    font-size: 0;
+    line-height: 0;
+    background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat -22.9rem -22rem;
+    /*-245px*/
+
+    cursor: pointer;
+}
+
+.swiper-pagination:before {
+    content: "-";
+    position: absolute;
+    right: 6rem;
+    top: 0;
+    width: 1.2rem;
+    height: 100%;
+    background: #fff;
+    font: 500 2.4rem/4rem 'Noto Sans KR', sans-serif;
+    text-indent: 0;
+}
+
+.swiper-pagination.stop:after {
+    background-position: -24.5rem -22rem;
+
+}
+
+.swiper-pagination-total {
+    color: #ccc;
+}
+
+
+/*슬기로운 보훈생활 관련*/
+header+div#asideWrapper {
+    overflow: hidden;
+    padding-bottom: 10.5rem;
+}
+
+header+div>aside {
+    position: relative;
+    margin: 0 auto;
+    width: 170rem;
+    height: 68rem;
+}
+
+header+div>aside>p.openBox {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    z-index: 100;
+    right: -4.8rem;
+    top: calc(50% - 3.7rem);
+    width: 6.2rem;
+    height: 7.7rem;
+    cursor: pointer;
+}
+
+header+div>aside>p.openBox:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1.2rem;
+    height: .3rem;
+    background: #000;
+    transition: all 0.3s ease;
+}
+
+header+div>aside>p.openBox:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0.8rem;
+    width: 1.8rem;
+    height: .3rem;
+    background: #000;
+    transition: all 0.3s ease;
+}
+
+header+div>aside>p.openBox>span.arrow {
+    position: absolute;
+    left: 0;
+    top: calc(50% - 1.35rem);
+    width: 2.7rem;
+    height: 2.7rem;
+    background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat -18.7rem -1rem;
+}
+
+header+div>aside>p.openBox>span.txt {
+    margin-left: 2rem;
+    font-size: 1.8rem;
+}
+
+/* 이벤트 */
+header+div>aside>p.openBox:hover:before {
+    top: 0.4rem;
+}
+
+header+div>aside>p.openBox:hover:after {
+    top: 0.4rem;
+}
+
+
+/* 슬기로운 보훈생활 */
+
+#safeLife {
+    position: absolute;
+    z-index: 1000;
+    right: -5rem;
+    top: 0;
+    border-radius: 3rem 0 0 0;
+    width: 54rem;
+    height: 68rem;
+    background-color: #1547B9;
+
+    transition: all 0.3s ease;
+}
+
+#safeLife:after {
+    content: "";
+    position: absolute;
+    z-index: 9999;
+    right: 5rem;
+    bottom: -10.5rem;
+    width: 35.2rem;
+    height: 23rem;
+    background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat -41.8rem -2.6rem;
+}
+
+#safeLife>div {
+    padding: 6rem 4rem 0 4rem;
+    opacity: 1;
+    transition: all 0.3s ease 0.7s;
+}
+
+#safeLife>div>h1 {
+    margin: 0 auto;
+    width: 18.7rem;
+    height: 10rem;
+    background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat -18.9rem -6.9rem;
+    font-size: 0;
+    line-height: 0;
+}
+
+#safeLife>div>ul {
+    overflow: hidden;
+    margin-top: 5rem;
+}
+
+#safeLife>div>ul>li {
+    float: left;
+    width: 23rem;
+    letter-spacing: -0.1rem;
+    font: 400 1.6rem/2.4rem 'Noto Sans KR', sans-serif;
+}
+
+#safeLife>div>ul>li>a {
+    display: block;
+
+    color: #fff;
+}
+
+#safeLife>div>ul>li>a>span {}
+
+#safeLife>div>ul>li>a>span:before {
+    padding-right: 1rem;
+    content: "-";
+    opacity: 0.5;
+    transition: all .3s ease;
+}
+
+#safeLife>div>ul>li>a>span:after {
+    display: inline-block;
+    content: "";
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat -27.3rem -1rem;
+    transition: all .3s ease;
+    opacity: 0.5;
+}
+
+#safeLifeClose {
+    position: absolute;
+    left: -7.6rem;
+    top: calc(50% - 3.8rem);
+    width: 7.6rem;
+    height: 7.6rem;
+    background-color: #1547B9;
+    opacity: 1;
+    transition: all 0.3s ease 0.3s;
+}
+
+#safeLifeClose:before {
+    position: absolute;
+    left: calc(50% - 1.5rem);
+    top: calc(50% - 0.1rem);
+    width: 3rem;
+    height: 0.2rem;
+    background: #fff;
+    content: "";
+    transform: rotate(45deg);
+    /* transition: all 0.3s ease 0.6s; */
+}
+
+#safeLifeClose:after {
+    position: absolute;
+    left: calc(50% - 1.5rem);
+    top: calc(50% - 0.1rem);
+    width: 3rem;
+    height: 0.2rem;
+    background: #fff;
+    content: "";
+    transform: rotate(-45deg);
+    /* transition: all 0.3s ease 0.6s; */
+}
+
+/* 이벤트 */
+#safeLife.off {
+    right: -70rem;
+    transition: all 0.3s ease 0.6s;
+}
+
+#safeLife.off>div {
+    opacity: 0;
+    transition: all 0.3s ease 0.5s;
+}
+
+#safeLife>div>ul>li:hover>a>span:before {
+    opacity: 1;
+}
+
+#safeLife>div>ul>li:hover>a>span:after {
+    opacity: 1;
+}
+
+#safeLife.off #safeLifeClose {
+    left: 10rem;
+    opacity: 0;
+    transition: all .3s ease .3s;
+}
+
+#safeLife.off #safeLifeClose:after {
+    transform: rotate(0deg);
+    transition: all 0.3s ease;
+}
+
+#safeLife.off #safeLifeClose:before {
+    transform: rotate(0deg);
+    transition: all 0.3s ease;
+}

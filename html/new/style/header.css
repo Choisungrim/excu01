@@ -287,11 +287,11 @@ nav>ul>li>div.outer {
     display: flex;
     justify-content: center;
     position: absolute;
+    z-index: 9999;
     left: 0;
     top: 20.2rem;
     width: 100%;
     height: 0;
-
 
     font-size: 1.8rem;
     background: violet;
