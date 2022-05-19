@@ -12,16 +12,46 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.css" />
     <link rel="stylesheet" href="style/header.css">
     <link rel="stylesheet" href="style/banner.css">
+    <link rel="stylesheet" href="style/main.css">
     <style>
+        /* 비대면 서비스 설정 */
         #uncontactService{
+            margin: 2rem 0 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 13.7rem;
+            height: 18.6rem;
         }
         #uncontactService>button{
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -o-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            padding: 0;
             width: 9.5rem;
             height: 13.7rem;
+            background: 1px solid red;
+        }
+        #uncontactService>button>span.img{
+            display: block;
+            margin: 0 auto;
+
+            border-radius: 3.5rem;
+            width: 8.5rem;
+            height: 8.5rem;
+            background:#527ae2;
+            
+        }
+        #uncontactService>button>span.txt{
+            display: block;
+            margin: 0 auto;
+            border-radius: 3.5rem;
+            width: 9.5rem;
+            height: 4.3rem;
+        }
+        #uncontactService>#SettingBoard{
+            display: none;
         }
     </style>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
@@ -299,13 +329,13 @@
             <div class="swiper-button-prev sbp2 swiper-button"></div>
             <div class="swiper-button-next sbn2 swiper-button"></div>
         </div>
-        <div class = "uncontactService">
+        <div id = "uncontactService">
             <button>
                 <span class = "hidden">비대면 서비스 개인설정</span>
-                <span><img></span>
-                <span class=""></span>
+                <span class = "img"></span>
+                <span class = "txt">설정하기</span>
             </button>
-            <div id = "SettingBoard"></div>
+        <div id = "SettingBoard">
             <dl>
                 <dt>설정</dt>
                 <dd><a href=""><span class="img"></span><span class="txt">2022업무보고</span><em class="on"></em></a></dd>
@@ -320,6 +350,7 @@
                 <dd><a href=""><span class="img"></span><span class="txt">나만의 예우</span><em class="on"></em></a></dd>
                 <dd><a href=""><span class="img"></span><span class="txt">제대군인 누리잡지</span><em class="on"></em></a></dd>
             </dl>
+        </div>
             <p><button></button><button></button></p>
         </div>
         <h3>알림 및 소식</h3>
