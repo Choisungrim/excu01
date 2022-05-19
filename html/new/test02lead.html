@@ -14,45 +14,90 @@
     <link rel="stylesheet" href="style/banner.css">
     <link rel="stylesheet" href="style/main.css">
     <style>
-        /* 비대면 서비스 설정 */
-        #uncontactService{
-            margin: 2rem 0 0 0;
+        /*비대면 서비스 설정*/
+        #uncontactService {
+
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 18.6rem;
         }
-        #uncontactService>button{
+
+        #uncontactService>button {
+            position: relative;
+            top: 0;
             -webkit-appearance: none;
             -moz-appearance: none;
             -o-appearance: none;
             -ms-appearance: none;
             appearance: none;
+            
             padding: 0;
+            
             width: 9.5rem;
             height: 13.7rem;
-            background: 1px solid red;
-        }
-        #uncontactService>button>span.img{
-            display: block;
-            margin: 0 auto;
+            cursor: pointer;
+            border: 0;
+            background: none;
+            transition: all .4s ease;
+            transform: translateY(0);
 
+        }
+        #uncontactService>button>span.img {
+            position: relative;
+            display: block;
             border-radius: 3.5rem;
+
+            margin: 0 auto;
             width: 8.5rem;
             height: 8.5rem;
-            background:#527ae2;
+
+            background: #527ae2 linear-gradient(90deg,#1341b4,#1341b4) no-repeat 0 0/8.5rem 8.5rem;
+            transition: all .4s ease;
+        }
+
+        #uncontactService>button>span.img:after {
+            position: absolute;
+            left: calc(50% - 1.85rem);
+            top: calc(50% - 1.8rem);
+            content: "";
+            width: 3.7rem;
+            height: 3.6rem;
+            background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat -1rem -19.8rem;
             
         }
-        #uncontactService>button>span.txt{
+
+        #uncontactService>button>span.txt {
             display: block;
-            margin: 0 auto;
-            border-radius: 3.5rem;
+
+            margin: 0.4rem auto 0 auto;
             width: 9.5rem;
             height: 4.3rem;
+            background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat -6.3rem -19.9rem;
+            font-size: 0;
+            line-height: 0;
         }
-        #uncontactService>#SettingBoard{
-            display: none;
+
+        #uncontactService>#blackCurtain {
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: calc(100vw - (100vw - 100%));
+            height: calc(100vh);
+            background: rgba(0,0,0,.5);
+
         }
+        /* 이벤트 */
+        #uncontactService>button:hover{
+            transform: translateY(-1rem);
+            
+        }
+        #uncontactService>button:hover>span.img{
+            background-position: 8.5rem 0;
+
+        }
+
     </style>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -292,67 +337,78 @@
     <main>
         <h2 class="hidden">본문</h2>
         <h3>내가 만드는 비대면 서비스, 바로 설정해보세요.</h3>
-        <div class="swiper swiper2">
-            <ul class="swiper-wrapper">
-                <li class="swiper-slide"><a href="#"><img
-                            src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon01_off.png"
-                            alt="이미지1"><span>2022업무보고</span></a></li>
-                <li class="swiper-slide"><a href="#"><img
-                            src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon02_off.png"
-                            alt="이미지2"><span>위탁병원 명단</span></a></li>
-                <li class="swiper-slide"><a href="#"><img
-                            src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon03_off.png"
-                            alt="이미지3"><span>기념식 참가신청</span></a></li>
-                <li class="swiper-slide"><a href="#"><img
-                            src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon04_off.png"
-                            alt="이미지4"><span>해외송금 <br> 신상신고 안내</span></a></li>
-                <li class="swiper-slide"><a href="#"><img
-                            src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon05_off.png"
-                            alt="이미지5"><span>국내외사적지탐방</span></a></li>
-                <li class="swiper-slide"><a href="#"><img
-                            src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon06_off.png"
-                            alt="이미지6"><span>규제개혁 신문고</span></a></li>
-                <li class="swiper-slide"><a href="#"><img
-                            src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon07_off.png"
-                            alt="이미지7"><span>입법 행정정보</span></a></li>
-                <li class="swiper-slide"><a href="#"><img
-                            src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon08_off.png"
-                            alt="이미지8"><span>적극행정 울림</span></a></li>
-                <li class="swiper-slide"><a href="#"><img
-                            src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon09_off.png"
-                            alt="이미지9"><span>나만의 예우</span></a></li>
-                <li class="swiper-slide"><a href="#"><img
-                            src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon10_off.png"
-                            alt="이미지10"><span>제대군인 누리잡지</span></a></li>
-            </ul>
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev sbp2 swiper-button"></div>
-            <div class="swiper-button-next sbn2 swiper-button"></div>
-        </div>
-        <div id = "uncontactService">
+        <div id="uncontactService">
+            <div class="swiper swiper2">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide"><a href="#"><img
+                                src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon01_off.png"
+                                alt="이미지1"><span>2022업무보고</span></a></li>
+                    <li class="swiper-slide"><a href="#"><img
+                                src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon02_off.png"
+                                alt="이미지2"><span>위탁병원 명단</span></a></li>
+                    <li class="swiper-slide"><a href="#"><img
+                                src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon03_off.png"
+                                alt="이미지3"><span>기념식 참가신청</span></a></li>
+                    <li class="swiper-slide"><a href="#"><img
+                                src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon04_off.png"
+                                alt="이미지4"><span>해외송금 <br> 신상신고 안내</span></a></li>
+                    <li class="swiper-slide"><a href="#"><img
+                                src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon05_off.png"
+                                alt="이미지5"><span>국내외사적지탐방</span></a></li>
+                    <li class="swiper-slide"><a href="#"><img
+                                src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon06_off.png"
+                                alt="이미지6"><span>규제개혁 신문고</span></a></li>
+                    <li class="swiper-slide"><a href="#"><img
+                                src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon07_off.png"
+                                alt="이미지7"><span>입법 행정정보</span></a></li>
+                    <li class="swiper-slide"><a href="#"><img
+                                src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon08_off.png"
+                                alt="이미지8"><span>적극행정 울림</span></a></li>
+                    <li class="swiper-slide"><a href="#"><img
+                                src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon09_off.png"
+                                alt="이미지9"><span>나만의 예우</span></a></li>
+                    <li class="swiper-slide"><a href="#"><img
+                                src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon10_off.png"
+                                alt="이미지10"><span>제대군인 누리잡지</span></a></li>
+                </ul>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev sbp2 swiper-button"></div>
+                <div class="swiper-button-next sbn2 swiper-button"></div>
+            </div>
             <button>
-                <span class = "hidden">비대면 서비스 개인설정</span>
-                <span class = "img"></span>
-                <span class = "txt">설정하기</span>
+                <span class="hidden">비대면 서비스 개인설정</span>
+                <span class="img"></span>
+                <span class="txt">설정하기</span>
             </button>
-        <div id = "SettingBoard">
-            <dl>
-                <dt>설정</dt>
-                <dd><a href=""><span class="img"></span><span class="txt">2022업무보고</span><em class="on"></em></a></dd>
-                <dd><a href=""><span class="img"></span><span class="txt">위탁병원 명단</span><em class="on"></em></a></dd>
-                <dd><a href=""><span class="img"></span><span class="txt">기념식 참가신청</span><em class="on"></em></a></dd>
-                <dd><a href=""><span class="img"></span><span class="txt">해외송금 신상신고 안내</span><em class="on"></em></a>
-                </dd>
-                <dd><a href=""><span class="img"></span><span class="txt">국내외사적지탐방</span><em class="on"></em></a></dd>
-                <dd><a href=""><span class="img"></span><span class="txt">규제개혁 신문고</span><em class="on"></em></a></dd>
-                <dd><a href=""><span class="img"></span><span class="txt">입법 행정정보</span><em class="on"></em></a></dd>
-                <dd><a href=""><span class="img"></span><span class="txt">적극행정 울림</span><em class="on"></em></a></dd>
-                <dd><a href=""><span class="img"></span><span class="txt">나만의 예우</span><em class="on"></em></a></dd>
-                <dd><a href=""><span class="img"></span><span class="txt">제대군인 누리잡지</span><em class="on"></em></a></dd>
-            </dl>
-        </div>
-            <p><button></button><button></button></p>
-        </div>
+            <div id = "blackCurtain">
+                <div id="settingBoard">
+                    <dl>
+                        <dt>설정</dt>
+                        <dd><a href=""><span class="img"></span><span class="txt">2022업무보고</span><em class="on"></em></a>
+                        </dd>
+                        <dd><a href=""><span class="img"></span><span class="txt">위탁병원 명단</span><em class="on"></em></a>
+                        </dd>
+                        <dd><a href=""><span class="img"></span><span class="txt">기념식 참가신청</span><em class="on"></em></a>
+                        </dd>
+                        <dd><a href=""><span class="img"></span><span class="txt">해외송금 신상신고 안내</span><em
+                                    class="on"></em></a>
+                        </dd>
+                        <dd><a href=""><span class="img"></span><span class="txt">국내외사적지탐방</span><em class="on"></em></a>
+                        </dd>
+                        <dd><a href=""><span class="img"></span><span class="txt">규제개혁 신문고</span><em class="on"></em></a>
+                        </dd>
+                        <dd><a href=""><span class="img"></span><span class="txt">입법 행정정보</span><em class="on"></em></a>
+                        </dd>
+                        <dd><a href=""><span class="img"></span><span class="txt">적극행정 울림</span><em class="on"></em></a>
+                        </dd>
+                        <dd><a href=""><span class="img"></span><span class="txt">나만의 예우</span><em class="on"></em></a></dd>
+                        <dd><a href=""><span class="img"></span><span class="txt">제대군인 누리잡지</span><em class="on"></em></a>
+                        </dd>
+                    </dl>
+                    <p><button></button><button></button></p>
+                </div>
+            </div>      
+        </div><!-- #uncontactService End -->
         <h3>알림 및 소식</h3>
         <ul>
             <li><a href="#">보도자료</a></li>
@@ -386,7 +442,8 @@
         <h4>공지사항</h4>
         <div>
             <div>
-                <p><time datatime="2022-05-17">2022-05-17</time><span class="txt">제대군인 창업상담사(공무직근로자) 채용 재공고</span></p>
+                <p><time datatime="2022-05-17">2022-05-17</time><span class="txt">제대군인 창업상담사(공무직근로자) 채용 재공고</span>
+                </p>
                 <p class="author">...기념사업과</p>
             </div>
             <div>
@@ -398,7 +455,8 @@
                 <p class="author">국립대한민국임시정부기념관</p>
             </div>
             <div>
-                <p><time datatime="2022-05-10">2022-05-10</time><span class="txt">국가보훈처 행정5급(일반임기제, 법무행정) 채용 최종합격자 공고
+                <p><time datatime="2022-05-10">2022-05-10</time><span class="txt">국가보훈처 행정5급(일반임기제, 법무행정) 채용 최종합격자
+                        공고
                     </span></p>
                 <p class="author">운영지원과(인사팀)</p>
             </div>
@@ -411,11 +469,13 @@
                 <p><time datatime="2022-05-16">2022-05-16</time><span class="txt">2022년 호국보훈의 달 현수막(가로)</span></p>
             </div>
             <div>
-                <p><time datatime="2022-05-16">2022-05-16</time><span class="txt">2022년 호국보훈의 달 가로등현수기(60x180cm)</span>
+                <p><time datatime="2022-05-16">2022-05-16</time><span class="txt">2022년 호국보훈의 달
+                        가로등현수기(60x180cm)</span>
                 </p>
             </div>
             <div>
-                <p><time datatime="2022-05-12">2022-05-12</time><span class="txt">2022년 호국보훈의 달 현수막(대형, 950x2000)</span>
+                <p><time datatime="2022-05-12">2022-05-12</time><span class="txt">2022년 호국보훈의 달 현수막(대형,
+                        950x2000)</span>
                 </p>
             </div>
             <div>
@@ -437,12 +497,14 @@
                 <p class="author">생활안정과</p>
             </div>
             <div>
-                <p><time datatime="2022-02-14">2022-02-14</time><span class="txt">대한민국임시정부기념관 초대관장 채용은 정부의 공식적인 절차를 통해
+                <p><time datatime="2022-02-14">2022-02-14</time><span class="txt">대한민국임시정부기념관 초대관장 채용은 정부의 공식적인 절차를
+                        통해
                         진</span></p>
                 <p class="author">운영지원과(인사팀)</p>
             </div>
             <div>
-                <p><time datatime="2022-01-10">2022-01-10</time><span class="txt">주택특별공급 관련 시스템을 보완하여 추후 유사한 사례가 발생하지 않도
+                <p><time datatime="2022-01-10">2022-01-10</time><span class="txt">주택특별공급 관련 시스템을 보완하여 추후 유사한 사례가
+                        발생하지 않도
                     </span></p>
                 <p class="author">생활안정과</p>
             </div>
@@ -462,7 +524,8 @@
                 <p><time datatime="2022-04-12">2022-04-12</time><span class="txt">「재해위로금 지급규정」 일부개정안 행정예고</span></p>
             </div>
             <div>
-                <p><time datatime="2022-04-10">2022-04-10</time><span class="txt">「제대군인지원에 관한 법률 시행령」 일부개정령안 입법예고</span>
+                <p><time datatime="2022-04-10">2022-04-10</time><span class="txt">「제대군인지원에 관한 법률 시행령」 일부개정령안
+                        입법예고</span>
                 </p>
             </div>
         </div>
