@@ -25,24 +25,24 @@
 
         #uncontactService>button {
             position: relative;
-            top: 0;
+
             -webkit-appearance: none;
             -moz-appearance: none;
             -o-appearance: none;
             -ms-appearance: none;
             appearance: none;
-            
+
             padding: 0;
-            
+            border: 0 none;
             width: 9.5rem;
             height: 13.7rem;
-            cursor: pointer;
-            border: 0;
+
             background: none;
+            cursor: pointer;
             transition: all .4s ease;
             transform: translateY(0);
-
         }
+
         #uncontactService>button>span.img {
             position: relative;
             display: block;
@@ -52,7 +52,7 @@
             width: 8.5rem;
             height: 8.5rem;
 
-            background: #527ae2 linear-gradient(90deg,#1341b4,#1341b4) no-repeat 0 0/8.5rem 8.5rem;
+            background: #3364e0 linear-gradient(90deg, #1341b4, #1341b4) no-repeat 0 0/8.5rem 8.5rem;
             transition: all .4s ease;
         }
 
@@ -64,7 +64,6 @@
             width: 3.7rem;
             height: 3.6rem;
             background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat -1rem -19.8rem;
-            
         }
 
         #uncontactService>button>span.txt {
@@ -74,30 +73,220 @@
             width: 9.5rem;
             height: 4.3rem;
             background: url(https://www.mpva.go.kr/site/mpva/images/main/main_sprite.png) no-repeat -6.3rem -19.9rem;
+
             font-size: 0;
             line-height: 0;
         }
 
         #uncontactService>#blackCurtain {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            visibility: visible;
             position: fixed;
             z-index: 9999;
             left: 0;
             top: 0;
             width: calc(100vw - (100vw - 100%));
             height: calc(100vh);
-            background: rgba(0,0,0,.5);
+            background: rgba(0, 0, 0, .5);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard {
+            position: relative;
+            box-sizing: border-box;
+            border-radius: 1rem;
+            padding: 5rem 6rem 0 6rem;
+            width: 130rem;
+            height: 90.4rem;
+            background: #fff;
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>h4 {
+            margin-bottom: 2.5rem;
+            font-size: 26px;
+            text-align: center;
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl {
+            display: grid;
+            grid-auto-rows: repeat(auto-fill, minmax(15rem, 15rem));
+            grid-template-columns: repeat(auto-fill, minmax(15rem, 15rem));
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dt {}
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd {
+            position: relative;
+            flex: 0 0 13rem;
+            margin: 1rem;
 
         }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd>input[type ^="c"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            visibility: visible;
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd>label {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            height: 13rem;
+            border-radius: 3.8rem;
+            background: yellow;
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd>label>span.img {
+            flex: 0 0 6.6rem;
+            width: 6.6rem;
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(1)>label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon01_gray.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(2)>label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon02_gray.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(3)>label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon03_gray.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(4)>label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon04_gray.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(5)>label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon05_gray.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(6)>label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon06_gray.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(7)>label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon07_gray.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(8)>label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon08_gray.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(9)>label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon09_gray.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(10)>label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon10_gray.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd>label>span.txt {
+            flex: 0 0 3.6rem;
+            width: 12.8rem;
+            text-align: center;
+            font: 1.5rem/1.8rem 'Noto Sans KR', sans-serif;
+            opacity: 0.5;
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd>label>em {
+            position: absolute;
+            right: -0.6rem;
+            top: -0.6rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: none;
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>p.btnBox {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            border-top: 0.1rem dotted #000;
+            padding-top: 5rem;
+            width: 100%;
+            height: 10.4rem;
+            text-align: center;
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>p.btnBox>button#btnSave {
+            border-radius: 3.2rem;
+            width: 34rem;
+            height: 6.4rem;
+            font-size: 1.8rem;
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>p.btnBox>button#btnReset {
+            border-radius: 3.2rem;
+            width: 16.4rem;
+            height: 6.4rem;
+            font-size: 1.8rem;
+        }
+
         /* 이벤트 */
-        #uncontactService>button:hover{
+        #uncontactService>button:hover {
             transform: translateY(-1rem);
-            
         }
-        #uncontactService>button:hover>span.img{
+
+        #uncontactService>button:hover>span.img {
             background-position: 8.5rem 0;
-
         }
 
+        #settingBoard>dl>dd>input:checked+label {
+            background: violet;
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(1)>input:checked+label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon10_off.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(2)>input:checked+label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon10_off.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(3)>input:checked+label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon10_off.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(4)>input:checked+label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon10_off.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(5)>input:checked+label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon10_off.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(6)>input:checked+label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon10_off.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(7)>input:checked+label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon10_off.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(8)>input:checked+label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon10_off.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(9)>input:checked+label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon10_off.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd:nth-of-type(10)>input:checked+label>span.img {
+            background-image: url(https://www.mpva.go.kr/site/mpva/images/main/setting_icon/customize_icon10_off.png);
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd>input:checked+label>span.txt {
+            opacity: 1;
+        }
+
+        #uncontactService>#blackCurtain>#settingBoard>dl>dd>input:checked+label>em.on {
+            background: url('https://www.mpva.go.kr/site/mpva/images/main/customize_label_after.png') no-repeat 0 0;
+        }
     </style>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -126,6 +315,19 @@
 
             $(".openBox").click(function () {
                 $("#safeLife").removeClass("off");
+            });
+
+            /* setting 이벤트 */
+            //label 클릭 >> input[type="checkbox"] 체크
+            //$().prop("checked") -> return boolean, vs $().attr()
+            //$(input[type="checkbox"]).is(":checked") -> return boolean
+            //1. 체크한 input의 id를 getter
+            //2. swiper의 각 아이템들에게 input의 id와 같은 이름을 만든다.
+            //   (data를 사용하거나 class속성을 사용해서 같은 명을 만든다.)
+            //3. 체크한 요소의 것이 swiper에서 요소는 display:none;사라지게 만듦
+
+            $("#settingBoard label").click(function () {
+                !$(this).prev().prop("checked");
             });
         });
     </script>
@@ -380,34 +582,55 @@
                 <span class="img"></span>
                 <span class="txt">설정하기</span>
             </button>
-            <div id = "blackCurtain">
+            <div id="blackCurtain">
                 <div id="settingBoard">
+                    <h4>내가 만드는 비대면 서비스, 바로 설정해보세요.</h4>
                     <dl>
-                        <dt>설정</dt>
-                        <dd><a href=""><span class="img"></span><span class="txt">2022업무보고</span><em class="on"></em></a>
+
+                        <dt class="hidden">설정 직접합기</dt>
+                        <dd><input type="checkbox" id="icon0" checked><label for="icon0"><span class="img"></span><span
+                                    class="txt">2022업무보고</span><em class="on"></em></label>
                         </dd>
-                        <dd><a href=""><span class="img"></span><span class="txt">위탁병원 명단</span><em class="on"></em></a>
+                        <dd><input type="checkbox" id="icon1" checked><label for="icon1"><span class="img"></span><span
+                                    class="txt">위탁병원
+                                    명단</span><em class="on"></em></label>
                         </dd>
-                        <dd><a href=""><span class="img"></span><span class="txt">기념식 참가신청</span><em class="on"></em></a>
+                        <dd><input type="checkbox" id="icon2" checked><label for="icon2"><span class="img"></span><span
+                                    class="txt">기념식
+                                    참가신청</span><em class="on"></em></label>
                         </dd>
-                        <dd><a href=""><span class="img"></span><span class="txt">해외송금 신상신고 안내</span><em
-                                    class="on"></em></a>
+                        <dd><input type="checkbox" id="icon3" checked><label for="icon3"><span class="img"></span><span
+                                    class="txt">해외송금 신상신고
+                                    안내</span><em class="on"></em></label>
                         </dd>
-                        <dd><a href=""><span class="img"></span><span class="txt">국내외사적지탐방</span><em class="on"></em></a>
+                        <dd><input type="checkbox" id="icon4" checked><label for="icon4"><span class="img"></span><span
+                                    class="txt">국내외사적지탐방</span><em class="on"></em></label>
                         </dd>
-                        <dd><a href=""><span class="img"></span><span class="txt">규제개혁 신문고</span><em class="on"></em></a>
+                        <dd><input type="checkbox" id="icon5" checked><label for="icon5"><span class="img"></span><span
+                                    class="txt">규제개혁
+                                    신문고</span><em class="on"></em></label>
                         </dd>
-                        <dd><a href=""><span class="img"></span><span class="txt">입법 행정정보</span><em class="on"></em></a>
+                        <dd><input type="checkbox" id="icon6" checked><label for="icon6"><span class="img"></span><span
+                                    class="txt">입법
+                                    행정정보</span><em class="on"></em></label>
                         </dd>
-                        <dd><a href=""><span class="img"></span><span class="txt">적극행정 울림</span><em class="on"></em></a>
+                        <dd><input type="checkbox" id="icon7" checked><label for="icon7"><span class="img"></span><span
+                                    class="txt">적극행정
+                                    울림</span><em class="on"></em></label>
                         </dd>
-                        <dd><a href=""><span class="img"></span><span class="txt">나만의 예우</span><em class="on"></em></a></dd>
-                        <dd><a href=""><span class="img"></span><span class="txt">제대군인 누리잡지</span><em class="on"></em></a>
+                        <dd><input type="checkbox" id="icon8" checked><label for="icon8"><span class="img"></span><span
+                                    class="txt">나만의
+                                    예우</span><em class="on"></em></label>
                         </dd>
+                        <dd><input type="checkbox" id="icon9" checked><label for="icon9"><span class="img"></span><span
+                                    class="txt">제대군인
+                                    누리잡지</span><em class="on"></em></label>
+                        </dd>
+
                     </dl>
-                    <p><button></button><button></button></p>
+                    <p class="btnBox"><button id="btnSave">저장</button><button id="btnReset">초기화</button></p>
                 </div>
-            </div>      
+            </div>
         </div><!-- #uncontactService End -->
         <h3>알림 및 소식</h3>
         <ul>
