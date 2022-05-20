@@ -82,7 +82,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            visibility: visible;
+            visibility: hidden;
             position: fixed;
             z-index: 9999;
             left: 0;
@@ -127,7 +127,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            visibility: visible;
+            visibility: hidden;
         }
 
         #uncontactService>#blackCurtain>#settingBoard>dl>dd>label {
@@ -225,6 +225,14 @@
             width: 16.4rem;
             height: 6.4rem;
             font-size: 1.8rem;
+        }
+        #uncontactService>#blackCurtain>#settingBoard>button.closeSetting{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 4rem;
+            height: 4rem;
+            background: #1341b4;
         }
 
         /* 이벤트 */
@@ -325,10 +333,65 @@
             //2. swiper의 각 아이템들에게 input의 id와 같은 이름을 만든다.
             //   (data를 사용하거나 class속성을 사용해서 같은 명을 만든다.)
             //3. 체크한 요소의 것이 swiper에서 요소는 display:none;사라지게 만듦
+            let settingIcons =["icon0","icon1","icon2","icon3","icon4","icon5","icon6","icon7","icon8","icon9"];
 
-            $("#settingBoard label").click(function () {
-                !$(this).prev().prop("checked");
+            $("#settingBoard dl>dd").click(function(e){
+                e.preventDefault(); // 이벤트 버블링 return false; 과 유사
+                //하나의 이벤트를 두가지요소가 동시에 실행하게 되는것을 막기위함
+                //총 두번하게되는 것
+
+                /* 이미지 css클래스 이벤트 
+                    객체 메소드를 사용할 수 없다. 
+                    호이스팅이 되지않는다.(context 객체 /=/ this)
+                    javascript는 node기반 
+                    css 도 텍스트도 node이다.
+                    html이 가장 빠르게 읽히고 javascript가 그다음
+                    css가 가장느리다 (ref하는 주체이기때문에 더느리고 그래서 
+                    css밑에 javascript를 둔다.)
+                    js 엔진은 heap (객체) callstack (함수) == 이벤트기반 언어
+                    callstack(이벤트를 관리하는 메모리), web api 와 같이돌고  
+                    비동기 promise settimeout ajax 등 비동기는 web API임.
+                    callqueue(Task)
+                    eventloop
+
+                    html반응보다 느려서 그 이전에 기억하는 것을 리턴한다.
+                    let bool = !$(this).prev().prop("checked");
+                */
+                let bool = !$(this).children("input[type=checkbox]").prop("checked");
+                /* let _id = $(this).prev().attr("id"); */
+                // $(this) dd의 순번지 갖고오기
+                let idx = $("#settingBoard dl>dd").index(this);
+                saveBtn(idx)
+                //저장버튼을 클릭했을 때 버튼으로 이동..
+              
+                //prop(속성); 속성의 값을 실시간으로 return -->getter
+                //prop(속성,true); 속성의 값을 세팅 --> setter
+                //ex) $("h1").css('color') -> getter
+                //ex) $("h1").css('color','red') ->setter
+
+                $(this).children("input[type=checkbox]").prop("checked",bool);
+                 // 현재 버그로 2번 뜨는 이벤트를 막기위해 return 값 부여
+                /* setTimeout(() => {
+                    let bool = !$(this).prev().prop("checked");    
+                }, 0); */
             });
+
+
+            $(".closeSetting").click(function () {
+                $("#blackCurtain").css("visibility","hidden");
+                $("body").css("overflow","visible");
+              })
+            $(".openSetting").click(function() {
+                $("#blackCurtain").css("visibility","visible")
+                $("body").css("overflow","hidden");
+            })
+            function saveBtn(idx) {
+                $("#btnSave").click(function(){
+                let _id = settingIcons[idx];
+
+                $(".swiper-wrapper2").children("li."+_id).css("display","none")
+            })
+            }
         });
     </script>
 </head>
@@ -541,35 +604,35 @@
         <h3>내가 만드는 비대면 서비스, 바로 설정해보세요.</h3>
         <div id="uncontactService">
             <div class="swiper swiper2">
-                <ul class="swiper-wrapper">
-                    <li class="swiper-slide"><a href="#"><img
+                <ul class="swiper-wrapper swiper-wrapper2">
+                    <li class="swiper-slide icon0" ><a href="#"><img
                                 src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon01_off.png"
                                 alt="이미지1"><span>2022업무보고</span></a></li>
-                    <li class="swiper-slide"><a href="#"><img
+                    <li class="swiper-slide icon1"><a href="#"><img
                                 src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon02_off.png"
                                 alt="이미지2"><span>위탁병원 명단</span></a></li>
-                    <li class="swiper-slide"><a href="#"><img
+                    <li class="swiper-slide icon2"><a href="#"><img
                                 src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon03_off.png"
                                 alt="이미지3"><span>기념식 참가신청</span></a></li>
-                    <li class="swiper-slide"><a href="#"><img
+                    <li class="swiper-slide icon3"><a href="#"><img
                                 src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon04_off.png"
                                 alt="이미지4"><span>해외송금 <br> 신상신고 안내</span></a></li>
-                    <li class="swiper-slide"><a href="#"><img
+                    <li class="swiper-slide icon4"><a href="#"><img
                                 src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon05_off.png"
                                 alt="이미지5"><span>국내외사적지탐방</span></a></li>
-                    <li class="swiper-slide"><a href="#"><img
+                    <li class="swiper-slide icon5"><a href="#"><img
                                 src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon06_off.png"
                                 alt="이미지6"><span>규제개혁 신문고</span></a></li>
-                    <li class="swiper-slide"><a href="#"><img
+                    <li class="swiper-slide icon6"><a href="#"><img
                                 src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon07_off.png"
                                 alt="이미지7"><span>입법 행정정보</span></a></li>
-                    <li class="swiper-slide"><a href="#"><img
+                    <li class="swiper-slide icon7"><a href="#"><img
                                 src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon08_off.png"
                                 alt="이미지8"><span>적극행정 울림</span></a></li>
-                    <li class="swiper-slide"><a href="#"><img
+                    <li class="swiper-slide icon8"><a href="#"><img
                                 src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon09_off.png"
                                 alt="이미지9"><span>나만의 예우</span></a></li>
-                    <li class="swiper-slide"><a href="#"><img
+                    <li class="swiper-slide icon9"><a href="#"><img
                                 src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon10_off.png"
                                 alt="이미지10"><span>제대군인 누리잡지</span></a></li>
                 </ul>
@@ -577,7 +640,7 @@
                 <div class="swiper-button-prev sbp2 swiper-button"></div>
                 <div class="swiper-button-next sbn2 swiper-button"></div>
             </div>
-            <button>
+            <button class = "openSetting">
                 <span class="hidden">비대면 서비스 개인설정</span>
                 <span class="img"></span>
                 <span class="txt">설정하기</span>
@@ -629,6 +692,8 @@
 
                     </dl>
                     <p class="btnBox"><button id="btnSave">저장</button><button id="btnReset">초기화</button></p>
+                    <button class = "closeSetting"><span class="hidden">닫기</span></button>
+
                 </div>
             </div>
         </div><!-- #uncontactService End -->
