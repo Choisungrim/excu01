@@ -226,7 +226,8 @@
             height: 6.4rem;
             font-size: 1.8rem;
         }
-        #uncontactService>#blackCurtain>#settingBoard>button.closeSetting{
+
+        #uncontactService>#blackCurtain>#settingBoard>button.closeSetting {
             position: absolute;
             right: 0;
             top: 0;
@@ -234,6 +235,7 @@
             height: 4rem;
             background: #1341b4;
         }
+
 
         /* 이벤트 */
         #uncontactService>button:hover {
@@ -333,65 +335,96 @@
             //2. swiper의 각 아이템들에게 input의 id와 같은 이름을 만든다.
             //   (data를 사용하거나 class속성을 사용해서 같은 명을 만든다.)
             //3. 체크한 요소의 것이 swiper에서 요소는 display:none;사라지게 만듦
-            let settingIcons =["icon0","icon1","icon2","icon3","icon4","icon5","icon6","icon7","icon8","icon9"];
+            let settingIcons = {
+                "icon0":true,
+                "icon1":true,
+                "icon2":true,
+                "icon3":true,
+                "icon4":true,
+                "icon5":true,
+                "icon6":true,
+                "icon7":true,
+                "icon8":true,
+                "icon9":true,
+            }
+            $("#settingBoard dl>dd").click(function (e) {
+                e.preventDefault(); //이벤트 버블링 return false를 지정하는 것과 비슷
+               
+                let _input = $(this).children("input[type=checkbox]");
 
-            $("#settingBoard dl>dd").click(function(e){
-                e.preventDefault(); // 이벤트 버블링 return false; 과 유사
-                //하나의 이벤트를 두가지요소가 동시에 실행하게 되는것을 막기위함
-                //총 두번하게되는 것
+                //html반응보다 느려서 그 이전에 기억하고 있는 것을 return한다.
+                //prop(속성); 속성의 값을 실시간으로return ---> getter
+                //prop(속성,true); 속성의 값을 세팅 ----> setter
+                //$("h1").css('color') ---> getter
+                //$("h1").css('color','red') ---> setter
 
-                /* 이미지 css클래스 이벤트 
-                    객체 메소드를 사용할 수 없다. 
-                    호이스팅이 되지않는다.(context 객체 /=/ this)
-                    javascript는 node기반 
-                    css 도 텍스트도 node이다.
-                    html이 가장 빠르게 읽히고 javascript가 그다음
-                    css가 가장느리다 (ref하는 주체이기때문에 더느리고 그래서 
-                    css밑에 javascript를 둔다.)
-                    js 엔진은 heap (객체) callstack (함수) == 이벤트기반 언어
-                    callstack(이벤트를 관리하는 메모리), web api 와 같이돌고  
-                    비동기 promise settimeout ajax 등 비동기는 web API임.
-                    callqueue(Task)
-                    eventloop
+                let bool = !_input.prop("checked");
 
-                    html반응보다 느려서 그 이전에 기억하는 것을 리턴한다.
-                    let bool = !$(this).prev().prop("checked");
-                */
-                let bool = !$(this).children("input[type=checkbox]").prop("checked");
-                /* let _id = $(this).prev().attr("id"); */
-                // $(this) dd의 순번지 갖고오기
-                let idx = $("#settingBoard dl>dd").index(this);
-                saveBtn(idx)
-                //저장버튼을 클릭했을 때 버튼으로 이동..
-              
-                //prop(속성); 속성의 값을 실시간으로 return -->getter
-                //prop(속성,true); 속성의 값을 세팅 --> setter
-                //ex) $("h1").css('color') -> getter
-                //ex) $("h1").css('color','red') ->setter
+                console.log(bool);
 
-                $(this).children("input[type=checkbox]").prop("checked",bool);
-                 // 현재 버그로 2번 뜨는 이벤트를 막기위해 return 값 부여
-                /* setTimeout(() => {
-                    let bool = !$(this).prev().prop("checked");    
-                }, 0); */
+                //클릭했을 때 바로 아이콘들이 사라지지 않는다. >> 저장버튼을 클릭해야 비로소 사라진다.
+                //저장 버튼을 클릭할 때까지 무엇을 클릭했는지 기억해야 한다. >> 이름이 필요 >> input
+                //label의 해당input의 아이디 갖고오기 #1
+                let _id = _input.attr("id");
+               
+                //해당input과 관련된 객체 bool값 클릭에 따라 변경하기 #2
+                settingIcons[_id] = bool;
+
+                //#3은 저장 버튼으로 이동
+
+                //실제로는 label을 클릭하면, input 체크박스가 체크가 되거나 풀려야 하지만 e.preventDefault()에 의해서
+                //이벤트 두번 생성되는(dd요소와 label클릭)캡쳐링, 버블링을 막았기 때문에 label클릭이 되지 않는다.
+                //label을 클릭하듯이 input[type=checkbox]이벤트를 작동시킨다.  
+                $(this).children("input[type=checkbox]").prop("checked", bool);
+
+                // setTimeout(() => {
+                //     let bool = !$(this).prev().prop("checked");
+                //     alert(bool);
+                // }, 0);
+
+            });
+            $(".closeSetting").click(function () {
+                $("#blackCurtain").css("visibility", "hidden");
+                $("body").css("overflow", "visible");
+            });
+            $(".openSetting").click(function () {
+                $("#blackCurtain").css("visibility", "visible");
+                $("body").css("overflow", "hidden");
             });
 
 
-            $(".closeSetting").click(function () {
-                $("#blackCurtain").css("visibility","hidden");
-                $("body").css("overflow","visible");
-              })
-            $(".openSetting").click(function() {
-                $("#blackCurtain").css("visibility","visible")
-                $("body").css("overflow","hidden");
-            })
-            function saveBtn(idx) {
-                $("#btnSave").click(function(){
-                let _id = settingIcons[idx];
+            //저장버튼
+            $("#btnSave").click(function () {
+                //#3 저장 클릭했을 때 해당 이름을 갖는 아이콘들이 사라져야 한다.
+               
+                for (let key in settingIcons) { //for문처럼 객체를 반복하는 for in 반복문
+                    if (!settingIcons[key]) {
+                        console.log(key);
+                        //console.log(typeof key);
+                        $(".swiper-wrapper2").children("li." + key).css("display", "none");
+                    }else{
+                        $(".swiper-wrapper2").children("li." + key).css("display", "block");
+                    }
+                }
+               
+            });
 
-                $(".swiper-wrapper2").children("li."+_id).css("display","none")
-            })
-            }
+            //초기화버튼
+            //초기화 버튼을 클릭하면 값이 모두 클릭한 상태로 변화되어야 하는 것으로 보이지만,
+            //실제 사이트는 비활성화 된다.
+            //비활성화 되면 화면에 남아있는 아이콘들이 삭제되어있어야 하는데 또 삭제되어있지 않다... 오류로 보임
+            //그래서 리셋이란 개념이 유저가 클릭한 요소든 어떤 것이든 모두 비활성화 되어 있는 것까지 원래대로 활성화 시키는 것으로 재해석해서 저장하기로 했음.
+            $("#btnReset").click(function(){
+
+                //1. 객체를 모두 true로 변경
+                for (let key in settingIcons) { //for문처럼 객체를 반복하는 for in 반복문
+                    settingIcons[key] = true;
+                }
+                //2.클릭을 안한 상태로 변경하기
+                $("#settingBoard dl>dd").children("input[type=checkbox]").prop("checked",true);
+               
+            });
+
         });
     </script>
 </head>
@@ -605,7 +638,7 @@
         <div id="uncontactService">
             <div class="swiper swiper2">
                 <ul class="swiper-wrapper swiper-wrapper2">
-                    <li class="swiper-slide icon0" ><a href="#"><img
+                    <li class="swiper-slide icon0"><a href="#"><img
                                 src="https://www.mpva.go.kr/site/mpva/images/main/customize_icon01_off.png"
                                 alt="이미지1"><span>2022업무보고</span></a></li>
                     <li class="swiper-slide icon1"><a href="#"><img
@@ -640,7 +673,7 @@
                 <div class="swiper-button-prev sbp2 swiper-button"></div>
                 <div class="swiper-button-next sbn2 swiper-button"></div>
             </div>
-            <button class = "openSetting">
+            <button class="openSetting">
                 <span class="hidden">비대면 서비스 개인설정</span>
                 <span class="img"></span>
                 <span class="txt">설정하기</span>
@@ -692,8 +725,9 @@
 
                     </dl>
                     <p class="btnBox"><button id="btnSave">저장</button><button id="btnReset">초기화</button></p>
-                    <button class = "closeSetting"><span class="hidden">닫기</span></button>
-
+                    <button class="closeSetting">
+                        <span class="hidden">닫기</span>
+                    </button>
                 </div>
             </div>
         </div><!-- #uncontactService End -->
