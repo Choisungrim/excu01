@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 1) 고전 = 직접 new -->
+	<bean class = "iocDI01_xml.SsTVsi" id = "tvs" lazy-init = "true"/>
+<!-- 2) IOC/DI : 생성자 주입 
+      => bean 의 하위 Tag 로 생성자 매개변수를 정의 
+      => 매개변수1개, 2개 모두 Test   
+      => 인자의 종류 (type , 갯수) 에따라 일치하는 생성자가 호출됨 
+       => index, name(생성자 매개변수명) 속성을 적용하면 더욱 정확하게 매칭가능함 -->
+	<bean class = "iocDI01_xml.LgTVsi" id = "tvl" lazy-init = "true">
+		<constructor-arg name = "speaker" ref ="spb"/>
+		<constructor-arg index = "1" value = "350000"/>		
+	</bean>
+	
+	<bean class = "iocDI01_xml.SpeakerA" id = "spa" lazy-init = "true"/>
+	<bean class = "iocDI01_xml.SpeakerB" id = "spb" lazy-init = "true"/>
+<!-- 3) IOC/DI : Setter 주입 
+	  => SpeakerA , B 교체시에도 소스를 수정할 필요없음  
+      => setter 메서드는 <bean> 생성 직후 컨테이너가 자동 호출
+      => 매개변수1개, 2개 모두 Test 
+      => setter 찾는 규칙 (setPrice )  
+            name에 지정된 값으로 setter메서드명 setSp, setColor 를 찾기때문에
+            setter 메서드명과 변수명을 일치시켜야함.
+            default 생성자 이용  -->
+	<bean class ="iocDI01_xml.AiTVsi" id = "tva" lazy-init="true">
+		<property name="speaker" ref="spa"/>	
+		<property name="price" value = "1350000"/>
+	</bean>
+</beans>
