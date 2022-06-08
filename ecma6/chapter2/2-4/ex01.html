@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>템플릿 리터럴(Template literals)</title>
+	<meta charset="UTF-8">
+    <title>** 템플릿 리터럴(Template literals) **</title>
     <style type="text/css">
         #user table{width:100%;}
     </style>
@@ -13,6 +14,7 @@
         };
         
         window.onload = function(){
+        	// Test1) 기존 방식
             var html =  '<table border="1">';
                 html += '<thead>';
                 html += '<tr>';
@@ -29,12 +31,46 @@
                 html += '</tr>';
                 html += '</tbody>';
                 html += '</table>';
+			document.getElementById('user').innerHTML = html;  
+			
+            // Test2) 템플릿 리터럴 방식  
+            let a=100;
+            let b=123;
+            var html2 = `<table border="1">
+            	<thead>
+            		<tr>
+            			<th>Name</th>
+            			<th>Age</th>
+            			<th>Price</th>
+            			<th>A+B</th>
+            			<th>Job</th>
+            		</tr>
+            	</thead>
+            	<tbody>
+            		<tr>
+            			<td>${user.name}</td>
+            			<td>${user.age}</td>
+            			<td>${user.age*365*3*5000}</td>
+            			<td>${a+b}</td> // 변수와 연산자 사용 Test
+            			<td>${user.job}</td>
+            		</tr>
+            	</tbody>
+            </table>`; 
  
-            document.getElementById('user').innerHTML = html;
-        }
+            document.getElementById('user').innerHTML = html2;
+        } //onload
     </script>
 </head>
 <body>
-    <div id="user"></div>
+ <div id="user"></div>
+<pre>
+** 템플릿 리터럴(Template literals) **
+=> 역따옴표(`....`, 백쿼트, 백틱) 사이에 작성
+=> 줄바꿈 자동 적용
+=> ${ } 를 포함하여 표현식 적용가능
+	- 이렇게 + 연산자를 사용하지 않고 표현식을 적용하는것을 보간표현법 이라함
+=> 표현식은 함수와 연동 가능하고 이를 Tagged Template literal 이라함.
+   - ex02.html
+</pre>
 </body>
 </html>

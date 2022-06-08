@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>for...of문</title>
+	<meta charset="UTF-8">
+	<title>** for...of 구문 **</title>
 	<script type="text/javascript">
-		let iterable = {
+		let banana = {
 		    i:1,
 		    [Symbol.iterator]:function(){
 		        return this;
@@ -13,13 +14,32 @@
 		    }
 		}
 		
-		console.log(iterable.next());
-		console.log(iterable.next());
-		console.log(iterable[Symbol.iterator]().next());
-		console.log(iterable[Symbol.iterator]().next());
+		for(let value of banana) { console.log("** value => "+value); }
+		
 	</script>
 </head>
 <body>
+<pre>
+** for ~ of **
+=> 이터러블 규약을 따르도록 규정됨
+=> 그러므로 Symbol.iterator (@@iterator) 메서드를 내장한 객체만 적용됨
+=> javaScript02/ex08_01~ , ex08_02 참고
+	-> value 를 return, undifined 까지 모두 출력 (순차출력과 동일)
+	-> of 는 객체에 적용안됨 : 오류발생 
+	-> 개발자모드 오류 메시지 
+		Uncaught TypeError: myObject is not iterable
+		예제코드
+		 	for (var my of myObject) {
+				document.write('** myObject_of => '+my+'<br>');
+			}
+
+** for ~ in
+=> 배열 : undifined 는 통과하고 index를 문자열로 Return
+        ( index 를 연산에 이용하는경우 문자열 연산으로 처리되므로 위험 ) 
+=> 객체 : 속성명 Return
+
+** 결론 : for ~ in 의 단점을 보완 개선한것이 for ~ of 
+</pre>
 
 </body>
 </html>

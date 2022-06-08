@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>let과 const</title>
+	<meta charset="UTF-8">
+	<title>** let 과 const 2 **</title>
 	<script type="text/javascript">
-		// function을 call 한 형태로 실행가능 하도록 작성
-		(function(){
-		// Test 1)
-		// => var a 의 범위 : function 의 a 와 switch의 a는 동일
-          var a = 100;
-          switch(a){
-              case 100:
-                  var a = 200;
-                  break;
-          }
-          console.log("1. a =>"+a);
-      })();
-
-      (function(){
-          let a = 100;
-          switch(a){
-              case 100:
-                  let a = 200;
-                  break;
-          }
-          console.log("2. a =>"+a);
-      })();
+	// function을 call 한 형태로 실행가능 하도록 작성
+	// => test(); -> test 부분을 직접 작성
+	
+	// ** Test 1)
+	// => var a 의 범위 : function 의 a 와 switch 의 a 는 동일
+	(function(){
+	    var a = 100;
+	    switch(a){
+	        case 100:
+	            var a = 200;
+	            break;
+	    }
+	    console.log(a); // 200
+	})();
+	
+	// ** Test 2)
+	// => let a 의 범위
+	//    - function 의 a 와 switch 의 a 는 다름
+	//	  - switch 의 a 는 switch 블럭의 지역변수	
+	(function(){
+	    let a = 100;
+	    switch(a){
+	        case 100:
+	            let a = 200;
+	            break;
+	    }
+	    console.log(a); // 100
+	})();
 	</script>
 </head>
 <body>
-
+** let 과 const 2 **
 </body>
 </html>

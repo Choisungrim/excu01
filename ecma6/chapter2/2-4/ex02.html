@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>템플릿 리터럴(Template literals)</title>
+	<meta charset="UTF-8">
+	<title>** Tagged Template literal **</title>
 	<script type="text/javascript">
 		var a = 2;
 		var b = 8;
-
+		// Test1) 기존 방식
 		function sum(a, b){
 			var value = b % a;
 			var result;
@@ -15,9 +16,27 @@
 		}
 
 		var value = 'a의값은 ' + a + '이고, b의값은 ' + b + '입니다.\n' + sum(a, b);
-		console.log(value);
+		console.log("*** Test1) => "+ value);
+		
+		// Test2) Tagged Template literal 적용
+		
+		function sum2(str, a, b) {
+			
+		}
+		
+		
+		
+		
 	</script>
 </head>
 <body>
+<pre>
+** Tagged Template literal **
+=> 표현식은 함수와 연동 가능하고 이를 Tagged Template literal 이라함.
+=> 함수명 옆 매개변수 위치에 템플릿 리터럴이 오면 함수를 호출함.
+=> 함수의 매개변수로 템플릿 리터럴의 문자열이 전달됨
+   이때 보간표현법이 있으면 보간표현법 앞뒤로 나뉘어서 문자열이 배열로 전달됨.
+   보간표현법 표현식의 값은 별도로 전달됨.   
+</pre>
 </body>
 </html>

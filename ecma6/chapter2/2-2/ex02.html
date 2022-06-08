@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>이터러블 규약과 이터레이터 규약</title>
+	<meta charset="UTF-8">
+	<title>** 이터러블 규약과 이터레이터 규약 2 **</title>
 	<script type="text/javascript">
-		
+		// 이터레이터 규약을 만족하는 객체 만들기
+		let banana = {
+		    i:1,
+		    [Symbol.iterator]:function(){  // 이터레이터 규약을 따르기 위한 @@iterator 메서드 선언
+		        return this;  // banana[Symbol.iterator]() 호출시 아래와 동일하게 호출되도록 this 를 return 
+		    }, //Symbol
+		    next:function(){  // next() 메서드 호출시 value 와 done 을 가지는 객체를 전달하도록 해줌
+		        return (this.i < 4) ? {value:this.i++, done:false} : {value:undefined, done:true};
+		    } //next
+		} //let
+		 
+		console.log(banana.next());
+		console.log(banana.next());
+		console.log(banana[Symbol.iterator]().next());
+		console.log(banana[Symbol.iterator]().next());
 	</script>
 </head>
 <body>
+** 이터러블 규약과 이터레이터 규약 2 **<br>
+=> 이터레이터 규약을 만족하는 객체 만들기
 
 </body>
 </html>
