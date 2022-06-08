@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>** 심볼(Symbol) **</title>
+    <script>// ** 심볼을 생성하여 typeof로 Type을 확인하고 형변환을 시도함.
+    let mySymbol = Symbol(); // 심볼생성
+    console.log(typeof mySymbol); // Type 확인
+    //console.log(Number(mySymbol)); // 형변환 불가 => Uncaught TypeError: Cannot convert a Symbol value to a number
+    
+    // ** 배열의 내장속성 충돌 Test
+    let arr=[1,2,3];
+    console.log(arr.length); // 3
+    arr.length = 100; // 값 할당.
+    console.log(arr.length); // 100
+    
+    // ** Symbol test
+    let arr2 = [1,2,3];
+    const length = Symbol('length'); // Symbol 선언
+    arr2[length] = 100; // 배열에 Symbol을 속성으로 추가하고 값을 할당.
+    console.log(arr2[length]); // 100 Symbol을 이용해서 필요한 속성을 사용
+    console.log(arr2.length); // 3 고유한 내장속성은 유지
+
+    </script>
+</head>
+<body>
+    <pre>
+        ** 심볼(Symbol) **
+        => 객체의 내장속성과의 충돌을 피하기 위해 새로 추가된 Type.
+        => ES6가 발표되기 이전까지 JS의 모든 값은 다음 6개중의 하나였음.
+           Undefined, Null, Boolean, Number, String, Object
+        => ES6에서 새로 추가된 Type으로 객체의 속성으로 사용되며,
+           - 객체에 속성으로 추가시 내장속성과의 충돌을 피하게 해줌 
+           - 심볼로 추가한 속성은 for ~ in 에서 표시되지않음.
+        => 배열에 속성이 필요한 경우 순차처리에 영향을 주지않고 속성을 추가할수 있도록 해줌 
+    </pre>
+</body>
+</html>

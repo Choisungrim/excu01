@@ -21,8 +21,13 @@
 		// Test2) Tagged Template literal 적용
 		
 		function sum2(str, a, b) {
-			
+			var result = `${str[0]}${a}${str[1]}${b}${str[2]}
+						 ${(b%a == 0) ? 'a는 b의 약수입니다' : 'a는 b의 약수가아닙니다.'}`;
+						 return result;
 		}
+
+		var value = sum2`a의값은 ${a}이고, b의 값은 ${b} 입니다.`;
+		console.log("Test2 =>"+value);
 		
 		
 		

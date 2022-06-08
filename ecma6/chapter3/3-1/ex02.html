@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** 제너레이터 이어붙이기 **</title>
+<script>
+	
+	//let n=500;   ->  NaN , this 로 접근불가
+	//const n=500; ->  NaN , this 로 접근불가
+	//var n=500;   -> this 로 접근가능
+	function* gen1(n) {
+		yield n+1;
+		yield* gen2(n); // gen2 를 호출하여 이어붙이기를 함
+		// yield* gen2(this.n);  
+		// -> 전역변수 접근 Test : var n=500 만 가능
+		yield n+2;
+	}
+	
+	function* gen2(n) {
+		yield n+100;
+		yield n+200;
+	} 
+	
+	let generator = gen1(100);
+	for (let value of generator) {
+		console.log(value)  // 101, 200, 300, 102
+	}
+
+</script>
+</head>
+<body>
+<pre>
+** 제너레이터 이어붙이기 **
+=> 제너레이터 함수의 yield 표현식 사이에
+   다른 제너레이터 함수의 yield 표현식 이어붙이기 가능 
+=> yield 표현식에 * 붙여 작성 
+
+	function* gen1() {
+		yield* gen2();
+	}
+</pre>
+</body>
+</html>

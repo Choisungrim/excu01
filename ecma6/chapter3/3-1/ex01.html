@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>for...of문</title>
+	<meta charset="UTF-8">
+    <title>** 제너레이터 (Generator) **</title>
     <script type="text/javascript">
-        let iterator = {
+    	// Test1) 직접 구현
+        let fruitBox = {
             fruits:['사과', '바나나', '포도', '딸기'],
             [Symbol.iterator]:function(){
                 return this;
@@ -15,12 +17,40 @@
             }
         }
 
-        for(let value of iterator){
+        for(let value of fruitBox){
             console.log(value);
         }
+    	
+    	// Test2) 제너레이터 (Generator) 적용
+    	// => function 에 * 을 붙여 제너레이터 함수로 선언 
+    	// => yield 는 오른쪽의 값을 객체로 리턴하게 해주는 표현식
+    	function* gen() {
+    		yield 'Apple';
+    		yield 'Banana';
+    		yield 'Orange';
+    		yield 'Mango';
+    		yield 'Grape';
+    	} //gen
+    	/*
+     	for (let value of gen()) {
+    		console.log(value);
+    	} */
+    	
+    	let myGenerator = gen();
+    	for (let value of myGenerator) {
+    		console.log(value);
+    	}
+    	
     </script>
 </head>
 <body>
-
+<pre>
+** 제너레이터 (Generator) **
+=> 이터러블 규약과 이터레이터 규약을 따르는 제너레이터 객체를 만들어 주는 함수 
+=> 조건
+	- Symbol.iterator (@@iterator) 메서드	구현  
+	- next() 메서드 구현
+=> 이것을 보다 쉽게 구현하도록 하는것이 제너레이터 
+</pre>
 </body>
 </html>

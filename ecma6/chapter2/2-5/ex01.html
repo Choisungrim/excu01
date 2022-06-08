@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>** 타입배열(Typed Array)**</title>
+</head>
+<body>
+    <script>
+        // ArrayBuffer : 용량 3byte 의 버퍼 생성
+        // ArrayBuffer 생성, 뷰 생성
+        const buffer = new ArrayBuffer(3);
+        // ** RGB 컬러코드 (0~255) 만 입력 가능한 배열 만들기
+        const rgb = new Uint8ClampedArray(buffer);
+        // => Uint8ClampedArray : 8bit 양의 정수형 ( 0~255 범위 ) 만 을허용하는 뷰
+        // => 그러므로 3byte * 8 = 24 bit 버퍼크기에는 8bit 짜리 3개 사용가능
+
+        rgb[0] = parseInt(Math.random(255) * 100);
+        rgb[1] = parseInt(Math.random(255) * 100);
+        rgb[2] = parseInt(Math.random(255) * 100);
+        // => random 에 의해 실행시마다 다른 컬러 표시됨
+        document.body.style.backgroundColor = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+    </script>
+    <pre>
+        *** 타입배열(Typed Array) ***
+        => 배열과 유사 하지만 이진데이터 (Binary Data) 를 보다 빠르게 처리하기위해 추가됨.
+        => 파일, 오디오, 비디오 처리를 유용하게 사용됨.
+        => 기본적으로 Array 와 거의 같은 메서드를 가지고 있지만, push pop 메서드와 같이 길이를 바꾸는 메서드는 없고 
+           set, subarray 메서드와 같은 고유의 프로퍼티가 추가됨.
+           
+        => 타입배열은 버퍼(ArrayBuffer) 와 뷰(Typed Array Views) 로 나뉨   
+        
+        => 버퍼(ArrayBuffer): TypedArray가 다루는 데이터가 위치한 Buffer 
+           
+        ***  Typed Array Views
+        => 상세 정보 는 교재 54p 참고
+           Int8Array();
+           Uint8Array();
+           Uint8ClampedArray();
+           Int16Array();
+           Uint16Array();
+           Int32Array();
+           Uint32Array();
+           Float32Array();
+           Float64Array();
+         
+        *** 다양한 메서드
+        => https://blog.naver.com/bishil06/222754512999
+    </pre>
+</body>
+</html>
