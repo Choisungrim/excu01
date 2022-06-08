@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>let과 const</title>
+	<script type="text/javascript">
+		var name = "홍길동";
+		let lastName = "홍";
+		const LAST_NAME = "Hong";
+
+		var name = "이길동";
+		//let lastName = "이";  실행 시 오류 발생
+		lastName ="이"; // 재할당 가능
+		console.log(name);
+		console.log(lastName);
+		console.log(LAST_NAME);
+
+	</script>
+</head>
+<body>
+<pre>
+** let 과 const **
+1. 선언
+1.1) 변수
+   => var : 재선언가능, 재할당가능 , 지역변수의 경우 선언된 함수 범위
+   => let : 재선언불가능, 재할당가능 , 지역변수의 경우 선언된 영역에만 적용
+1.2) 상수
+   => const : 재선언불가능, 재할당불가능
+2. 특징
+=> delete 적용안됨   
+</pre>
+</body>
+</html>
