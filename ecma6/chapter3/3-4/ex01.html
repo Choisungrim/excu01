@@ -6,21 +6,95 @@
         body h1{font-size: 24px; color:red;}
     </style>
     <script type="text/javascript">
+        // Test1) 지연함수 결과가 반영되지 않는경우
+        let cnt1 = 0;
+        setTimeout(()=>{
+            cnt1++;
+        },1000) // 1초 == 1000/1초 
+        console.log(cnt1);
+        
+        // Test2) Promise 적용
+        let cnt2 = 0;
+        let promise = new Promise((resolve,reject)=>{
+            // => promise 를 생성하면 내부에서 executor 함수를 참조하여
+            //    매개변수인 resolve, reject 를 전달받음
+            // => 익명함수 내에 실행코드 작성.
+            setTimeout(() => {
+                // Pending(대기) 상태 =// Try 구문 과 유사
+                cnt2 = cnt2+Math.random()*100;
+                // resolve ( 성공 ) 
+                resolve(cnt2) // 성공 한 결과 수행 (정상종료 결과 return) =? Fulfilled(이행) 상태
+                reject("실 패");
+
+            }, 1000); 
+        });             
+            // => 지연함수를 내부에서 실행 후 1초 뒤에 이행결정 함수 resolve()호출, 결과 값 전달 혹은 reject() 실행
+            // => 이행결정시 then 메서드 호출되어 매개변수를 통해 결과값을 전달받아 실행됨. 
+            // => 이행거절시에는 호출되지않음.
+            promise.then((count)=>{
+                console.log(count);
+            }).catch((message)=>{
+                // reject ( 실패 )
+                // => 이행거절시 catch 메서드가 매개변수를 통해 거절이유를 전달받아 실행됨. 
+                // Method Chain이 가능함
+                console.log(message);
+            }).then(()=>{
+                console.log("finally Test")
+            })
+
+            
+
+        // 실행결과에 따른 처리 구분(resolve 이행 / reject 실패)
+let ajaxp = new Promise((resolve,reject)=>{
         let req = new XMLHttpRequest();
         req.open('GET', 'data.html');
+        //req.open('GET', 'data.html');
         req.send();
         req.onreadystatechange = function(){
             if(req.readyState == req.DONE){
-                if(req.status == 200){
-                    document.body.innerHTML =  req.response;
-                } else {
-                    console.log(req.statusText);
-                }
+                setTimeout(() => {
+                    
+                    if(req.status == 200){
+                        resolve(req.response);
+                    } else {
+                        reject(req.statusText); // or (안나올떄)req.status
+                    }
+                }, 2000);
             }
-        }
+        } // AJAX 처리
+    });
+    // 이행결과 (성공_f1,실패_f2)
+    ajaxp.then((e)=>{
+        document.body.innerHTML = e;
+    },(reason)=>{
+        console.log(reason)
+    })
+        
+
     </script>
 </head>
 <body>
-
+    <pre>
+        ** Promise **
+        
+        => 지연함수 와 비동기 연산을 제어할 수 있도록 해주는 객체 
+        
+        => JavaScript 에서 코드가 순차적으로 일어나는 처리를 동기처리,
+           특정 코드가 처리될때 까지 기다리지않고 다음코드를 먼저 처리하는것을 걸 비동기처리 라고함.
+           이러한 비동기처리에서 콜백지옥(Callback Hell) 등의 문제를 해소하기 위해 사용하는 객체,
+           즉 비동기 처리에서 순차적 처리를 행하기 위해 사용되는 객체가 프로미스(Promise)이다.
+           
+        => Promise 의 처리 상태 3가지
+           - Pending(대기):  Promise 객체를 생성하고, 처리성공 또는 처리실패 이전까지의 미완료 상태
+        
+           - Fulfilled(이행): 처리가 성공적으로 이루어져 Promise 결과 값을 return 해준 상태
+              위의 콜백함수에서 어떠한 처리를 수행할테고, 이 처리가 성공하면 인자 값인 resolve 를 수행한다.
+               resolve( ) 를 수행하게 되면 Promise 객체는 Fulfilled(이행) 상태가 되는데,
+              Fulfilled(이행) 상태가 되면 아래와 같이 then( ) 을 이용해 처리 결과를 받아올 수 있다.
+              
+           - Rejected(실패): 처리가 실패해 오류가 발생한 상태
+              콜백함수 처리가 실패되면 reject( ) 를 수행하여 Rejected(실패) 상태로 들어가게 된다.
+              Rejected(실패) 상태는 catch( ) 로 결과 값을 받아올 수 있다.   
+    </pre>
 </body>
 </html>

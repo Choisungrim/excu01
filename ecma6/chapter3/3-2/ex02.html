@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>새로 추가된 컬렉션(collections)</title>
+    <meta charset="UTF-8">
+    <title>** 새로 추가된 컬렉션(collections) Set **</title>
     <script type="text/javascript">
         let str = '공부합시다 ES6 ES6';
         
@@ -24,9 +25,52 @@
         for(let value of arr){
             console.log(value);
         }
+        console.log ( "** arr.length => "+ arr.length);
+
+        //** Set
+        let mySet = new Set(str);
+        for(let value of mySet)
+        console.log(value);
+
+        console.log(mySet.size);
+
+        let mySet2 = new Set;
+        mySet2.add(111).add(222).add(333);
+        //add Mehhod chaining 가능
+        // delete Method Chaining 불가능
+        console.log(mySet2.delete(222)); // -> boolean으로 리턴
+        console.log(mySet2.has(222)); // true
+
+
+        mySet.forEach((value,iter)=> console.log(value,iter))
+
     </script>
 </head>
 <body>
-
+    <pre>
+        ** 새로 추가된 컬렉션(collections) Set **
+        => Set은 value를 키 값으로 갖는 컬렉션입니다.
+        => Set은 수정 가능하며, 프로그램이 실행되는 동안 값의 추가나 삭제를 할 수 있습니다.
+        => 여기까지는 Array와 같지만 Set과 Array에는 차이점이 존재 합니다.
+           - 값이 중복되지 않습니다 ( 중복값은 저장하지 않음 )
+              const mySet = new Set("abcd");
+              mySet.size; // 4
+              mySet.add("a");
+              mySet.size; // 4
+        
+        => 데이터 확인 이 편리하고 빠름.
+        
+              const mySet = new Set("abcd");
+              const myArray = [..."abcd"];
+              
+              myArray.indexOf("a") !== -1 // true slow
+              mySet.has("a")              // true fast   
+           
+        => Set은 인덱스 값으로 데이터 조회는 불가능
+              myArray[0]; // "a"
+              mySet[0];   // undefined
+              
+        => Set 속성과 메서드 ( 교재 77p )   
+    </pre>
 </body>
 </html>
