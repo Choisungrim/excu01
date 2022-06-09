@@ -6,14 +6,42 @@
         body h1{font-size: 24px; color:red;}
     </style>
     <script type="text/javascript">
-        const target = {
+        const target1 = {
             author:'kim',
             version:'1.0',
             text:'read only property'
         };
+
+        target1.text = "testtest";
+        console.log(target1.text);
+
+        const target2 = {
+            author:'Hong',
+            version:'2.0',
+            text:'read only 객체'
+        };
+        const proxy = new Proxy(target2, { 
+            set:function(){
+                // set trap (target 객체의 속성 값 추가되면 호출)
+                throw new Error("this is a read only property")
+            }
+        }); // proxy
+        console.log(proxy.text);
+        proxy.text = "testtest";
+        console.log(proxy);
+    // ex01.html:26 Uncaught Error: this is a read only property
+    // at Object.set (ex01.html:26:23)
+    // at ex01.html:30:20
     </script>
 </head>
 <body>
-
+    <pre>
+        ** 프록시(Proxy) **
+        => 객체에서 일어나는 일을 관찰
+        => 객체 속성에 변화가 있을경우 객체보다 먼저 감지하여 반영여부를 결정
+        => target : 관찰대상 객체
+        => trap : 객체동작 가로챔을 실행하는 함수들 ( 교재 103~104p ) 
+        => handler : trap 을 속성으로 가지는 객체
+        </pre>
 </body>
 </html>

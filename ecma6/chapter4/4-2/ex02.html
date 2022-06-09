@@ -3,14 +3,16 @@
 <head>
 	<title>Destructuring</title>
 	<script type="text/javascript">
-		function destParam(){
-		    
+		// 3.2 객체형
+		function destParam({a,b,c=a+b,d=a*b}){
+			console.log(`a=${a}, b=${b},c=${c},d=${d}`);
 		}
 		
 		destParam({a:100, b:200});
 	</script>
 </head>
 <body>
-
+	** 비구조할당 Destructuring Assignment **<br>
+	=> 3.2) 객체형 Test
 </body>
 </html>

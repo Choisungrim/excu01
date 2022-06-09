@@ -53,7 +53,6 @@ let ajaxp = new Promise((resolve,reject)=>{
         req.onreadystatechange = function(){
             if(req.readyState == req.DONE){
                 setTimeout(() => {
-                    
                     if(req.status == 200){
                         resolve(req.response);
                     } else {
@@ -64,11 +63,10 @@ let ajaxp = new Promise((resolve,reject)=>{
         } // AJAX 처리
     });
     // 이행결과 (성공_f1,실패_f2)
-    ajaxp.then((e)=>{
+    ajaxp.then(e=>{
         document.body.innerHTML = e;
-    },(reason)=>{
-        console.log(reason)
-    })
+    },reason=>console.log(reason)
+    )
         
 
     </script>
