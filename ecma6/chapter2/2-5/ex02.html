@@ -9,10 +9,12 @@
 		var view = new Int16Array(buffer); //  16 bit 양의 정수형 배열 생성 
 		var blob = new Blob([view], {type: 'application/octet-binary'}); // blob 생성
 		var url = URL.createObjectURL(blob); // blob 의 url 생성
+		var floatb = new Float32Array(buffer);
 		console.log(buffer);
 		console.log(view);
 		console.log(blob);
 		console.log(url);
+		console.log(floatb)
 	</script>
 </head>
 <body>
