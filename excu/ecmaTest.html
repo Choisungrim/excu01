@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** ECMEScript 6 Test **</title>
+<style type="text/css">
+    #user table{width:100%; text-align: center;}
+</style>
+<script>
+	// ** member 객체생성
+    const member = {
+			id : `green`,
+			name : `홍길동`,
+			job : `programmer`,
+		}
+
+    // 조건 1.
+    function test1() {
+	const num1 = parseInt(document.getElementById(`number1`).value)
+	const num2 = parseInt(document.getElementById(`number2`).value)
+            const html = `<table border="1">
+            	<thead>
+            		<tr>
+            			<th>ID</th>
+            			<th>Name</th>
+            			<th>job</th>
+            			<th>더하기</th>
+            			<th>통일성</th>
+            			<th>더큰값</th>
+            		</tr>
+            	</thead>
+            	<tbody>
+            		<tr>
+            			<td>${member.id}</td>
+            			<td>${member.name}</td>
+            			<td>${member.job}</td>
+            			<td>${num1+num2}</td> 
+            			<td>${num1 == num2 ? true : false}</td>
+            			<td>${num1 > num2 ? num1 : num2}</td>
+            		</tr>
+            	</tbody>
+            </table>`; 
+			document.getElementById(`user`).innerHTML = html;  
+	} 
+    
+	// 조건 2. 제너레이터 (Generator)
+    function test2() {
+		// 제너레이터 선언
+		function* Generator(){
+		yield member.id;
+		yield member.name;
+		yield member.job
+		}
+
+		// 이터레이터 선언
+		let mygen = Generator();
+
+		for(let i of mygen)
+			console.log(i)
+	} 
+	
+	
+	// 조건 3. 프록시 (Proxy)
+    function test3() {
+		const proxy = new Proxy(member, { 
+            set:function(){
+                throw new Error(`this is a read only property!!!!`)
+            }
+        });
+		console.log(`member.name => ${member.name}`)
+
+		// name 수정 TEST
+		proxy.name = `최성림`;
+	} 
+	
+	// 조건 4. Promise
+    function test4() {
+		let number1 = document.getElementById(`number1`).value
+		let number2 = document.getElementById(`number2`)
+		let promise = new Promise((resolve,reject)=>{
+            setTimeout(() => {
+				number1 * 3 % 2 == 0 ? resolve(`resolve_성공`) : reject(`reject_거절`);
+            }, 1000); 
+        });             
+            promise.then((msg)=>{
+				number2.value = msg;
+            }).catch((msg)=>{
+				number2.value = msg;
+            }).then(()=>{
+                document.getElementById(`user`).innerHTML = `**Promise Test 종료 **`;  
+            })
+	} 
+</script>
+</head>
+<body>
+<h2>조건 1 </h2>
+<hr>
+Number 1 :  <input type = text id = number1>
+Number 2 :  <input type = text id = number2>
+<button onclick="test1()">조건 1</button>
+<hr>
+<div id="user"></div>
+<hr>
+<button onclick="test2()">조건 2</button><br><br>
+<button onclick="test3()">조건 3</button><br><br>
+<button onclick="test4()">조건 4</button><br><br>
+</body>
+</html>
