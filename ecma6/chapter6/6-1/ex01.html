@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>클래스(Class)</title>
+	<meta charset="UTF-8">
+   <title>** 클래스 (class) 상속 **</title>
 	<script type="text/javascript">
+
+		// 1.) 이전방식
 		var Animal = function(){};
 		Animal.prototype.eat = function(){
 			console.log('먹기');
@@ -10,12 +13,15 @@
 		Animal.prototype.sound = function(){
 			console.log('소리내기');
 		}
+		Animal.prototype.breath = function () {
+			console.log('색색')
+		}
 		
 		var Dog = function(){};
-		Dog.prototype = new Animal();
+		Dog.prototype = new Animal(); // prototype chainging 매커니즘 
 		Dog.prototype.sound = function(){
 			console.log('멍멍');
-		}
+		} // 오버라이딩
 		Dog.prototype.eat = function(){
 			console.log('사료');
 		}
@@ -37,12 +43,75 @@
 		
 		var dog = new Dog();
 		dog.sound();
-
+		dog.breath();
+		
 		var tiger = new Tiger();
 		tiger.sound();
+		tiger.breath();
+
+		// 2) ES6방식
+		class Animal2{
+			sound(){
+				console.log('소리내기');
+			}
+			eat(){
+				console.log('먹기');
+			}
+			breath(){
+				console.log('색색');
+			}
+		}
+		class Dog2 extends Animal2{
+			sound(){
+				console.log('멍멍');
+			}
+			eat(){
+				console.log('사료');
+			}
+			guard(){
+				console.log('집지키기');
+			}
+		}
+		class Tiger2 extends Animal2{
+			sound(){
+				console.log('어흥');
+			}
+			eat(){
+				console.log('닭고기');
+			}
+			attack(){
+				console.log('공격');
+			}
+		}
+		console.log("Test2")
+		let dog2 = new Dog2();
+		dog2.eat();
+		dog2.breath();
+		dog2.guard();
+
+		let tiger2 = new Tiger2();
+		tiger2.eat();
+		tiger2.attack();
+		tiger2.breath();
+
 	</script>
 </head>
 <body>
-
+	<pre>
+		** 클래스(Class) 상속 **
+		
+		=> 이전방식
+		   - prototype chaining 매커니즘을 활용
+		   - 직접 코드를 구현해야 하며, 일정한 규칙이 정해져 있지않아
+			 복잡하고 가독성이 떨어짐 
+		
+		=> ES6
+		   - extends 로 정의
+		
+		=> super() : 부모클래스 생성자 접근
+		   super : 부모클래스 속성 접근
+		   메서드오버라이딩 (이전방식의 prototype chaining 매커니즘)    
+		   메소드 오버로딩 (동일한 메소드명으로 다른 인자를 사용)
+	</pre>
 </body>
 </html>

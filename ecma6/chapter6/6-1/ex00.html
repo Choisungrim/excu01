@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>** 클래스 (class) **</title>
+<script>
+	// Test 1) 이전방식
+	// 1.1) 객체(클래스) 정의
+	function Vacation1(destination, days) {
+		this.destination=destination;
+		this.days=days;
+	} //Vacation1
+	// 1.2) 메서드 추가
+	Vacation1.prototype.print=function(){
+		console.log(`${this.destination} 를 ${this.days} 일간 여행합니다.`);
+	}
+	// 1.3) 사용
+	// => 인스턴스 생성 후 사용
+	var hawaii = new Vacation1("하와이", 15);
+	hawaii.print();
+	var maui = new Vacation1("마우이", 10);
+	maui.print();
+
+	// Test 2) ES6
+	// 2.1) 객체(클래스) 정의
+	class Vacation2 {
+		// ** 맴버변수 정의
+		// => prototype(인스턴스) 맴버변수
+		name = '홍길동';
+		// => static 맴버변수
+		static country = 'Korea';
+		
+		// ** 생성자 정의
+		// => new 사용시 호출
+		// => 인자로 전달된 값을 클래스 맴버변수로 할당 
+		constructor(destination, days) {
+			this.destination=destination;
+			this.days=days;
+			Vacation2.country=destination; // 클래스변수 는 클래스명.변수명 으로 접근
+		}
+		
+		// 2.2) 메서드 추가
+		// => prototype(인스턴스) 메서드
+		print() {
+			console.log(`${this.destination} 를 ${this.days} 일간 여행합니다.`);
+			// => prototype(인스턴스) 메서드에서 static 변수 사용 : OK
+			console.log(`** Vacation2.country => ${Vacation2.country}`);
+		}
+		// => static 메서드
+		static info() {
+			console.log(`${this.destination} 은(는) 여행 안전 지역 입니다.`);
+			// => static 메서드에서 인스턴스 변수 접근 -> undefined (오류는 발생하지 않음)
+			console.log(`${Vacation2.country} 은(는) 여행 안전 지역 입니다.`);
+			// => static 메서드에서 static 변수 접근
+			//    클래스 내부에서 접근할때에도 반드시 클래스명으로 접근
+		}
+		
+	} //Vacation2
+	
+	// 2.3) 사용
+	// => 인스턴스 생성 전 static 변수 사용
+	console.log("** static 변수 country1 = "+Vacation2.country);
+	
+	// => 인스턴스 생성 후 사용
+	let winterTrip = new Vacation2("알프스", 20); // 생성자 호출
+	winterTrip.print();
+	console.log("** 인스턴스 맴버변수 name = "+winterTrip.name);
+	
+	// => static Test
+	
+	//winterTrip.info(); 
+	// static 메서드 를 인스턴스로 접근 
+	// -> Uncaught TypeError: winterTrip.info is not a function
+	
+	Vacation2.info();
+	// => 인스턴스 생성 후 static 변수 사용
+	console.log("** static 변수 country2 = "+Vacation2.country);
+	
+
+</script>
+
+</head>
+<body>
+<pre>
+** 클래스 (class) **
+=> 이전에는 없었으나, ES6 부터 전통적인 객체지향 언어에서 사용하는
+   클래스(class) 가 추가됨.
+
+=> 이전방식 : function 과 그 function에 있는 prototype 을 이용해서 정의
+
+=> ES6
+	- class 로 정의
+	- prototype(인스턴스) 과 static(클래스) 메서드 정의 가능
+
+=> prototype(인스턴스) 메서드, 변수  
+	- 인스턴스를 통해 호출
+	- 기존 방식에도 있었으나 코드 가독성 떨어지고 불편	
+	- 정의시 이름앞에 아무것도 사용하지 않음 (사용 키워드 없어야 함)
+
+=> static 메서드, 변수
+	- 인스턴스가 아닌 클래스명을 통해 호출
+	- 유틸 함수 정의에 주로 이용됨
+	- 정의시 이름앞에 static 을 사용함 	
+</pre>
+
+</body>
+</html>
